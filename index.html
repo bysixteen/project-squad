@@ -870,6 +870,7 @@
     <div class="sidebar-section">
       <div class="sidebar-label">Overview</div>
       <a href="#overview">The Framework</a>
+      <a href="#squad">The Squad</a>
       <a href="#rules">Key Rules</a>
     </div>
     <div class="sidebar-divider"></div>
@@ -934,7 +935,7 @@
           <div class="phase-dot sprint">S1</div>
           <div class="phase-content">
             <h4>Sprint 001 — Member Onboarding</h4>
-            <p>Six personas sketch the problem. One decision is made. Elias dissents. The dissent is recorded with a review trigger.</p>
+            <p>Seven personas sketch the problem. One decision is made. Elias dissents. The dissent is recorded with a review trigger.</p>
           </div>
         </div>
         <div class="phase-item">
@@ -944,6 +945,121 @@
             <p>A single question, a qualification test, a 4-hour time box, and a clear yes/no recommendation with conditions.</p>
           </div>
         </div>
+      </div>
+    </div>
+
+    <!-- THE SQUAD -->
+    <div class="section" id="squad">
+      <div class="section-header">
+        <div class="section-badge badge-init">◈</div>
+        <div class="section-title-group">
+          <h2>The Squad</h2>
+          <div class="section-sub">Seven core personas — the portable constant that travels unchanged between every project</div>
+        </div>
+      </div>
+
+      <div class="callout info">
+        <div class="callout-icon">ℹ</div>
+        <div>The seven personas live in <code>.squad/project-squad.md</code> and must never be modified. They are the one file that is identical across every project that uses this framework. Specialists in <code>.squad/specialists.md</code> are additive — they extend the squad for specific sprints without replacing any core persona.</div>
+      </div>
+
+      <div class="persona-grid">
+
+        <div class="persona-card">
+          <div class="persona-name">Leo Finch</div>
+          <div class="persona-role">Visual Designer · #1</div>
+          <div class="persona-question">"Does this feel like us?"</div>
+          <div class="persona-quote">Keeper of the brand. Sees every decision through the lens of visual identity, consistency, and emotional resonance. Will push back on anything generic, off-brand, or visually incoherent. Leads visual direction in the Sketch phase and evaluates prototypes for brand alignment.</div>
+        </div>
+
+        <div class="persona-card">
+          <div class="persona-name">Dr. Lena Petrova</div>
+          <div class="persona-role">Design Engineer · #2</div>
+          <div class="persona-question">"How will we build, test, and maintain this?"</div>
+          <div class="persona-quote">Bridges design and engineering. Thinks in systems, components, and processes. Asks how a proposed solution fits the design system, what the maintenance overhead is, and whether it can be built with current tooling. Leads Phase 1 (Map) and produces ADRs.</div>
+        </div>
+
+        <div class="persona-card">
+          <div class="persona-name">Marcus Thorne</div>
+          <div class="persona-role">Senior Developer · #3</div>
+          <div class="persona-question">"What are we NOT building here?"</div>
+          <div class="persona-quote">The long-term thinker. Defines what is out of scope and flags architectural decisions that will be hard to reverse. The voice of restraint and long-term health. Provides architectural boundaries in the Sketch phase and flags long-term risks in the Decide phase.</div>
+        </div>
+
+        <div class="persona-card">
+          <div class="persona-name">Kira Sharma</div>
+          <div class="persona-role">Developer · #4</div>
+          <div class="persona-question">"What does the implementation actually look like?"</div>
+          <div class="persona-quote">Translates abstract decisions into concrete implementation realities. Identifies integration points, testing challenges, and effort estimates that others miss. The ground truth for "can we actually build this, and how long will it take?"</div>
+        </div>
+
+        <div class="persona-card">
+          <div class="persona-name">Dr. Aris Thorne</div>
+          <div class="persona-role">Strategist · #5</div>
+          <div class="persona-question">"What is the real problem we are trying to solve?"</div>
+          <div class="persona-quote">The problem reframer. Deeply suspicious of solutions not properly connected to a user need. Consistently asks whether the team is solving the right problem. Leads Phase 1 (Map), generates HMW questions, and leads Phase 4 (Synthesise).</div>
+        </div>
+
+        <div class="persona-card">
+          <div class="persona-name">Rowan Vale</div>
+          <div class="persona-role">Craftsman · #6</div>
+          <div class="persona-question">"What does this feel like from beginning to end?"</div>
+          <div class="persona-quote">Thinks in end-to-end experiences — not just the screen, but the email notification, the physical touchpoint, the moment of delight or frustration. Brings a holistic, sensory perspective and pushes the team to think beyond the immediate interface.</div>
+        </div>
+
+        <div class="persona-card elias">
+          <div class="persona-badge badge-dissent">Mandatory Dissent</div>
+          <div class="persona-name">Elias Vance</div>
+          <div class="persona-role">Client (External) · #7</div>
+          <div class="persona-question">"Does this solve a real problem for my users?"</div>
+          <div class="persona-quote">The external client voice and standing dissenter. His job is to represent the real-world user and challenge assumptions. His dissent must always be recorded in <code>dissent-register.md</code>, even if the team overrules him — because the most common failure mode of a sprint is groupthink. Dissent is a feature, not a bug.</div>
+        </div>
+
+      </div>
+
+      <div class="callout warning">
+        <div class="callout-icon">⚑</div>
+        <div><strong>Why only Elias has Mandatory Dissent:</strong> Any persona can raise a concern. But Elias is the only one whose dissent is <em>structurally required</em> — because he is the only one who is not a maker. He has no stake in the solution being buildable, elegant, or on-time. His only stake is whether it solves a real problem for the user. That independence is what makes his challenge worth recording even when the team overrules him.</div>
+      </div>
+
+      <div class="section-header" style="margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--border);">
+        <div class="section-badge badge-spike" style="font-size: 11px; padding: 4px 8px; border-radius: 6px; background: var(--purple-bg); color: var(--purple); border: 1px solid var(--purple-border); font-weight: 700; letter-spacing: 0.05em;">+</div>
+        <div class="section-title-group">
+          <h3 style="font-size: 16px;">Specialists — Optional Domain Roles</h3>
+          <div class="section-sub">Pulled in for specific sprints only. Never replace a core persona.</div>
+        </div>
+      </div>
+
+      <div class="persona-grid">
+
+        <div class="persona-card" style="border-color: var(--purple-border); background: var(--purple-bg);">
+          <div class="persona-name" style="color: var(--purple);">Alex Mercer</div>
+          <div class="persona-role">Data Scientist</div>
+          <div class="persona-question">"What does the data actually tell us?"</div>
+          <div class="persona-quote">Add when sprints involve analytics, personalisation, or decisions where the team is relying on intuition rather than measurement. Produces data quality assessments, statistical significance checks, and measurement frameworks.</div>
+        </div>
+
+        <div class="persona-card" style="border-color: var(--purple-border); background: var(--purple-bg);">
+          <div class="persona-name" style="color: var(--purple);">Priya Nair</div>
+          <div class="persona-role">Security &amp; Compliance</div>
+          <div class="persona-question">"What could go wrong, and who is responsible when it does?"</div>
+          <div class="persona-quote">Add when sprints involve user data, authentication, payments, or PII. Produces threat models, compliance checklists (GDPR, PCI-DSS), and recommended security controls.</div>
+        </div>
+
+        <div class="persona-card" style="border-color: var(--purple-border); background: var(--purple-bg);">
+          <div class="persona-name" style="color: var(--purple);">Sam Okafor</div>
+          <div class="persona-role">Content Strategist</div>
+          <div class="persona-question">"What are we actually saying, and to whom?"</div>
+          <div class="persona-quote">Add when sprints involve onboarding flows, marketing pages, notification copy, or error messages. Produces content audits, tone of voice guidelines, and microcopy recommendations.</div>
+        </div>
+
+        <div class="persona-card" style="border-color: var(--purple-border); background: var(--purple-bg);">
+          <div class="persona-name" style="color: var(--purple);">Jordan Reeves</div>
+          <div class="persona-role">Accessibility Specialist</div>
+          <div class="persona-question">"Who are we leaving out, and why?"</div>
+          <div class="persona-quote">Add when sprints involve new UI components, navigation patterns, or features used by a broad public audience. Produces WCAG compliance checklists and assistive technology test plans.</div>
+        </div>
+
       </div>
     </div>
 
@@ -1192,6 +1308,13 @@
           <div class="persona-role">Strategist</div>
           <div class="persona-question">"What is the real problem we are trying to solve?"</div>
           <div class="persona-quote">The real problem is not the onboarding flow — it's adoption. The app has to be useful to the secretary before members join. If the secretary can manage fixtures and track payments on their own, they will have a reason to invite members. If the app only becomes useful once members are on it, we have a chicken-and-egg problem.</div>
+        </div>
+
+        <div class="persona-card">
+          <div class="persona-name">Rowan Vale</div>
+          <div class="persona-role">Craftsman</div>
+          <div class="persona-question">"What does this feel like from beginning to end?"</div>
+          <div class="persona-quote">The onboarding flow is not just a form — it is the first time a member feels like they belong to the club. The invite link email should feel personal, not automated. The three-step flow should feel like a welcome, not a registration. The completion screen should confirm their place in the squad, not just confirm their account. The secretary notification is a moment of delight for the admin — make it feel like something happened.</div>
         </div>
 
         <div class="persona-card elias">
