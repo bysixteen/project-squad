@@ -881,6 +881,12 @@
     </div>
     <div class="sidebar-divider"></div>
     <div class="sidebar-section">
+      <div class="sidebar-label">Context & Scale</div>
+      <a href="#project-context">Writing PROJECT_CONTEXT</a>
+      <a href="#scaling">Scaling to Larger Projects</a>
+    </div>
+    <div class="sidebar-divider"></div>
+    <div class="sidebar-section">
       <div class="sidebar-label">Init</div>
       <a href="#init">Project Setup</a>
       <a href="#init-deep-dive">/init Deep Dive</a>
@@ -1298,6 +1304,206 @@
       <div class="callout warning">
         <div class="callout-icon">⚠</div>
         <div><strong>The quality of the output depends entirely on the quality of your context file.</strong> A thin <code>PROJECT_CONTEXT.md</code> produces thin living documents. Spend 20 minutes on it. The more you put in, the less you have to explain in every subsequent sprint.</div>
+      </div>
+    </div>
+
+    <!-- PROJECT CONTEXT GUIDE -->
+    <div class="section" id="project-context">
+      <div class="section-header">
+        <div class="section-badge badge-init">📋</div>
+        <div class="section-title-group">
+          <h2>Writing <code>_meta/PROJECT_CONTEXT.md</code></h2>
+          <div class="section-sub">The one file you write from scratch — everything else is generated from it</div>
+        </div>
+      </div>
+
+      <div class="callout info">
+        <div class="callout-icon">ℹ</div>
+        <div>The context file is the seed. A thin context file produces thin living documents. Spend 20 minutes on it. The more honest and specific you are, the less you will have to explain in every subsequent sprint. The full template is at <code>examples/project-context-template.md</code>.</div>
+      </div>
+
+      <!-- Nine sections overview -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:28px;">
+
+        <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:18px;">
+          <div style="font-family:var(--font-mono);font-size:11px;color:var(--text-3);margin-bottom:6px;">Section 1</div>
+          <div style="font-size:15px;font-weight:600;color:var(--text);margin-bottom:6px;">Project Overview</div>
+          <div style="font-size:13px;color:var(--text-2);line-height:1.5;">Name, one-line description, North Star goal, the problem it solves today, and what is explicitly out of scope. The out-of-scope field is the most skipped and the most important.</div>
+          <div style="margin-top:10px;padding:8px 10px;background:var(--surface-2);border-radius:5px;font-size:12px;color:var(--text-3);font-style:italic;">Prompt: "Finish this sentence: This is a _____ that helps _____ do _____."</div>
+        </div>
+
+        <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:18px;">
+          <div style="font-family:var(--font-mono);font-size:11px;color:var(--text-3);margin-bottom:6px;">Section 2</div>
+          <div style="font-size:15px;font-weight:600;color:var(--text);margin-bottom:6px;">The Users</div>
+          <div style="font-size:13px;color:var(--text-2);line-height:1.5;">2–3 real user personas: role, goal, frustration, and a key quote in their voice. Seeds <code>PERSONAS.md</code>. You don't need perfect personas — you need honest ones.</div>
+          <div style="margin-top:10px;padding:8px 10px;background:var(--surface-2);border-radius:5px;font-size:12px;color:var(--text-3);font-style:italic;">Prompt: "Who is the most stressed person in this system?"</div>
+        </div>
+
+        <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:18px;">
+          <div style="font-family:var(--font-mono);font-size:11px;color:var(--text-3);margin-bottom:6px;">Section 3</div>
+          <div style="font-size:15px;font-weight:600;color:var(--text);margin-bottom:6px;">Squad Mapping</div>
+          <div style="font-size:13px;color:var(--text-2);line-height:1.5;">Optionally map the seven portable personas to real people on your team. The personas do not change — this is for your reference only. If no real counterpart exists, leave it as N/A.</div>
+          <div style="margin-top:10px;padding:8px 10px;background:var(--surface-2);border-radius:5px;font-size:12px;color:var(--text-3);font-style:italic;">Elias always participates regardless of whether there is a real person mapped to him.</div>
+        </div>
+
+        <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:18px;">
+          <div style="font-family:var(--font-mono);font-size:11px;color:var(--text-3);margin-bottom:6px;">Section 4</div>
+          <div style="font-size:15px;font-weight:600;color:var(--text);margin-bottom:6px;">Design Principles</div>
+          <div style="font-size:13px;color:var(--text-2);line-height:1.5;">Write principles as constraints, not aspirations. Seeds <code>PRINCIPLES.md</code>. You will add more throughout the project — every corrected mistake becomes a rule.</div>
+          <div style="margin-top:10px;padding:8px 10px;background:var(--surface-2);border-radius:5px;font-size:12px;color:var(--text-3);font-style:italic;">"Mobile-first" is a constraint. "Good UX" is not.</div>
+        </div>
+
+        <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:18px;">
+          <div style="font-family:var(--font-mono);font-size:11px;color:var(--text-3);margin-bottom:6px;">Sections 5 & 6</div>
+          <div style="font-size:15px;font-weight:600;color:var(--text);margin-bottom:6px;">Known Decisions & Tech Stack</div>
+          <div style="font-size:13px;color:var(--text-2);line-height:1.5;">Log any decisions already made and the rejected alternatives. List the tech stack. Seeds <code>DECISIONS.md</code>. Leave blank if not yet decided — Sprint 000 will establish this.</div>
+          <div style="margin-top:10px;padding:8px 10px;background:var(--surface-2);border-radius:5px;font-size:12px;color:var(--text-3);font-style:italic;">Log the rejected alternative too. That is the part that gets forgotten.</div>
+        </div>
+
+        <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:18px;">
+          <div style="font-family:var(--font-mono);font-size:11px;color:var(--text-3);margin-bottom:6px;">Section 7</div>
+          <div style="font-size:15px;font-weight:600;color:var(--text);margin-bottom:6px;">Open Questions</div>
+          <div style="font-size:13px;color:var(--text-2);line-height:1.5;">Feature questions become sprint candidates. Technical questions become spike candidates. Seeds <code>sprint-backlog.md</code>. You don't need to answer them here — that is what the sprints are for.</div>
+          <div style="margin-top:10px;padding:8px 10px;background:var(--surface-2);border-radius:5px;font-size:12px;color:var(--text-3);font-style:italic;">Format: "How does [user] [do something]?" or "Can we [capability] without [constraint]?"</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SCALING: MULTIPLE SPRINTS -->
+    <div class="section" id="scaling">
+      <div class="section-header">
+        <div class="section-badge badge-sprint">∞</div>
+        <div class="section-title-group">
+          <h2>Scaling to a Larger Project</h2>
+          <div class="section-sub">Yes — the framework works for any size. A large project is a sequence of focused sprints.</div>
+        </div>
+      </div>
+
+      <p style="color:var(--text-2);font-size:14px;line-height:1.7;margin-bottom:24px;">The framework is not limited to a single sprint or a single feature. It scales to a full product lifecycle. The key insight is that a large project is simply a user journey with multiple moments — and each moment gets its own sprint. The sprint backlog is the roadmap.</p>
+
+      <!-- The mental model -->
+      <div class="card" style="margin-bottom:20px;">
+        <div class="card-title">The mental model: map the journey first, assign sprints second</div>
+        <p style="font-size:14px;color:var(--text-2);line-height:1.7;margin-bottom:16px;">Before you run a single sprint, map the user's journey from first contact to the long-term goal. Each step in that journey is a candidate sprint. Sprint 000 is always first. After that, prioritise by risk — the riskiest, least-understood moment gets the next sprint.</p>
+        <div style="overflow-x:auto;">
+          <table class="backlog-table" style="margin-bottom:0;">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Moment in the Journey</th>
+                <th>Type</th>
+                <th>What it produces</th>
+                <th>Priority</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span style="font-family:var(--font-mono);font-size:12px;">000</span></td>
+                <td>Foundation — shared context, stack, principles</td>
+                <td><span class="type-sprint">Sprint</span></td>
+                <td>Living docs seeded, team aligned</td>
+                <td><span class="priority-high">Must</span></td>
+              </tr>
+              <tr>
+                <td><span style="font-family:var(--font-mono);font-size:12px;">001</span></td>
+                <td>First key user moment — e.g. onboarding</td>
+                <td><span class="type-sprint">Sprint</span></td>
+                <td>Validated spec, ADR, dissent logged</td>
+                <td><span class="priority-high">Must</span></td>
+              </tr>
+              <tr>
+                <td><span style="font-family:var(--font-mono);font-size:12px;">S-01</span></td>
+                <td>Technical question blocking sprint 002</td>
+                <td><span class="type-spike">Spike</span></td>
+                <td>Recommendation, unblocks next sprint</td>
+                <td><span class="priority-high">Must</span></td>
+              </tr>
+              <tr>
+                <td><span style="font-family:var(--font-mono);font-size:12px;">002</span></td>
+                <td>Second key moment — e.g. core feature</td>
+                <td><span class="type-sprint">Sprint</span></td>
+                <td>Validated spec, updated PERSONAS.md</td>
+                <td><span class="priority-high">Must</span></td>
+              </tr>
+              <tr>
+                <td><span style="font-family:var(--font-mono);font-size:12px;">003</span></td>
+                <td>Third moment — e.g. notifications</td>
+                <td><span class="type-sprint">Sprint</span></td>
+                <td>Validated spec, dissent reviewed</td>
+                <td><span class="priority-med">Should</span></td>
+              </tr>
+              <tr>
+                <td><span style="font-family:var(--font-mono);font-size:12px;">004+</span></td>
+                <td>Subsequent moments, refinements, edge cases</td>
+                <td><span class="type-sprint">Sprint</span></td>
+                <td>Backlog evolves — plan 3–5 ahead only</td>
+                <td><span style="color:var(--text-3);font-weight:600;">Could</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Four key rules for large projects -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px;">
+
+        <div style="background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--blue);border-radius:0 8px 8px 0;padding:18px;">
+          <div style="font-size:14px;font-weight:600;color:var(--text);margin-bottom:6px;">One moment per sprint</div>
+          <div style="font-size:13px;color:var(--text-2);line-height:1.5;">Each sprint targets a single moment in the user journey. If you find yourself writing two sprint questions about different moments, split it into two sprints. Focused sprints produce better decisions.</div>
+        </div>
+
+        <div style="background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--green);border-radius:0 8px 8px 0;padding:18px;">
+          <div style="font-size:14px;font-weight:600;color:var(--text);margin-bottom:6px;">The Brain compounds</div>
+          <div style="font-size:13px;color:var(--text-2);line-height:1.5;">Each sprint makes the next one cheaper. Sprint 003 pre-flights read the decisions from Sprint 001 and 002 automatically. By Sprint 005, the AI has deep context and the squad barely needs to re-explain anything.</div>
+        </div>
+
+        <div style="background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--purple);border-radius:0 8px 8px 0;padding:18px;">
+          <div style="font-size:14px;font-weight:600;color:var(--text);margin-bottom:6px;">Spikes run in parallel</div>
+          <div style="font-size:13px;color:var(--text-2);line-height:1.5;">A spike does not block a sprint unless the sprint depends on its answer. If a technical question is not on the critical path, run the spike in parallel while the sprint proceeds. Log it in the backlog with a dependency note.</div>
+        </div>
+
+        <div style="background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--amber);border-radius:0 8px 8px 0;padding:18px;">
+          <div style="font-size:14px;font-weight:600;color:var(--text);margin-bottom:6px;">Dissent review triggers fire</div>
+          <div style="font-size:13px;color:var(--text-2);line-height:1.5;">As the project grows, overruled dissents from early sprints may become relevant again. The <code>/create-sprint</code> pre-flight scans the dissent register and surfaces any entry whose review trigger matches the upcoming sprint topic.</div>
+        </div>
+
+      </div>
+
+      <!-- Sprint format guide -->
+      <div class="card">
+        <div class="card-title">Choosing the right sprint format</div>
+        <table class="backlog-table" style="margin-bottom:0;">
+          <thead>
+            <tr><th>Format</th><th>When to use</th><th>Phases</th><th>Time</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Full Sprint</strong></td>
+              <td style="color:var(--text-2);">Complex features, high-stakes decisions, new territory</td>
+              <td><span style="font-family:var(--font-mono);font-size:11px;color:var(--text-3);">Map → Sketch → Decide → Synthesise</span></td>
+              <td style="color:var(--text-2);">Half day</td>
+            </tr>
+            <tr>
+              <td><strong>Lite Sprint</strong></td>
+              <td style="color:var(--text-2);">Lower-stakes decisions, refinements, known territory</td>
+              <td><span style="font-family:var(--font-mono);font-size:11px;color:var(--text-3);">Map → Decide</span></td>
+              <td style="color:var(--text-2);">1–2 hours</td>
+            </tr>
+            <tr>
+              <td><strong>Workshop</strong></td>
+              <td style="color:var(--text-2);">Time-pressured, all phases in one session</td>
+              <td><span style="font-family:var(--font-mono);font-size:11px;color:var(--text-3);">Compressed</span></td>
+              <td style="color:var(--text-2);">2–3 hours</td>
+            </tr>
+            <tr>
+              <td><strong>Spike</strong></td>
+              <td style="color:var(--text-2);">A specific question is blocking progress</td>
+              <td><span style="font-family:var(--font-mono);font-size:11px;color:var(--text-3);">Qualify → Investigate → Recommend</span></td>
+              <td style="color:var(--text-2);">4 hours max</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
 
