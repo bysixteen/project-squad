@@ -1,0 +1,32 @@
+{
+  "type": "sprint",
+  "sprint_id": "sprint-000",
+  "topic": "Foundation",
+  "date_completed": "YYYY-MM-DD",
+  "long_term_goal": "[To be filled in during the foundation sprint.]",
+  "sprint_questions": [
+    "Do we have a shared understanding of who our primary users are?",
+    "Do we have a shared understanding of what 'good' looks like on this project?",
+    "Are there existing decisions or constraints that should be documented?"
+  ],
+  "key_question_answered": "Foundation sprint — establishes baseline context rather than answering a specific sprint question.",
+  "key_decision": "Project Squad framework adopted. Living documents established. Foundation principles documented.",
+  "squad_participants": [
+    "Leo Finch (Visual Designer)",
+    "Dr. Lena Petrova (Design Engineer)",
+    "Marcus Thorne (Senior Developer)",
+    "Kira Sharma (Developer)",
+    "Dr. Aris Thorne (Strategist)",
+    "Rowan Vale (Craftsman)",
+    "Elias Vance (Client)"
+  ],
+  "elias_dissent": "None — Elias agreed with the foundation approach.",
+  "living_docs_updated": [
+    "research/PRINCIPLES.md",
+    "research/PERSONAS.md",
+    "research/DECISIONS.md",
+    "research/sprint-status.md"
+  ],
+  "next_action": "Run /create-sprint to start Sprint 001 on the first real challenge.",
+  "open_questions": []
+}
