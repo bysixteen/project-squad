@@ -13,8 +13,14 @@ Before starting, read the following living documents to establish project contex
 - `research/PERSONAS.md`
 - `research/DECISIONS.md`
 - `research/sprint-status.md`
+- `research/sprint-backlog.md` (if it exists)
+- `research/dissent-register.md` (if it exists)
 
 Determine the next sprint number from `sprint-status.md`. If the file is empty or missing, this is Sprint 001.
+
+**Sprint Backlog Check:** If `research/sprint-backlog.md` exists and has candidates with `Status: Candidate`, present the top candidate(s) to the user and ask: "Your sprint backlog has a candidate ready: [topic]. Would you like to run this sprint, or define a new one?"
+
+**Dissent Register Scan:** If `research/dissent-register.md` exists, scan the `Review Trigger` column for any entries whose trigger is relevant to the upcoming sprint's topic. If any are found, surface them before Step 0: "Before we start — the dissent register has a flagged concern that may be relevant to this sprint: [dissenting view] (raised in [sprint/spike], Review Trigger: [trigger]). Do you want to factor this in?"
 
 ---
 

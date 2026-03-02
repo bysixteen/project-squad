@@ -1,5 +1,7 @@
 # Project Squad Framework
 
+**Version:** 1.1.0
+
 ## What This Is
 
 A portable toolkit for running structured design sprints and technical spikes with Claude. Seven named personas provide diverse perspectives; three commands drive the workflow.
@@ -16,6 +18,7 @@ A portable toolkit for running structured design sprints and technical spikes wi
 
 - **Portable Toolkit** (`.squad/`, `.claude/commands/`) — travels unchanged between projects
 - **Project Context** (`research/`, `docs/decisions/`) — project-specific, populated by commands
+- **Specialists** (`.squad/specialists.md`) — optional domain-specific roles, additive only
 
 ## Key Rules
 
@@ -24,3 +27,5 @@ A portable toolkit for running structured design sprints and technical spikes wi
 3. **Elias Vance always dissents** — his challenge must be recorded even if overruled
 4. **One question per spike** — multiple questions = multiple spikes
 5. **summary.json is mandatory** — machine-readable output for every sprint and spike
+6. **Specialists are additive** — `.squad/specialists.md` extends the team, never replaces core personas
+7. **Dissent has a review trigger** — every entry in `dissent-register.md` must include a Review Trigger condition

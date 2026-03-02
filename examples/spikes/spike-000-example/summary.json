@@ -1,0 +1,23 @@
+{
+  "type": "spike",
+  "spike_id": "spike-000",
+  "topic": "Example Spike — Template Reference",
+  "spike_type": "technical | functional | design | research",
+  "date_completed": "YYYY-MM-DD",
+  "question": "[The specific question this spike answered — copied from brief.md.]",
+  "answer": "[One-sentence answer — yes/no/option chosen/recommendation.]",
+  "confidence": "high | medium | low",
+  "summary_of_findings": "[2–3 sentences summarising what was discovered. This is the primary field an LLM will read to understand what happened in this spike without reading the full output.md.]",
+  "adr_reference": "[Path to ADR if one was produced, e.g. 'docs/decisions/001-topic.md', or 'None'.]",
+  "unblocked_work": "[The story, sprint, or decision that is now unblocked by this spike's answer.]",
+  "constraints_discovered": [
+    "[Constraint 1 — a new constraint the team did not know before the spike.]",
+    "[Constraint 2 — add more as needed, or leave as empty array if none.]"
+  ],
+  "squad_participants": [
+    "Dr. Lena Petrova (Design Engineer)",
+    "Marcus Thorne (Senior Developer)",
+    "Kira Sharma (Developer)"
+  ],
+  "elias_dissent": "[Any dissenting view from Elias Vance, or 'None — Elias agreed with the recommendation.']"
+}
