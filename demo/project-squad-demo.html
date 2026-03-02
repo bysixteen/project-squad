@@ -1,0 +1,1543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Project Squad Framework — Fieldside Demo</title>
+<style>
+  :root {
+    --bg: #f7f6f3;
+    --surface: #ffffff;
+    --surface-2: #f0efe9;
+    --border: #e2e0d8;
+    --border-strong: #c8c5bb;
+    --text: #1a1917;
+    --text-2: #5a5750;
+    --text-3: #8a8680;
+    --accent: #2d2d2d;
+    --green: #1a6b3c;
+    --green-bg: #edf7f2;
+    --green-border: #b3dfc8;
+    --amber: #7a4f00;
+    --amber-bg: #fdf6e3;
+    --amber-border: #f0d080;
+    --red: #8b1a1a;
+    --red-bg: #fdf0f0;
+    --red-border: #e8b4b4;
+    --blue: #1a3a6b;
+    --blue-bg: #edf2fd;
+    --blue-border: #b3c8e8;
+    --purple: #4a1a6b;
+    --purple-bg: #f5edfb;
+    --purple-border: #d4b3e8;
+    --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    --font-mono: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: var(--font-sans);
+    background: var(--bg);
+    color: var(--text);
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  /* ── HEADER ── */
+  .site-header {
+    background: var(--accent);
+    color: #fff;
+    padding: 0 48px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .site-header .logo {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    opacity: 0.9;
+  }
+  .site-header .version {
+    font-size: 12px;
+    opacity: 0.5;
+    font-family: var(--font-mono);
+  }
+
+  /* ── LAYOUT ── */
+  .page-wrapper {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    min-height: calc(100vh - 56px);
+  }
+
+  /* ── SIDEBAR NAV ── */
+  .sidebar {
+    background: var(--surface);
+    border-right: 1px solid var(--border);
+    padding: 32px 0;
+    position: sticky;
+    top: 56px;
+    height: calc(100vh - 56px);
+    overflow-y: auto;
+  }
+  .sidebar-section {
+    padding: 0 20px 24px;
+  }
+  .sidebar-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-3);
+    margin-bottom: 8px;
+    padding: 0 4px;
+  }
+  .sidebar a {
+    display: block;
+    padding: 6px 8px;
+    border-radius: 6px;
+    font-size: 13px;
+    color: var(--text-2);
+    text-decoration: none;
+    transition: background 0.15s, color 0.15s;
+  }
+  .sidebar a:hover { background: var(--surface-2); color: var(--text); }
+  .sidebar a.active { background: var(--accent); color: #fff; }
+  .sidebar-divider {
+    height: 1px;
+    background: var(--border);
+    margin: 0 20px 24px;
+  }
+
+  /* ── MAIN CONTENT ── */
+  .main {
+    padding: 48px 64px 96px;
+    max-width: 900px;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    margin-bottom: 64px;
+  }
+  .hero-eyebrow {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-3);
+    margin-bottom: 12px;
+  }
+  .hero h1 {
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-bottom: 16px;
+  }
+  .hero h1 span { color: var(--text-3); }
+  .hero-desc {
+    font-size: 16px;
+    color: var(--text-2);
+    max-width: 600px;
+    line-height: 1.7;
+  }
+
+  /* ── SECTION ── */
+  .section {
+    margin-bottom: 72px;
+    scroll-margin-top: 80px;
+  }
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 28px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border);
+  }
+  .section-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .badge-init { background: var(--surface-2); color: var(--text-2); border: 1px solid var(--border-strong); }
+  .badge-sprint { background: var(--blue-bg); color: var(--blue); border: 1px solid var(--blue-border); }
+  .badge-spike { background: var(--purple-bg); color: var(--purple); border: 1px solid var(--purple-border); }
+  .section-title-group h2 {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+  .section-title-group .section-sub {
+    font-size: 13px;
+    color: var(--text-3);
+    margin-top: 2px;
+  }
+
+  /* ── COMMAND PILL ── */
+  .command-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--accent);
+    color: #fff;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    padding: 4px 10px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+  }
+  .command-pill::before { content: '/'; opacity: 0.5; }
+
+  /* ── FLOW DIAGRAM ── */
+  .flow-diagram {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    margin-bottom: 32px;
+    overflow-x: auto;
+    padding: 4px 0;
+  }
+  .flow-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0;
+  }
+  .flow-box {
+    background: var(--surface);
+    border: 1px solid var(--border-strong);
+    border-radius: 8px;
+    padding: 10px 16px;
+    font-size: 12px;
+    font-weight: 600;
+    text-align: center;
+    white-space: nowrap;
+    color: var(--text);
+  }
+  .flow-box.active {
+    background: var(--accent);
+    color: #fff;
+    border-color: var(--accent);
+  }
+  .flow-box.output {
+    background: var(--green-bg);
+    border-color: var(--green-border);
+    color: var(--green);
+  }
+  .flow-label {
+    font-size: 10px;
+    color: var(--text-3);
+    text-align: center;
+  }
+  .flow-arrow {
+    width: 32px;
+    height: 2px;
+    background: var(--border-strong);
+    flex-shrink: 0;
+    position: relative;
+    margin-top: -18px;
+  }
+  .flow-arrow::after {
+    content: '';
+    position: absolute;
+    right: -1px;
+    top: -4px;
+    width: 0;
+    height: 0;
+    border-left: 7px solid var(--border-strong);
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+  }
+
+  /* ── CARDS ── */
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 16px;
+  }
+  .card-title {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--text-3);
+    margin-bottom: 12px;
+  }
+  .card h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+  .card p {
+    font-size: 14px;
+    color: var(--text-2);
+    line-height: 1.65;
+  }
+
+  /* ── FILE TREE ── */
+  .file-tree {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 24px;
+  }
+  .file-tree-header {
+    background: var(--surface-2);
+    border-bottom: 1px solid var(--border);
+    padding: 10px 16px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-3);
+    font-family: var(--font-mono);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .file-tree-header::before {
+    content: '';
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #ff5f57;
+    box-shadow: 14px 0 0 #febc2e, 28px 0 0 #28c840;
+  }
+  .file-tree-body {
+    padding: 16px;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    line-height: 2;
+  }
+  .tree-dir { color: var(--text-2); font-weight: 600; }
+  .tree-file { color: var(--text-3); padding-left: 20px; }
+  .tree-file.highlight { color: var(--green); font-weight: 600; }
+  .tree-file.new::after {
+    content: 'NEW';
+    font-size: 9px;
+    font-weight: 700;
+    background: var(--green-bg);
+    color: var(--green);
+    border: 1px solid var(--green-border);
+    padding: 1px 5px;
+    border-radius: 4px;
+    margin-left: 8px;
+    vertical-align: middle;
+    letter-spacing: 0.05em;
+  }
+
+  /* ── LIVING DOCS GRID ── */
+  .living-docs-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+  .doc-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px;
+  }
+  .doc-card .doc-name {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+  .doc-card .doc-desc {
+    font-size: 12px;
+    color: var(--text-3);
+    line-height: 1.5;
+  }
+  .doc-card.populated {
+    border-color: var(--green-border);
+    background: var(--green-bg);
+  }
+  .doc-card.populated .doc-name { color: var(--green); }
+
+  /* ── PERSONA GRID ── */
+  .persona-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 24px;
+  }
+  .persona-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 18px;
+    position: relative;
+  }
+  .persona-card.elias {
+    border-color: var(--amber-border);
+    background: var(--amber-bg);
+  }
+  .persona-name {
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 2px;
+  }
+  .persona-role {
+    font-size: 11px;
+    color: var(--text-3);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 10px;
+  }
+  .persona-question {
+    font-size: 13px;
+    font-style: italic;
+    color: var(--text-2);
+    margin-bottom: 10px;
+    padding-left: 10px;
+    border-left: 2px solid var(--border-strong);
+  }
+  .persona-card.elias .persona-question {
+    border-left-color: var(--amber-border);
+    color: var(--amber);
+  }
+  .persona-quote {
+    font-size: 13px;
+    color: var(--text-2);
+    line-height: 1.55;
+  }
+  .persona-badge {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 2px 7px;
+    border-radius: 4px;
+  }
+  .badge-dissent {
+    background: var(--amber-bg);
+    color: var(--amber);
+    border: 1px solid var(--amber-border);
+  }
+
+  /* ── DECISION BLOCK ── */
+  .decision-block {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 24px;
+  }
+  .decision-header {
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .decision-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+  .decision-icon.accepted { background: var(--green-bg); }
+  .decision-icon.dissent { background: var(--amber-bg); }
+  .decision-title { font-size: 15px; font-weight: 600; }
+  .decision-body { padding: 16px 20px; }
+  .decision-body p { font-size: 14px; color: var(--text-2); line-height: 1.65; margin-bottom: 10px; }
+  .decision-body p:last-child { margin-bottom: 0; }
+
+  /* ── DISSENT REGISTER ── */
+  .dissent-register {
+    background: var(--amber-bg);
+    border: 1px solid var(--amber-border);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 24px;
+  }
+  .dissent-register-title {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .dissent-entry { font-size: 14px; color: var(--amber); line-height: 1.6; }
+  .dissent-trigger {
+    margin-top: 10px;
+    padding: 10px 14px;
+    background: rgba(255,255,255,0.6);
+    border-radius: 8px;
+    font-size: 13px;
+    color: var(--amber);
+  }
+  .dissent-trigger strong { display: block; font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 4px; opacity: 0.7; }
+
+  /* ── SPIKE BLOCK ── */
+  .spike-question {
+    background: var(--purple-bg);
+    border: 1px solid var(--purple-border);
+    border-radius: 10px;
+    padding: 18px 20px;
+    margin-bottom: 20px;
+  }
+  .spike-question .label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--purple);
+    margin-bottom: 6px;
+  }
+  .spike-question .question-text {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--purple);
+    line-height: 1.4;
+  }
+
+  .qualification-test {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 20px;
+  }
+  .qual-header {
+    background: var(--surface-2);
+    padding: 10px 16px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-3);
+    border-bottom: 1px solid var(--border);
+  }
+  .qual-row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border);
+    gap: 16px;
+  }
+  .qual-row:last-child { border-bottom: none; }
+  .qual-q { font-size: 13px; color: var(--text-2); }
+  .qual-a {
+    font-size: 12px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+  .qual-a.pass { background: var(--green-bg); color: var(--green); border: 1px solid var(--green-border); }
+  .qual-a.fail { background: var(--red-bg); color: var(--red); border: 1px solid var(--red-border); }
+
+  .spike-answer {
+    background: var(--green-bg);
+    border: 1px solid var(--green-border);
+    border-radius: 10px;
+    padding: 18px 20px;
+    margin-bottom: 20px;
+  }
+  .spike-answer .label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--green);
+    margin-bottom: 6px;
+  }
+  .spike-answer .answer-text {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--green);
+    line-height: 1.5;
+    margin-bottom: 10px;
+  }
+  .spike-answer .answer-sub { font-size: 13px; color: var(--green); opacity: 0.8; }
+
+  /* ── BROWSER TABLE ── */
+  .browser-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    margin-bottom: 20px;
+    background: var(--surface);
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+  .browser-table th {
+    background: var(--surface-2);
+    padding: 10px 14px;
+    text-align: left;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-3);
+    border-bottom: 1px solid var(--border);
+  }
+  .browser-table td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+    color: var(--text-2);
+  }
+  .browser-table tr:last-child td { border-bottom: none; }
+  .support-full { color: var(--green); font-weight: 600; }
+  .support-partial { color: var(--amber); font-weight: 600; }
+  .support-none { color: var(--red); font-weight: 600; }
+
+  /* ── SUMMARY JSON ── */
+  .json-block {
+    background: #1e1e1e;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 20px;
+  }
+  .json-header {
+    background: #2d2d2d;
+    padding: 8px 16px;
+    font-size: 11px;
+    font-family: var(--font-mono);
+    color: #888;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .json-dot { width: 8px; height: 8px; border-radius: 50%; }
+  .json-body {
+    padding: 16px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    line-height: 1.8;
+    color: #d4d4d4;
+    overflow-x: auto;
+  }
+  .json-key { color: #9cdcfe; }
+  .json-str { color: #ce9178; }
+  .json-bool-true { color: #4ec9b0; }
+  .json-num { color: #b5cea8; }
+  .json-arr { color: #d4d4d4; }
+
+  /* ── BACKLOG TABLE ── */
+  .backlog-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    background: var(--surface);
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    margin-bottom: 20px;
+  }
+  .backlog-table th {
+    background: var(--surface-2);
+    padding: 10px 14px;
+    text-align: left;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-3);
+    border-bottom: 1px solid var(--border);
+  }
+  .backlog-table td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+    color: var(--text-2);
+    vertical-align: top;
+  }
+  .backlog-table tr:last-child td { border-bottom: none; }
+  .status-done { color: var(--green); font-weight: 600; font-size: 11px; background: var(--green-bg); border: 1px solid var(--green-border); padding: 2px 7px; border-radius: 4px; white-space: nowrap; }
+  .status-candidate { color: var(--text-3); font-weight: 600; font-size: 11px; background: var(--surface-2); border: 1px solid var(--border-strong); padding: 2px 7px; border-radius: 4px; white-space: nowrap; }
+  .type-sprint { color: var(--blue); font-weight: 600; font-size: 11px; background: var(--blue-bg); border: 1px solid var(--blue-border); padding: 2px 7px; border-radius: 4px; white-space: nowrap; }
+  .type-spike { color: var(--purple); font-weight: 600; font-size: 11px; background: var(--purple-bg); border: 1px solid var(--purple-border); padding: 2px 7px; border-radius: 4px; white-space: nowrap; }
+  .priority-high { color: var(--red); font-weight: 600; }
+  .priority-med { color: var(--amber); font-weight: 600; }
+
+  /* ── CALLOUT ── */
+  .callout {
+    border-radius: 10px;
+    padding: 16px 18px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    line-height: 1.6;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  .callout-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+  .callout.info { background: var(--blue-bg); border: 1px solid var(--blue-border); color: var(--blue); }
+  .callout.warning { background: var(--amber-bg); border: 1px solid var(--amber-border); color: var(--amber); }
+  .callout.success { background: var(--green-bg); border: 1px solid var(--green-border); color: var(--green); }
+
+  /* ── RULE STRIP ── */
+  .rule-strip {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin-bottom: 24px;
+  }
+  .rule-strip h3 {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-3);
+    margin-bottom: 14px;
+  }
+  .rules-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .rule-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 14px;
+    color: var(--text-2);
+  }
+  .rule-num {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--text-3);
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    width: 22px;
+    height: 22px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* ── PHASE TIMELINE ── */
+  .phase-timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-bottom: 32px;
+    position: relative;
+  }
+  .phase-timeline::before {
+    content: '';
+    position: absolute;
+    left: 17px;
+    top: 36px;
+    bottom: 36px;
+    width: 2px;
+    background: var(--border);
+  }
+  .phase-item {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    padding: 16px 0;
+  }
+  .phase-dot {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 700;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+    border: 2px solid var(--border);
+    background: var(--surface);
+    color: var(--text-3);
+  }
+  .phase-dot.done { background: var(--green-bg); border-color: var(--green-border); color: var(--green); }
+  .phase-dot.sprint { background: var(--blue-bg); border-color: var(--blue-border); color: var(--blue); }
+  .phase-dot.spike { background: var(--purple-bg); border-color: var(--purple-border); color: var(--purple); }
+  .phase-content { flex: 1; padding-top: 6px; }
+  .phase-content h4 { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+  .phase-content p { font-size: 13px; color: var(--text-3); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .page-wrapper { grid-template-columns: 1fr; }
+    .sidebar { display: none; }
+    .main { padding: 32px 24px 64px; }
+    .persona-grid { grid-template-columns: 1fr; }
+    .living-docs-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ── SCROLL BEHAVIOUR ── */
+  html { scroll-behavior: smooth; }
+
+  /* ── INLINE CODE ── */
+  code {
+    font-family: var(--font-mono);
+    font-size: 0.88em;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    padding: 1px 5px;
+    border-radius: 4px;
+    color: var(--text);
+  }
+
+  /* ── TLDR ── */
+  .tldr {
+    background: var(--surface-2);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 8px 8px 0;
+    padding: 12px 16px;
+    font-size: 14px;
+    color: var(--text-2);
+    margin-bottom: 24px;
+    line-height: 1.6;
+  }
+  .tldr strong { color: var(--text); }
+
+  /* ── CONDITIONS LIST ── */
+  .conditions-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+  .condition-item {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    font-size: 13px;
+    color: var(--text-2);
+    padding: 10px 14px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+  .condition-num {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--green);
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="logo">Project Squad Framework</div>
+  <div class="version">v1.1.0 · demo/example-project</div>
+</header>
+
+<div class="page-wrapper">
+
+  <!-- SIDEBAR -->
+  <nav class="sidebar">
+    <div class="sidebar-section">
+      <div class="sidebar-label">Overview</div>
+      <a href="#overview">The Framework</a>
+      <a href="#rules">Key Rules</a>
+    </div>
+    <div class="sidebar-divider"></div>
+    <div class="sidebar-section">
+      <div class="sidebar-label">Init</div>
+      <a href="#init">Project Setup</a>
+      <a href="#living-docs">Living Documents</a>
+    </div>
+    <div class="sidebar-divider"></div>
+    <div class="sidebar-section">
+      <div class="sidebar-label">Sprints</div>
+      <a href="#sprint-000">Sprint 000 · Foundation</a>
+      <a href="#sprint-001">Sprint 001 · Onboarding</a>
+      <a href="#sketches">Persona Sketches</a>
+      <a href="#decision">Decision & Dissent</a>
+    </div>
+    <div class="sidebar-divider"></div>
+    <div class="sidebar-section">
+      <div class="sidebar-label">Spikes</div>
+      <a href="#spike-001">Spike 001 · Push Notifs</a>
+      <a href="#spike-answer">Answer & Evidence</a>
+    </div>
+    <div class="sidebar-divider"></div>
+    <div class="sidebar-section">
+      <div class="sidebar-label">Connective Tissue</div>
+      <a href="#backlog">Sprint Backlog</a>
+      <a href="#dissent-register">Dissent Register</a>
+      <a href="#summary-json">summary.json</a>
+    </div>
+  </nav>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <!-- HERO -->
+    <div class="hero" id="overview">
+      <div class="hero-eyebrow">Project Squad Framework · Fieldside Demo</div>
+      <h1>From idea to decision<br><span>in a structured sprint.</span></h1>
+      <p class="hero-desc">
+        This page walks through the complete Project Squad framework flow using <strong>Fieldside</strong> — a fictional community sports club app — as the example project. Every piece of content shown here comes directly from the <code>demo/example-project</code> branch.
+      </p>
+    </div>
+
+    <!-- OVERVIEW TIMELINE -->
+    <div class="section">
+      <div class="phase-timeline">
+        <div class="phase-item">
+          <div class="phase-dot done">⚙</div>
+          <div class="phase-content">
+            <h4>Init — <code>/init-project-squad</code></h4>
+            <p>Reads <code>_meta/PROJECT_CONTEXT.md</code> and scaffolds all living documents. One command, zero blank files.</p>
+          </div>
+        </div>
+        <div class="phase-item">
+          <div class="phase-dot sprint">S0</div>
+          <div class="phase-content">
+            <h4>Sprint 000 — Foundation</h4>
+            <p>Establishes shared context, documents constraints, and aligns the squad before any feature work begins.</p>
+          </div>
+        </div>
+        <div class="phase-item">
+          <div class="phase-dot sprint">S1</div>
+          <div class="phase-content">
+            <h4>Sprint 001 — Member Onboarding</h4>
+            <p>Six personas sketch the problem. One decision is made. Elias dissents. The dissent is recorded with a review trigger.</p>
+          </div>
+        </div>
+        <div class="phase-item">
+          <div class="phase-dot spike">⚡</div>
+          <div class="phase-content">
+            <h4>Spike 001 — Push Notifications</h4>
+            <p>A single question, a qualification test, a 4-hour time box, and a clear yes/no recommendation with conditions.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- KEY RULES -->
+    <div class="section" id="rules">
+      <div class="section-header">
+        <div class="section-badge badge-init">⚑</div>
+        <div class="section-title-group">
+          <h2>Key Rules</h2>
+          <div class="section-sub">The seven rules that govern every sprint and spike</div>
+        </div>
+      </div>
+      <div class="rule-strip">
+        <div class="rules-list">
+          <div class="rule-item"><div class="rule-num">1</div><div><strong>Do not modify</strong> <code>.squad/project-squad.md</code> — it is the portable constant. The seven personas travel unchanged between every project.</div></div>
+          <div class="rule-item"><div class="rule-num">2</div><div><strong>First 20 Lines</strong> — every output must have YAML frontmatter and a TL;DR within the first 20 lines. Any document can be scanned in seconds.</div></div>
+          <div class="rule-item"><div class="rule-num">3</div><div><strong>Elias Vance always dissents</strong> — his challenge must be recorded in the dissent register even if the team overrules him.</div></div>
+          <div class="rule-item"><div class="rule-num">4</div><div><strong>One question per spike</strong> — multiple questions mean multiple spikes. A spike that tries to answer two things answers neither.</div></div>
+          <div class="rule-item"><div class="rule-num">5</div><div><strong>summary.json is mandatory</strong> — machine-readable output for every sprint and spike. This is the connective tissue the pre-flight checks read.</div></div>
+          <div class="rule-item"><div class="rule-num">6</div><div><strong>Specialists are additive</strong> — <code>.squad/specialists.md</code> extends the team, never replaces core personas.</div></div>
+          <div class="rule-item"><div class="rule-num">7</div><div><strong>Dissent has a review trigger</strong> — every entry in <code>dissent-register.md</code> must include a condition under which it should be revisited.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- INIT -->
+    <div class="section" id="init">
+      <div class="section-header">
+        <div class="section-badge badge-init">⚙</div>
+        <div class="section-title-group">
+          <h2>Init — <code>/init-project-squad</code></h2>
+          <div class="section-sub">One command scaffolds the entire project context</div>
+        </div>
+      </div>
+
+      <div class="command-pill">init-project-squad</div>
+
+      <div class="callout info">
+        <div class="callout-icon">ℹ</div>
+        <div>Before running the command, create <code>_meta/PROJECT_CONTEXT.md</code> from the template. The init command reads it automatically and pre-populates every living document with real content — no blank files, no placeholder text.</div>
+      </div>
+
+      <div class="flow-diagram">
+        <div class="flow-step">
+          <div class="flow-box active">PROJECT_CONTEXT.md</div>
+          <div class="flow-label">You write this</div>
+        </div>
+        <div class="flow-arrow"></div>
+        <div class="flow-step">
+          <div class="flow-box active">/init-project-squad</div>
+          <div class="flow-label">Run once</div>
+        </div>
+        <div class="flow-arrow"></div>
+        <div class="flow-step">
+          <div class="flow-box output">Living Documents</div>
+          <div class="flow-label">Pre-populated</div>
+        </div>
+        <div class="flow-arrow"></div>
+        <div class="flow-step">
+          <div class="flow-box output">sprint-backlog.md</div>
+          <div class="flow-label">Ready for Sprint 000</div>
+        </div>
+      </div>
+
+      <div class="file-tree">
+        <div class="file-tree-header">demo/example-project/</div>
+        <div class="file-tree-body">
+          <div class="tree-dir">📁 _meta/</div>
+          <div class="tree-file highlight">PROJECT_CONTEXT.md &nbsp;← you create this before init</div>
+          <div class="tree-dir">📁 research/</div>
+          <div class="tree-file highlight new">PRINCIPLES.md</div>
+          <div class="tree-file highlight new">PERSONAS.md</div>
+          <div class="tree-file highlight new">DECISIONS.md</div>
+          <div class="tree-file highlight new">sprint-status.md</div>
+          <div class="tree-file highlight new">sprint-backlog.md</div>
+          <div class="tree-file highlight new">dissent-register.md</div>
+          <div class="tree-dir">📁 .squad/</div>
+          <div class="tree-file">project-squad.md &nbsp;← portable constant, never modified</div>
+          <div class="tree-file">specialists.md &nbsp;← optional domain roles</div>
+          <div class="tree-dir">📁 .claude/commands/</div>
+          <div class="tree-file">init-project-squad.md</div>
+          <div class="tree-file">create-sprint.md</div>
+          <div class="tree-file">create-spike.md</div>
+          <div class="tree-file">CLAUDE.md &nbsp;← merged: project context + framework rules</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- LIVING DOCS -->
+    <div class="section" id="living-docs">
+      <div class="section-header">
+        <div class="section-badge badge-init">📄</div>
+        <div class="section-title-group">
+          <h2>Living Documents</h2>
+          <div class="section-sub">Pre-populated from PROJECT_CONTEXT.md — updated after every sprint</div>
+        </div>
+      </div>
+
+      <div class="living-docs-grid">
+        <div class="doc-card populated">
+          <div class="doc-name">research/PRINCIPLES.md</div>
+          <div class="doc-desc">Admin-first, mobile-first, no onboarding friction, offline-tolerant. Plus technical principles: pnpm only, no new dependencies without a spike, GDPR by default.</div>
+        </div>
+        <div class="doc-card populated">
+          <div class="doc-name">research/PERSONAS.md</div>
+          <div class="doc-desc">Three user personas: Club Secretary ("I just need it to work"), Active Member ("I just want to know when I'm playing"), Lapsed Member ("I'd probably come back if someone made it easy").</div>
+        </div>
+        <div class="doc-card populated">
+          <div class="doc-name">research/DECISIONS.md</div>
+          <div class="doc-desc">High-level decision log. Grows with each sprint. Links to full ADRs in <code>docs/decisions/</code>. Currently tracks 4 decisions from Sprint 000 and Sprint 001.</div>
+        </div>
+        <div class="doc-card populated">
+          <div class="doc-name">research/dissent-register.md</div>
+          <div class="doc-desc">Every overruled dissent from Elias, with a Review Trigger. The <code>/create-sprint</code> pre-flight scans this before each sprint and surfaces relevant entries automatically.</div>
+        </div>
+        <div class="doc-card populated">
+          <div class="doc-name">research/sprint-backlog.md</div>
+          <div class="doc-desc">7 sprint and spike candidates. The <code>/create-sprint</code> and <code>/create-spike</code> commands read this in their pre-flight checks and offer the next candidate automatically.</div>
+        </div>
+        <div class="doc-card populated">
+          <div class="doc-name">research/sprint-status.md</div>
+          <div class="doc-desc">Running log of all sprints and spikes. Tracks sprint number, topic, date, status, personas, and folder path. Sprint 000 and Sprint 001 complete; Spike 001 complete.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SPRINT 000 -->
+    <div class="section" id="sprint-000">
+      <div class="section-header">
+        <div class="section-badge badge-sprint">S0</div>
+        <div class="section-title-group">
+          <h2>Sprint 000 — Foundation</h2>
+          <div class="section-sub">Establishing shared context before any feature work begins</div>
+        </div>
+      </div>
+
+      <div class="command-pill">create-sprint</div>
+
+      <div class="tldr">
+        <strong>TL;DR:</strong> Foundation sprint to establish shared context, document known constraints, and align the squad on what "good" looks like for Fieldside before any feature work begins.
+      </div>
+
+      <div class="card">
+        <div class="card-title">Long-Term Goal</div>
+        <p>In 12 months, a club secretary running Fieldside spends less than 30 minutes per week on club admin. Members know when they're playing, whether they've paid, and who else is in the squad — without ever having to ask. Lapsed members find their way back because re-engagement is frictionless.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Sprint Questions</div>
+        <p>1. Do we have a shared understanding of who our primary users are and what they actually need?<br>
+        2. Do we have a shared understanding of what "good" looks like on this project?<br>
+        3. Are there existing constraints or decisions that should be documented before we start building?</p>
+      </div>
+
+      <div class="card">
+        <div class="card-title">How Might We Questions</div>
+        <p>
+          HMW make the secretary's weekly admin routine feel effortless rather than burdensome?<br>
+          HMW ensure members always have the information they need without having to ask?<br>
+          HMW design for the lapsed member without making the active member's experience worse?<br>
+          HMW build something that works reliably in a muddy field with poor signal?<br>
+          HMW make the system self-sustaining so it doesn't depend on the secretary remembering to do things?
+        </p>
+      </div>
+
+      <div class="callout success">
+        <div class="callout-icon">✓</div>
+        <div>Sprint 000 output: Tech stack confirmed (Next.js 14, PlanetScale, Sanity, NextAuth.js). Three user personas documented. Four core design principles established. <strong>Admin-first principle adopted as the primary design constraint.</strong></div>
+      </div>
+    </div>
+
+    <!-- SPRINT 001 -->
+    <div class="section" id="sprint-001">
+      <div class="section-header">
+        <div class="section-badge badge-sprint">S1</div>
+        <div class="section-title-group">
+          <h2>Sprint 001 — Member Onboarding</h2>
+          <div class="section-sub">How does a new member join Fieldside for the first time?</div>
+        </div>
+      </div>
+
+      <div class="command-pill">create-sprint</div>
+
+      <div class="callout info">
+        <div class="callout-icon">ℹ</div>
+        <div><strong>Pre-flight check in action:</strong> Before this sprint ran, <code>/create-sprint</code> read <code>sprint-backlog.md</code> and offered "Member onboarding flow" as the top candidate. It also scanned <code>dissent-register.md</code> — empty at this point, so nothing was surfaced.</div>
+      </div>
+
+      <div class="tldr">
+        <strong>TL;DR:</strong> How does a new member join Fieldside for the first time — and how do we make it fast enough that they don't give up?
+      </div>
+
+      <div class="card">
+        <div class="card-title">Sprint Challenge</div>
+        <p>The first time a member uses Fieldside is the highest-risk moment in the product. If onboarding is slow, confusing, or requires too much information, they will abandon it and go back to WhatsApp. We need to design an onboarding flow that gets a member from "I've been sent a link" to "I can see my squad and my next fixture" in under 60 seconds.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Target Moment on the Map</div>
+        <p>The moment between receiving the invite link and seeing the club dashboard for the first time. This is the make-or-break moment for adoption.</p>
+      </div>
+    </div>
+
+    <!-- SKETCHES -->
+    <div class="section" id="sketches">
+      <div class="section-header">
+        <div class="section-badge badge-sprint">✏</div>
+        <div class="section-title-group">
+          <h2>Persona Sketches</h2>
+          <div class="section-sub">Each persona speaks in their own voice — Phase 2 of the sprint</div>
+        </div>
+      </div>
+
+      <div class="persona-grid">
+
+        <div class="persona-card">
+          <div class="persona-name">Leo Finch</div>
+          <div class="persona-role">Visual Designer</div>
+          <div class="persona-question">"Does this feel like us?"</div>
+          <div class="persona-quote">The invite link is the first brand impression. The landing page should feel warm and specific to their club — the club name, the club colours, and a single clear action. The onboarding flow should feel like a conversation, not a form. One question per screen. The position selector should be a visual pitch diagram — faster, more engaging, and it immediately signals that this app understands football.</div>
+        </div>
+
+        <div class="persona-card">
+          <div class="persona-name">Dr. Lena Petrova</div>
+          <div class="persona-role">Design Engineer</div>
+          <div class="persona-question">"How will we build, test, and maintain this?"</div>
+          <div class="persona-quote">NextAuth.js supports custom sign-in pages — we can build the invite-link landing page as a standard Next.js page. The one-question-per-screen pattern is achievable with a simple step-based state machine in React. The secretary notification on completion must use a server action, not a client-side event. Client-side events are unreliable on slow connections.</div>
+        </div>
+
+        <div class="persona-card">
+          <div class="persona-name">Marcus Thorne</div>
+          <div class="persona-role">Senior Developer</div>
+          <div class="persona-question">"What are we NOT building here?"</div>
+          <div class="persona-quote">We are not building a full user profile system in this sprint. Name, email, and playing position only. The data model decision that matters most: a "member" is not the same as a "user". Keep them separate. A user is an auth identity; a member is a club-specific role. This allows the same person to be a member of multiple clubs without duplicate accounts.</div>
+        </div>
+
+        <div class="persona-card">
+          <div class="persona-name">Kira Sharma</div>
+          <div class="persona-role">Developer</div>
+          <div class="persona-question">"What does the implementation actually look like?"</div>
+          <div class="persona-quote">Secretary triggers invite → server creates record in <code>invites</code> table with token, expiry, used flag → member taps link → middleware validates token → member completes three steps → server creates <code>member</code> record, marks invite used, fires notification. Effort: 3–4 days. The SVG pitch diagram is the wildcard.</div>
+        </div>
+
+        <div class="persona-card">
+          <div class="persona-name">Dr. Aris Thorne</div>
+          <div class="persona-role">Strategist</div>
+          <div class="persona-question">"What is the real problem we are trying to solve?"</div>
+          <div class="persona-quote">The real problem is not the onboarding flow — it's adoption. The app has to be useful to the secretary before members join. If the secretary can manage fixtures and track payments on their own, they will have a reason to invite members. If the app only becomes useful once members are on it, we have a chicken-and-egg problem.</div>
+        </div>
+
+        <div class="persona-card elias">
+          <div class="persona-badge badge-dissent">Mandatory Dissent</div>
+          <div class="persona-name">Elias Vance</div>
+          <div class="persona-role">Client</div>
+          <div class="persona-question">"Does this solve a real problem for my users?"</div>
+          <div class="persona-quote">I want to challenge the invite-link model directly. The secretary has to do something before any member can join. That's a dependency on the least reliable person in the system. The alternative — open registration with a club code — puts the burden on the member, not the secretary. I'm not saying we're wrong. I'm saying we should define a clear trigger for revisiting this if the bet doesn't pay off.</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- DECISION -->
+    <div class="section" id="decision">
+      <div class="section-header">
+        <div class="section-badge badge-sprint">⚖</div>
+        <div class="section-title-group">
+          <h2>Decision & Dissent</h2>
+          <div class="section-sub">What was decided, why, and what Elias said</div>
+        </div>
+      </div>
+
+      <div class="decision-block">
+        <div class="decision-header">
+          <div class="decision-icon accepted">✓</div>
+          <div class="decision-title">Proceed with invite-link onboarding model</div>
+        </div>
+        <div class="decision-body">
+          <p>The invite-link model was chosen in Sprint 000 and the team remains confident in it. The GDPR risk of open registration — collecting data from people who may not be genuine club members — is a real constraint, not a hypothetical one.</p>
+          <p>The User/Member entity separation is adopted as a core data model decision. A <code>user</code> is an auth identity; a <code>member</code> is a club-specific role. This enables multi-club support without duplicate accounts.</p>
+        </div>
+      </div>
+
+      <div class="dissent-register">
+        <div class="dissent-register-title">⚠ Dissent Recorded — Elias Vance</div>
+        <div class="dissent-entry">Challenged the invite-link model on the grounds that it creates a dependency on secretary proactivity. His proposed alternative — open registration with a club code — would reduce per-member secretary burden. Team acknowledged the concern but maintained the invite-link decision on GDPR grounds.</div>
+        <div class="dissent-trigger">
+          <strong>Review Trigger</strong>
+          Revisit if user testing shows that member adoption is below 60% of invited members completing registration, or if the secretary consistently fails to send invites within 48 hours of a new member joining.
+        </div>
+      </div>
+
+      <div class="callout warning">
+        <div class="callout-icon">↻</div>
+        <div><strong>How the review trigger works:</strong> When Sprint 003 (Fixture Management) runs, the <code>/create-sprint</code> pre-flight will scan <code>dissent-register.md</code> and surface this entry automatically — because Sprint 003 will generate adoption data that could trigger the review condition.</div>
+      </div>
+    </div>
+
+    <!-- SPIKE 001 -->
+    <div class="section" id="spike-001">
+      <div class="section-header">
+        <div class="section-badge badge-spike">⚡</div>
+        <div class="section-title-group">
+          <h2>Spike 001 — Push Notifications</h2>
+          <div class="section-sub">A single question, a qualification test, a 4-hour time box</div>
+        </div>
+      </div>
+
+      <div class="command-pill">create-spike</div>
+
+      <div class="spike-question">
+        <div class="label">The Spike Question</div>
+        <div class="question-text">Can we deliver reliable push notifications to club members using a web app (PWA), without building a native iOS/Android app?</div>
+      </div>
+
+      <div class="qualification-test">
+        <div class="qual-header">Spike Qualification Test</div>
+        <div class="qual-row">
+          <div class="qual-q">Can you confidently estimate the effort required to complete this work?</div>
+          <div class="qual-a pass">No → Qualifies</div>
+        </div>
+        <div class="qual-row">
+          <div class="qual-q">Is this uncertainty actively blocking a decision or a larger piece of work?</div>
+          <div class="qual-a pass">Yes → Qualifies</div>
+        </div>
+        <div class="qual-row">
+          <div class="qual-q">Is the primary goal to gain knowledge, not to ship a feature?</div>
+          <div class="qual-a pass">Yes → Qualifies</div>
+        </div>
+      </div>
+
+      <div class="callout info">
+        <div class="callout-icon">ℹ</div>
+        <div>This spike blocks Sprint 003 (Fixture Management). Without knowing whether Web Push is viable, we cannot scope fixture reminder notifications. The spike must complete before Sprint 003 can be planned.</div>
+      </div>
+    </div>
+
+    <!-- SPIKE ANSWER -->
+    <div class="section" id="spike-answer">
+      <div class="section-header">
+        <div class="section-badge badge-spike">✓</div>
+        <div class="section-title-group">
+          <h2>Answer & Evidence</h2>
+          <div class="section-sub">Answer-First structure — TL;DR within 20 lines, evidence below</div>
+        </div>
+      </div>
+
+      <div class="spike-answer">
+        <div class="label">Answer</div>
+        <div class="answer-text">Yes, with caveats. Web Push via a PWA is viable for Android and desktop. iOS support is available from iOS 16.4+ but requires the user to add the app to their home screen first.</div>
+        <div class="answer-sub">Confidence: Medium · Recommendation: Proceed with PWA push · Time box: 4 hours (completed within limit)</div>
+      </div>
+
+      <div class="tldr">
+        <strong>TL;DR:</strong> Web Push works on Android and desktop. iOS requires home screen installation (iOS 16.4+). For a club audience, this is acceptable. Proceed with PWA push notifications, but add a home screen prompt to the onboarding flow for iOS users.
+      </div>
+
+      <table class="browser-table">
+        <thead>
+          <tr>
+            <th>Platform</th>
+            <th>Browser</th>
+            <th>Web Push Support</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Android</td>
+            <td>Chrome</td>
+            <td class="support-full">Full</td>
+            <td>Service Worker + Push API fully supported</td>
+          </tr>
+          <tr>
+            <td>Android</td>
+            <td>Firefox / Samsung Internet</td>
+            <td class="support-full">Full</td>
+            <td>Supported</td>
+          </tr>
+          <tr>
+            <td>iOS 16.4+</td>
+            <td>Safari</td>
+            <td class="support-partial">Partial</td>
+            <td>Requires "Add to Home Screen" — not available in browser tab</td>
+          </tr>
+          <tr>
+            <td>iOS &lt; 16.4</td>
+            <td>Safari</td>
+            <td class="support-none">None</td>
+            <td>Not supported</td>
+          </tr>
+          <tr>
+            <td>iOS (any)</td>
+            <td>Chrome / Firefox</td>
+            <td class="support-none">None</td>
+            <td>WebKit restriction — third-party browsers cannot use push</td>
+          </tr>
+          <tr>
+            <td>Desktop</td>
+            <td>Chrome, Firefox, Edge</td>
+            <td class="support-full">Full</td>
+            <td>Fully supported</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="card">
+        <div class="card-title">Conditions on the Recommendation</div>
+        <div class="conditions-list">
+          <div class="condition-item"><div class="condition-num">01</div><div>Add an iOS home screen prompt to the onboarding flow — after the member has seen the squad list (the emotional payoff), not before.</div></div>
+          <div class="condition-item"><div class="condition-num">02</div><div>Always maintain a fallback notification channel (email). Push notifications are a convenience layer, not the primary communication channel.</div></div>
+          <div class="condition-item"><div class="condition-num">03</div><div>Build subscription expiry detection and re-prompt from the start. An expired subscription that silently fails is worse than no push at all.</div></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Elias Vance — Spike Perspective</div>
+        <p>"My concern is the iOS user who adds the app to their home screen, then removes it three weeks later. Their push subscription becomes invalid and they stop receiving notifications — and they don't know why. We need a fallback (email or SMS) for users whose push subscription lapses. Don't ship push-only notifications."</p>
+        <p style="margin-top:10px;font-size:13px;color:var(--text-3);">Note: Elias's concern became Condition 02 on the recommendation — not a dissent, but a condition. This is the difference between a challenge that changes the outcome and one that is overruled.</p>
+      </div>
+    </div>
+
+    <!-- BACKLOG -->
+    <div class="section" id="backlog">
+      <div class="section-header">
+        <div class="section-badge badge-init">☰</div>
+        <div class="section-title-group">
+          <h2>Sprint Backlog</h2>
+          <div class="section-sub">The connective tissue between sprints — read by every pre-flight check</div>
+        </div>
+      </div>
+
+      <div class="callout info">
+        <div class="callout-icon">ℹ</div>
+        <div>The <code>/create-sprint</code> and <code>/create-spike</code> commands read this file during their pre-flight checks. If a candidate is ready, they offer it to you before asking you to define a new sprint. You don't have to remember what comes next.</div>
+      </div>
+
+      <table class="backlog-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Type</th>
+            <th>Topic</th>
+            <th>Priority</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>001</td>
+            <td><span class="type-sprint">Sprint</span></td>
+            <td>Member onboarding flow</td>
+            <td class="priority-high">High</td>
+            <td><span class="status-done">Done</span></td>
+          </tr>
+          <tr>
+            <td>002</td>
+            <td><span class="type-spike">Spike</span></td>
+            <td>Push notifications without a native app?</td>
+            <td class="priority-high">High</td>
+            <td><span class="status-done">Done</span></td>
+          </tr>
+          <tr>
+            <td>003</td>
+            <td><span class="type-sprint">Sprint</span></td>
+            <td>Fixture management — how does a secretary create and publish a fixture?</td>
+            <td class="priority-high">High</td>
+            <td><span class="status-candidate">Candidate</span></td>
+          </tr>
+          <tr>
+            <td>004</td>
+            <td><span class="type-sprint">Sprint</span></td>
+            <td>Payment and subs — how does a member pay, and how does the secretary track it?</td>
+            <td class="priority-high">High</td>
+            <td><span class="status-candidate">Candidate</span></td>
+          </tr>
+          <tr>
+            <td>005</td>
+            <td><span class="type-spike">Spike</span></td>
+            <td>Which payment provider supports low-volume recurring subscriptions at minimal cost?</td>
+            <td class="priority-med">Medium</td>
+            <td><span class="status-candidate">Candidate</span></td>
+          </tr>
+          <tr>
+            <td>006</td>
+            <td><span class="type-sprint">Sprint</span></td>
+            <td>Re-engagement — how do we bring lapsed members back?</td>
+            <td class="priority-med">Medium</td>
+            <td><span class="status-candidate">Candidate</span></td>
+          </tr>
+          <tr>
+            <td>007</td>
+            <td><span class="type-sprint">Sprint</span></td>
+            <td>Admin dashboard — what does a secretary actually need to see at a glance?</td>
+            <td class="priority-med">Medium</td>
+            <td><span class="status-candidate">Candidate</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- DISSENT REGISTER -->
+    <div class="section" id="dissent-register">
+      <div class="section-header">
+        <div class="section-badge badge-init">⚠</div>
+        <div class="section-title-group">
+          <h2>Dissent Register</h2>
+          <div class="section-sub">Overruled concerns with review triggers — scanned before every sprint</div>
+        </div>
+      </div>
+
+      <div class="callout warning">
+        <div class="callout-icon">↻</div>
+        <div>The <code>/create-sprint</code> pre-flight scans the <strong>Review Trigger</strong> column before each sprint. If a trigger condition matches the upcoming sprint's topic, it surfaces the entry automatically — so overruled concerns from Sprint 001 can reappear when Sprint 008 hits the relevant territory.</div>
+      </div>
+
+      <div class="dissent-register">
+        <div class="dissent-register-title">⚠ Sprint 001 — Invite-Link Model · Elias Vance</div>
+        <div class="dissent-entry">"An invite-link model assumes the secretary is proactive enough to send invites. In practice, they won't. Members will try to sign up independently and hit a wall. We're optimising for a problem we don't have (spam registrations) at the cost of the problem we do have (low adoption)."</div>
+        <div class="dissent-trigger">
+          <strong>Review Trigger</strong>
+          Revisit if user testing in Sprint 003 or later shows that member adoption is below 60% of invited members completing registration.
+        </div>
+      </div>
+    </div>
+
+    <!-- SUMMARY JSON -->
+    <div class="section" id="summary-json">
+      <div class="section-header">
+        <div class="section-badge badge-init">{}</div>
+        <div class="section-title-group">
+          <h2>summary.json</h2>
+          <div class="section-sub">Machine-readable output — mandatory for every sprint and spike</div>
+        </div>
+      </div>
+
+      <div class="callout info">
+        <div class="callout-icon">ℹ</div>
+        <div><code>summary.json</code> is what the pre-flight checks read to understand the project's history without loading every document into context. It is the connective tissue of the framework. Every sprint and spike must produce one.</div>
+      </div>
+
+      <div class="json-block">
+        <div class="json-header">
+          <div class="json-dot" style="background:#ff5f57"></div>
+          <div class="json-dot" style="background:#febc2e"></div>
+          <div class="json-dot" style="background:#28c840"></div>
+          &nbsp;research/spikes/spike-001-push-notifications/summary.json
+        </div>
+        <div class="json-body">
+<span class="json-arr">{</span><br>
+&nbsp;&nbsp;<span class="json-key">"type"</span>: <span class="json-str">"spike"</span>,<br>
+&nbsp;&nbsp;<span class="json-key">"spike_id"</span>: <span class="json-str">"spike-001"</span>,<br>
+&nbsp;&nbsp;<span class="json-key">"question"</span>: <span class="json-str">"Can we deliver reliable push notifications to club members using a web app (PWA), without building a native iOS/Android app?"</span>,<br>
+&nbsp;&nbsp;<span class="json-key">"date_completed"</span>: <span class="json-str">"2026-03-02"</span>,<br>
+&nbsp;&nbsp;<span class="json-key">"answer"</span>: <span class="json-str">"Yes, with caveats. Web Push via a PWA is viable for Android and desktop. iOS 16.4+ requires home screen installation."</span>,<br>
+&nbsp;&nbsp;<span class="json-key">"recommendation"</span>: <span class="json-str">"proceed-with-pwa-push"</span>,<br>
+&nbsp;&nbsp;<span class="json-key">"confidence"</span>: <span class="json-str">"medium"</span>,<br>
+&nbsp;&nbsp;<span class="json-key">"key_finding"</span>: <span class="json-str">"~85% coverage. Email fallback essential. Implementation: 4.5–5.5 days."</span>,<br>
+&nbsp;&nbsp;<span class="json-key">"conditions"</span>: <span class="json-arr">[</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="json-str">"Add iOS home screen prompt to onboarding flow"</span>,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="json-str">"Always maintain email as a fallback notification channel"</span>,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="json-str">"Build subscription expiry detection from the start"</span><br>
+&nbsp;&nbsp;<span class="json-arr">]</span>,<br>
+&nbsp;&nbsp;<span class="json-key">"unblocks"</span>: <span class="json-arr">[</span><span class="json-str">"sprint-003-fixture-management"</span><span class="json-arr">]</span>,<br>
+&nbsp;&nbsp;<span class="json-key">"open_questions"</span>: <span class="json-arr">[</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="json-str">"What is the right re-subscription UX?"</span>,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="json-str">"Third-party push service vs. manage subscriptions ourselves?"</span><br>
+&nbsp;&nbsp;<span class="json-arr">]</span><br>
+<span class="json-arr">}</span>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+</div>
+
+<script>
+  // Active sidebar link on scroll
+  const sections = document.querySelectorAll('.section, .hero');
+  const links = document.querySelectorAll('.sidebar a');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.id;
+        links.forEach(link => {
+          link.classList.toggle('active', link.getAttribute('href') === '#' + id);
+        });
+      }
+    });
+  }, { rootMargin: '-20% 0px -70% 0px' });
+
+  document.querySelectorAll('[id]').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
