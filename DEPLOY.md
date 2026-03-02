@@ -110,7 +110,7 @@ Add entries here when an AI agent makes a mistake that should not be repeated.]
 Version: 1.1.0 — [CHANGELOG](https://github.com/bysixteen/project-squad/blob/main/CHANGELOG.md)
 ```
 
-The `boltonmetro` repository is a good reference for what the project-specific section should look like. The `project-squad` `CLAUDE.md` provides the rules section verbatim.
+A good project-specific section will include the tech stack, key commands (e.g., which package manager to use), and any non-obvious conventions the team has adopted. The `project-squad` `CLAUDE.md` in this repository provides the rules section verbatim — copy it as-is.
 
 ---
 
@@ -122,6 +122,8 @@ The `boltonmetro` repository is a good reference for what the project-specific s
 - `.claude/commands/init-project-squad.md` — The scaffolding command is project-agnostic.
 
 If you need domain-specific roles beyond the core seven, add them to `.squad/specialists.md` (see `examples/specialists-template.md`). This is additive — it does not modify the portable constant.
+
+To see the full framework in action with realistic example content, see the `demo/example-project` branch in this repository.
 
 ---
 
