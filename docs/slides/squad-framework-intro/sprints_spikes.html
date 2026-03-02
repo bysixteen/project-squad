@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body { margin: 0; padding: 0; overflow: hidden; background: #1E1E1E; }
+      .slide-container {
+        width: 1280px;
+        min-height: 720px;
+        background: #1E1E1E;
+        display: flex;
+        flex-direction: column;
+        font-family: 'Inter', sans-serif;
+        color: #D4D4D4;
+        position: relative;
+        overflow: hidden;
+      }
+      
+      .header {
+        padding: 40px 60px 20px;
+        border-bottom: 1px solid #333;
+      }
+      
+      h2 {
+        font-family: 'Inter', sans-serif;
+        font-size: 36px;
+        color: #D4D4D4;
+        margin-bottom: 10px;
+      }
+      
+      .subtitle {
+        font-family: 'Fira Code', monospace;
+        color: #858585;
+        font-size: 16px;
+      }
+      
+      .content-area {
+        flex: 1;
+        display: flex;
+        padding: 40px 60px;
+        gap: 60px;
+      }
+      
+      /* Columns */
+      .col {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+      
+      .col-header {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin-bottom: 10px;
+        padding-bottom: 15px;
+        border-bottom: 2px solid;
+      }
+      
+      .col-title {
+        font-size: 24px;
+        font-weight: 700;
+        color: #FFFFFF;
+      }
+      
+      .col-icon {
+        font-size: 24px;
+      }
+      
+      .definition {
+        font-size: 16px;
+        color: #CCCCCC;
+        line-height: 1.5;
+        min-height: 50px;
+      }
+      
+      /* Sprint Specifics */
+      .sprint-col .col-header { border-color: #007ACC; }
+      .sprint-col .col-icon { color: #007ACC; }
+      
+      .phase-list {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        background: #252526;
+        padding: 20px;
+        border-radius: 8px;
+        border: 1px solid #3E3E42;
+      }
+      
+      .phase-item {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        font-family: 'Fira Code', monospace;
+        font-size: 14px;
+      }
+      
+      .phase-num { color: #569CD6; width: 20px; }
+      .phase-name { color: #D4D4D4; }
+      
+      .mode-badge {
+        display: inline-block;
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-size: 12px;
+        background: #1E1E1E;
+        border: 1px solid #3E3E42;
+        color: #858585;
+        margin-left: auto;
+      }
+      
+      /* Spike Specifics */
+      .spike-col .col-header { border-color: #C586C0; }
+      .spike-col .col-icon { color: #C586C0; }
+      
+      .code-block {
+        background: #252526;
+        padding: 20px;
+        border-radius: 8px;
+        font-family: 'Fira Code', monospace;
+        font-size: 14px;
+        border: 1px solid #3E3E42;
+        color: #D4D4D4;
+        line-height: 1.6;
+      }
+      
+      .kwd { color: #569CD6; }
+      .func { color: #DCDCAA; }
+      .str { color: #CE9178; }
+      .num { color: #B5CEA8; }
+      .comment { color: #6A9955; }
+
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="header">
+            <h2>Sprints explore problems. Spikes answer questions.</h2>
+            <div class="subtitle">Choose the right tool for the ambiguity level</div>
+        </div>
+        
+        <div class="content-area">
+            <!-- Sprint Column -->
+            <div class="col sprint-col">
+                <div class="col-header">
+                    <i class="fas fa-compass col-icon"></i>
+                    <div class="col-title">Sprint</div>
+                </div>
+                <div class="definition">
+                    Structured design exploration. Use when you know the problem but not the solution.
+                </div>
+                
+                <div class="phase-list">
+                    <div class="phase-item">
+                        <span class="phase-num">1</span>
+                        <span class="phase-name">Map</span>
+                        <span class="mode-badge">Full / Lite</span>
+                    </div>
+                    <div class="phase-item">
+                        <span class="phase-num">2</span>
+                        <span class="phase-name">Sketch</span>
+                        <span class="mode-badge">Full / Lite</span>
+                    </div>
+                    <div class="phase-item">
+                        <span class="phase-num">3</span>
+                        <span class="phase-name">Decide</span>
+                        <span class="mode-badge">Full Only</span>
+                    </div>
+                    <div class="phase-item">
+                        <span class="phase-num">4</span>
+                        <span class="phase-name">Prototype</span>
+                        <span class="mode-badge">Full Only</span>
+                    </div>
+                    <div class="phase-item">
+                        <span class="phase-num">5</span>
+                        <span class="phase-name">Synthesise</span>
+                        <span class="mode-badge">Full Only</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Spike Column -->
+            <div class="col spike-col">
+                <div class="col-header">
+                    <i class="fas fa-microscope col-icon"></i>
+                    <div class="col-title">Spike</div>
+                </div>
+                <div class="definition">
+                    Time-boxed investigation. Use when you have a specific technical or research question.
+                </div>
+                
+                <div class="code-block">
+                    <span class="comment">// The Spike Qualification Test</span><br>
+                    <span class="kwd">function</span> <span class="func">isValidSpike</span>(task) {<br>
+                    &nbsp;&nbsp;<span class="kwd">if</span> (task.questions > <span class="num">1</span>) {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="kwd">return</span> <span class="kwd">false</span>; <span class="comment">// Split it</span><br>
+                    &nbsp;&nbsp;}<br>
+                    &nbsp;&nbsp;<span class="kwd">if</span> (!task.hasBoundedScope) {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="kwd">return</span> <span class="kwd">false</span>; <span class="comment">// Too vague</span><br>
+                    &nbsp;&nbsp;}<br>
+                    &nbsp;&nbsp;<span class="kwd">return</span> <span class="kwd">true</span>;<br>
+                    }
+                </div>
+                
+                <div class="definition" style="margin-top: 20px; font-size: 14px; color: #858585;">
+                    <i class="fas fa-check-circle" style="color: #6A9955;"></i> Output: A clear "Yes/No" or "Recommendation" with evidence.
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

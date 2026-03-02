@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body { margin: 0; padding: 0; overflow: hidden; background: #1E1E1E; }
+      .slide-container {
+        width: 1280px;
+        min-height: 720px;
+        background: #1E1E1E;
+        display: flex;
+        flex-direction: column;
+        font-family: 'Inter', sans-serif;
+        color: #D4D4D4;
+        position: relative;
+        overflow: hidden;
+      }
+      
+      .header {
+        padding: 40px 60px 20px;
+        border-bottom: 1px solid #333;
+      }
+      
+      h2 {
+        font-family: 'Inter', sans-serif;
+        font-size: 36px;
+        color: #D4D4D4;
+        margin-bottom: 10px;
+      }
+      
+      .subtitle {
+        font-family: 'Fira Code', monospace;
+        color: #858585;
+        font-size: 16px;
+      }
+      
+      .content-area {
+        flex: 1;
+        padding: 40px 60px;
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+      }
+      
+      /* Day 1 Setup */
+      .setup-row {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+        background: #252526;
+        padding: 30px;
+        border-radius: 8px;
+        border: 1px solid #3E3E42;
+      }
+      
+      .step-box {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      
+      .step-label {
+        font-size: 12px;
+        text-transform: uppercase;
+        color: #858585;
+        font-weight: 700;
+      }
+      
+      .file-card {
+        background: #1E1E1E;
+        border: 1px solid #3E3E42;
+        padding: 15px;
+        border-radius: 4px;
+        font-family: 'Fira Code', monospace;
+        font-size: 14px;
+        color: #D4D4D4;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      
+      .cmd-card {
+        background: #1E1E1E;
+        border: 1px solid #007ACC;
+        padding: 15px;
+        border-radius: 4px;
+        font-family: 'Fira Code', monospace;
+        font-size: 14px;
+        color: #DCDCAA; /* Yellow */
+      }
+      
+      .arrow {
+        color: #858585;
+        font-size: 20px;
+      }
+      
+      /* Maintenance */
+      .maint-row {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+      
+      .maint-title {
+        font-size: 18px;
+        color: #D4D4D4;
+        font-weight: 600;
+      }
+      
+      .docs-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+      }
+      
+      .doc-item {
+        background: #252526;
+        border-left: 3px solid;
+        padding: 20px;
+        border-radius: 0 4px 4px 0;
+      }
+      
+      .doc-name {
+        font-family: 'Fira Code', monospace;
+        font-size: 14px;
+        font-weight: 700;
+        margin-bottom: 5px;
+        color: #D4D4D4;
+      }
+      
+      .doc-desc {
+        font-size: 13px;
+        color: #858585;
+      }
+      
+      /* Footer URL */
+      .footer-url {
+        margin-top: auto;
+        text-align: center;
+        padding: 20px;
+        background: #007ACC;
+        color: #FFFFFF;
+        font-family: 'Fira Code', monospace;
+        font-size: 24px;
+        border-radius: 8px;
+        text-decoration: none;
+        display: block;
+      }
+      
+      .footer-label {
+        font-size: 12px;
+        text-transform: uppercase;
+        margin-bottom: 5px;
+        opacity: 0.8;
+        display: block;
+      }
+
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="header">
+            <h2>One command to start. Three files to maintain.</h2>
+            <div class="subtitle">Low overhead, high leverage</div>
+        </div>
+        
+        <div class="content-area">
+            <!-- Day 1 Setup -->
+            <div class="setup-row">
+                <div class="step-box">
+                    <div class="step-label">Step 1: Define Context</div>
+                    <div class="file-card">
+                        <i class="fas fa-file-alt" style="color: #CE9178;"></i>
+                        _meta/PROJECT_CONTEXT.md
+                    </div>
+                </div>
+                
+                <div class="arrow"><i class="fas fa-arrow-right"></i></div>
+                
+                <div class="step-box">
+                    <div class="step-label">Step 2: Bootstrap</div>
+                    <div class="cmd-card">
+                        > /init-project-squad
+                    </div>
+                </div>
+                
+                <div class="arrow"><i class="fas fa-arrow-right"></i></div>
+                
+                <div class="step-box">
+                    <div class="step-label">Result</div>
+                    <div class="file-card" style="border-color: #6A9955;">
+                        <i class="fas fa-check" style="color: #6A9955;"></i>
+                        Full Scaffold Ready
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Maintenance -->
+            <div class="maint-row">
+                <div class="maint-title">The Ongoing Contract</div>
+                <div class="docs-grid">
+                    <div class="doc-item" style="border-color: #C586C0;">
+                        <div class="doc-name">PRINCIPLES.md</div>
+                        <div class="doc-desc">Update when you learn a new design rule.</div>
+                    </div>
+                    
+                    <div class="doc-item" style="border-color: #6A9955;">
+                        <div class="doc-name">PERSONAS.md</div>
+                        <div class="doc-desc">Update when you learn something new about the user.</div>
+                    </div>
+                    
+                    <div class="doc-item" style="border-color: #CE9178;">
+                        <div class="doc-name">DECISIONS.md</div>
+                        <div class="doc-desc">Log every significant architectural choice.</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Footer -->
+            <a href="https://bysixteen.github.io/project-squad/" class="footer-url">
+                <span class="footer-label">Documentation & Demo</span>
+                bysixteen.github.io/project-squad
+            </a>
+        </div>
+    </div>
+</body>
+</html>

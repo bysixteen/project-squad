@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body { margin: 0; padding: 0; overflow: hidden; background: #1E1E1E; }
+      .slide-container {
+        width: 1280px;
+        min-height: 720px;
+        background: #1E1E1E;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-family: 'Inter', sans-serif;
+        color: #D4D4D4;
+        position: relative;
+        overflow: hidden;
+      }
+      
+      .terminal-window {
+        width: 900px;
+        background: #1E1E1E;
+        border: 1px solid #3E3E42;
+        border-radius: 8px;
+        box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+        overflow: hidden;
+      }
+      
+      .window-header {
+        background: #252526;
+        padding: 10px 20px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        border-bottom: 1px solid #333;
+      }
+      
+      .traffic-light {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+      }
+      .red { background: #FF5F56; }
+      .yellow { background: #FFBD2E; }
+      .green { background: #27C93F; }
+      
+      .window-title {
+        font-family: 'Fira Code', monospace;
+        font-size: 14px;
+        color: #858585;
+        margin-left: 20px;
+      }
+      
+      .window-content {
+        padding: 80px 60px;
+        text-align: left;
+      }
+      
+      h1 {
+        font-family: 'Fira Code', monospace;
+        font-size: 64px;
+        font-weight: 700;
+        color: #D4D4D4;
+        margin-bottom: 30px;
+        line-height: 1.1;
+      }
+      
+      .highlight { color: #569CD6; } /* Blue */
+      .string { color: #CE9178; } /* Amber/Orange */
+      
+      .subtitle {
+        font-family: 'Inter', sans-serif;
+        font-size: 28px;
+        color: #CCCCCC;
+        line-height: 1.4;
+        max-width: 800px;
+        margin-bottom: 60px;
+        font-weight: 400;
+      }
+      
+      .meta-info {
+        font-family: 'Fira Code', monospace;
+        font-size: 16px;
+        color: #6A9955; /* Green */
+        display: flex;
+        gap: 30px;
+      }
+      
+      .cursor {
+        display: inline-block;
+        width: 12px;
+        height: 64px;
+        background: #D4D4D4;
+        margin-left: 10px;
+        animation: blink 1s step-end infinite;
+        vertical-align: middle;
+      }
+      
+      @keyframes blink {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0; }
+      }
+      
+      .bg-decoration {
+        position: absolute;
+        font-family: 'Fira Code', monospace;
+        color: rgba(255, 255, 255, 0.03);
+        font-size: 200px;
+        font-weight: 700;
+        z-index: 0;
+        top: -50px;
+        right: -50px;
+        transform: rotate(-10deg);
+      }
+
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="bg-decoration">./init</div>
+        
+        <div class="terminal-window" style="z-index: 1;">
+            <div class="window-header">
+                <div class="traffic-light red"></div>
+                <div class="traffic-light yellow"></div>
+                <div class="traffic-light green"></div>
+                <div class="window-title">bash — 80x24</div>
+            </div>
+            <div class="window-content">
+                <h1>Project <span class="highlight">Squad</span><br>Framework<span class="cursor"></span></h1>
+                
+                <div class="subtitle">
+                    A structured approach to building the right thing before writing a line of code.
+                </div>
+                
+                <div class="meta-info">
+                    <span>v1.1.0</span>
+                    <span>// The Pioneer Model</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

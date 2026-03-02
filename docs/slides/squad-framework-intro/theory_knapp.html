@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body { margin: 0; padding: 0; overflow: hidden; background: #1E1E1E; }
+      .slide-container {
+        width: 1280px;
+        min-height: 720px;
+        background: #1E1E1E;
+        display: flex;
+        flex-direction: column;
+        font-family: 'Inter', sans-serif;
+        color: #D4D4D4;
+        position: relative;
+        overflow: hidden;
+      }
+      
+      .header {
+        padding: 40px 60px 20px;
+        border-bottom: 1px solid #333;
+      }
+      
+      h2 {
+        font-family: 'Inter', sans-serif;
+        font-size: 36px;
+        color: #D4D4D4;
+        margin-bottom: 10px;
+      }
+      
+      .subtitle {
+        font-family: 'Fira Code', monospace;
+        color: #858585;
+        font-size: 16px;
+      }
+      
+      .content-area {
+        flex: 1;
+        padding: 40px 60px;
+        display: flex;
+        gap: 40px;
+        align-items: center;
+      }
+      
+      .code-window {
+        flex: 1;
+        background: #252526;
+        border: 1px solid #3E3E42;
+        border-radius: 8px;
+        padding: 20px;
+        font-family: 'Fira Code', monospace;
+        font-size: 14px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        height: 480px;
+        overflow: hidden;
+      }
+      
+      .window-title {
+        color: #858585;
+        margin-bottom: 15px;
+        font-size: 12px;
+        display: flex;
+        justify-content: space-between;
+      }
+      
+      .code-line {
+        line-height: 1.6;
+        white-space: pre;
+      }
+      
+      .kwd { color: #569CD6; } /* Blue */
+      .type { color: #4EC9B0; } /* Teal */
+      .str { color: #CE9178; } /* Orange */
+      .com { color: #6A9955; } /* Green */
+      .num { color: #B5CEA8; } /* Light Green */
+      .func { color: #DCDCAA; } /* Yellow */
+      
+      .arrow-right {
+        font-size: 32px;
+        color: #858585;
+      }
+      
+      .adaptation-box {
+        background: #1E1E1E;
+        border: 1px solid #007ACC;
+        border-radius: 4px;
+        padding: 15px;
+        margin-top: 20px;
+      }
+      
+      .adaptation-title {
+        color: #007ACC;
+        font-weight: 700;
+        margin-bottom: 5px;
+      }
+      
+      .adaptation-text {
+        color: #CCCCCC;
+        font-size: 13px;
+        line-height: 1.4;
+      }
+
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="header">
+            <h2>Built on Jake Knapp's Design Sprint methodology</h2>
+            <div class="subtitle">Refactoring the classic 5-day process for the AI era</div>
+        </div>
+        
+        <div class="content-area">
+            <!-- Classic Model -->
+            <div class="code-window">
+                <div class="window-title">
+                    <span>sprint_classic.ts</span>
+                    <span>Reference: Sprint (Knapp, 2016)</span>
+                </div>
+                <div class="code-line"><span class="kwd">class</span> <span class="type">DesignSprint</span> {</div>
+                <div class="code-line">  <span class="kwd">constructor</span>() {</div>
+                <div class="code-line">    <span class="kwd">this</span>.team = <span class="str">"7 Humans in a Room"</span>;</div>
+                <div class="code-line">    <span class="kwd">this</span>.duration = <span class="str">"5 Days (Mon-Fri)"</span>;</div>
+                <div class="code-line">    <span class="kwd">this</span>.devices = <span class="kwd">false</span>; <span class="com">// No distractions</span></div>
+                <div class="code-line">  }</div>
+                <div class="code-line"></div>
+                <div class="code-line">  <span class="func">execute</span>() {</div>
+                <div class="code-line">    <span class="func">Monday</span>(<span class="str">"Map"</span>);</div>
+                <div class="code-line">    <span class="func">Tuesday</span>(<span class="str">"Sketch"</span>);</div>
+                <div class="code-line">    <span class="func">Wednesday</span>(<span class="str">"Decide"</span>);</div>
+                <div class="code-line">    <span class="func">Thursday</span>(<span class="str">"Prototype"</span>);</div>
+                <div class="code-line">    <span class="func">Friday</span>(<span class="str">"Test"</span>);</div>
+                <div class="code-line">  }</div>
+                <div class="code-line">}</div>
+            </div>
+            
+            <div class="arrow-right"><i class="fas fa-arrow-right"></i></div>
+            
+            <!-- Squad Adaptation -->
+            <div class="code-window" style="border-color: #007ACC;">
+                <div class="window-title">
+                    <span>sprint_squad.ts</span>
+                    <span>v1.1.0 Adaptation</span>
+                </div>
+                <div class="code-line"><span class="kwd">class</span> <span class="type">SquadSprint</span> <span class="kwd">extends</span> <span class="type">DesignSprint</span> {</div>
+                <div class="code-line">  <span class="kwd">constructor</span>() {</div>
+                <div class="code-line">    <span class="kwd">super</span>();</div>
+                <div class="code-line">    <span class="com">// Replace meeting room with context</span></div>
+                <div class="code-line">    <span class="kwd">this</span>.team = <span class="str">"7 AI Personas"</span>;</div>
+                <div class="code-line">    <span class="kwd">this</span>.duration = <span class="str">"Async / Instant"</span>;</div>
+                <div class="code-line">  }</div>
+                <div class="code-line"></div>
+                <div class="code-line">  <span class="func">execute</span>() {</div>
+                <div class="code-line">    <span class="com">// Same phases, executed by AI</span></div>
+                <div class="code-line">    <span class="kwd">const</span> context = <span class="func">loadContext</span>();</div>
+                <div class="code-line">    <span class="func">Map</span>(context);</div>
+                <div class="code-line">    <span class="func">Sketch</span>(context.personas);</div>
+                <div class="code-line">    <span class="func">Decide</span>(context.dissent);</div>
+                <div class="code-line">    <span class="func">Synthesise</span>(); <span class="com">// Replaces Test</span></div>
+                <div class="code-line">  }</div>
+                <div class="code-line">}</div>
+                
+                <div class="adaptation-box">
+                    <div class="adaptation-title">Why Synthesise?</div>
+                    <div class="adaptation-text">
+                        We replace "Friday Testing" with "Synthesis" because we are building the spec, not the final product. Validation happens in the PR.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
