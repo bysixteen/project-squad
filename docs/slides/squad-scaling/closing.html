@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600&family=DM+Sans:wght@400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { margin: 0; padding: 0; overflow: hidden; }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background-color: #0f1117;
+            font-family: 'DM Sans', sans-serif;
+            color: #e8eaf0;
+            position: relative;
+            padding: 80px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Grid Background */
+        .grid-bg {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: 
+                linear-gradient(rgba(42, 45, 58, 0.3) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(42, 45, 58, 0.3) 1px, transparent 1px);
+            background-size: 40px 40px;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .content { z-index: 1; position: relative; height: 100%; display: flex; flex-direction: column; }
+
+        h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 64px;
+            line-height: 1.1;
+            font-weight: 600;
+            margin-bottom: 16px;
+            text-align: center;
+        }
+
+        .subtitle {
+            font-size: 24px;
+            color: #8b949e;
+            text-align: center;
+            margin-bottom: 80px;
+            font-family: 'Space Mono', monospace;
+        }
+
+        .columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            flex-grow: 1;
+        }
+
+        .col-header {
+            font-family: 'Space Mono', monospace;
+            font-size: 14px;
+            color: #4f8ef7;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 24px;
+            border-bottom: 1px solid #2a2d3a;
+            padding-bottom: 8px;
+        }
+
+        .strategy-item {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .strategy-number {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 32px;
+            color: #2a2d3a;
+            font-weight: 600;
+            line-height: 1;
+        }
+
+        .strategy-text h3 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #e8eaf0;
+        }
+
+        .strategy-text p {
+            font-size: 16px;
+            color: #8b949e;
+            line-height: 1.5;
+        }
+
+        /* Terminal Box for Definition of Done */
+        .terminal-box {
+            background: #161922;
+            border: 1px solid #2a2d3a;
+            border-radius: 4px;
+            padding: 24px;
+            font-family: 'Space Mono', monospace;
+            font-size: 14px;
+            color: #8b949e;
+        }
+
+        .terminal-header {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 16px;
+            border-bottom: 1px solid #2a2d3a;
+            padding-bottom: 16px;
+        }
+
+        .dot { width: 10px; height: 10px; border-radius: 50%; }
+        .dot-red { background: #ff5f56; }
+        .dot-yellow { background: #ffbd2e; }
+        .dot-green { background: #27c93f; }
+
+        .code-line {
+            margin-bottom: 12px;
+            display: flex;
+        }
+
+        .prompt { color: #4f8ef7; margin-right: 12px; user-select: none; }
+        .cmd { color: #e8eaf0; }
+        .comment { color: #2a2d3a; }
+        .success { color: #27c93f; }
+
+        .footer {
+            margin-top: auto;
+            border-top: 1px solid #2a2d3a;
+            padding-top: 24px;
+            display: flex;
+            justify-content: space-between;
+            font-family: 'Space Mono', monospace;
+            font-size: 12px;
+            color: #2a2d3a;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="grid-bg"></div>
+        <div class="content">
+            <h2>Start small. Scale deliberately.</h2>
+            <div class="subtitle">You don't need a master plan. You need a backlog.</div>
+
+            <div class="columns">
+                <!-- Left: The Strategy -->
+                <div>
+                    <div class="col-header">The Strategy</div>
+                    
+                    <div class="strategy-item">
+                        <div class="strategy-number">01</div>
+                        <div class="strategy-text">
+                            <h3>Plan 3–5 sprints ahead</h3>
+                            <p>Don't map the whole year. Map the next quarter. The world will change before you get to Sprint 010.</p>
+                        </div>
+                    </div>
+
+                    <div class="strategy-item">
+                        <div class="strategy-number">02</div>
+                        <div class="strategy-text">
+                            <h3>The backlog is the roadmap</h3>
+                            <p>Don't maintain a separate roadmap document. Your sprint backlog, prioritised by risk, is the only roadmap you need.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Definition of Done -->
+                <div>
+                    <div class="col-header">Exit Criteria</div>
+                    
+                    <div class="terminal-box">
+                        <div class="terminal-header">
+                            <div class="dot dot-red"></div>
+                            <div class="dot dot-yellow"></div>
+                            <div class="dot dot-green"></div>
+                        </div>
+                        
+                        <div class="code-line">
+                            <span class="prompt">➜</span>
+                            <span class="cmd">check_project_status</span>
+                        </div>
+                        
+                        <div class="code-line">
+                            <span class="prompt"></span>
+                            <span>Checking 'Must' moments...</span>
+                            <span class="success" style="margin-left: auto;">[VALIDATED]</span>
+                        </div>
+
+                        <div class="code-line">
+                            <span class="prompt"></span>
+                            <span>Checking DECISIONS.md...</span>
+                            <span class="success" style="margin-left: auto;">[LOGGED]</span>
+                        </div>
+
+                        <div class="code-line">
+                            <span class="prompt"></span>
+                            <span>Checking tech stack...</span>
+                            <span class="success" style="margin-left: auto;">[LOCKED]</span>
+                        </div>
+
+                        <div class="code-line" style="margin-top: 16px;">
+                            <span class="prompt">➜</span>
+                            <span class="success">READY_FOR_HANDOFF</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer">
+                <div>PROJECT SQUAD FRAMEWORK</div>
+                <div>END OF SESSION</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
