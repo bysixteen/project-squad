@@ -1,0 +1,36 @@
+{
+  "type": "sprint",
+  "sprint_id": "sprint-000",
+  "topic": "Foundation",
+  "date_completed": "2026-03-02",
+  "long_term_goal": "In 12 months, a club secretary running Fieldside spends less than 30 minutes per week on club admin. Members know when they're playing, whether they've paid, and who else is in the squad — without ever having to ask.",
+  "sprint_questions": [
+    "Do we have a shared understanding of who our primary users are and what they actually need?",
+    "Do we have a shared understanding of what 'good' looks like on this project?",
+    "Are there existing constraints or decisions that should be documented before we start building?"
+  ],
+  "key_question_answered": "Foundation sprint — establishes baseline context rather than answering a specific sprint question.",
+  "key_decision": "Tech stack confirmed (Next.js 14, PlanetScale, Sanity, NextAuth.js). Three user personas documented. Four core design principles established. Admin-first principle adopted as the primary design constraint.",
+  "squad_participants": [
+    "Leo Finch (Visual Designer)",
+    "Dr. Lena Petrova (Design Engineer)",
+    "Marcus Thorne (Senior Developer)",
+    "Kira Sharma (Developer)",
+    "Dr. Aris Thorne (Strategist)",
+    "Rowan Vale (Craftsman)",
+    "Elias Vance (Client)"
+  ],
+  "elias_dissent": "None — Elias agreed with the foundation approach and the admin-first principle.",
+  "living_docs_updated": [
+    "research/PRINCIPLES.md",
+    "research/PERSONAS.md",
+    "research/DECISIONS.md",
+    "research/sprint-status.md",
+    "research/sprint-backlog.md"
+  ],
+  "next_action": "Run Sprint 001 on member onboarding — the first user-facing flow and the highest-risk assumption in the product.",
+  "open_questions": [
+    "How do we handle clubs with multiple teams (e.g., a football club with men's, women's, and youth teams)?",
+    "Should fixture management be built before or after membership management?"
+  ]
+}

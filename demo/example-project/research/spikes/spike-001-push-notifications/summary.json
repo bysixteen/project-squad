@@ -1,0 +1,22 @@
+{
+  "type": "spike",
+  "spike_id": "spike-001",
+  "question": "Can we deliver reliable push notifications to club members using a web app (PWA), without building a native iOS/Android app?",
+  "date_completed": "2026-03-02",
+  "answer": "Yes, with caveats. Web Push via a PWA is viable for Android and desktop. iOS support is available from iOS 16.4+ but requires the user to add the app to their home screen first.",
+  "recommendation": "proceed-with-pwa-push",
+  "confidence": "medium",
+  "key_finding": "~85% of Android users and ~85% of iOS 16.4+ users can receive Web Push. The 15% of iOS users on older versions cannot — email fallback is essential. Implementation estimate: 4.5–5.5 days.",
+  "conditions": [
+    "Add iOS home screen prompt to onboarding flow (after emotional payoff, not before)",
+    "Always maintain email as a fallback notification channel",
+    "Build subscription expiry detection and re-prompt from the start"
+  ],
+  "elias_dissent": "Flagged the risk of silent push subscription failure for users who add then remove the app from their home screen. Recommended mandatory email fallback. Team agreed — this is a condition on the recommendation, not a dissent.",
+  "unblocks": ["sprint-003-fixture-management — fixture reminder notifications can now be scoped"],
+  "living_docs_updated": ["research/sprint-status.md", "research/sprint-backlog.md"],
+  "open_questions": [
+    "What is the right re-subscription UX? A banner? A modal? Triggered by what event?",
+    "Should we use a third-party push service (e.g., OneSignal) or manage subscriptions ourselves?"
+  ]
+}

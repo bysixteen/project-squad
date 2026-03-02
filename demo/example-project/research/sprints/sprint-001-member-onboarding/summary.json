@@ -1,0 +1,34 @@
+{
+  "type": "sprint",
+  "sprint_id": "sprint-001",
+  "topic": "Member Onboarding",
+  "date_completed": "2026-03-02",
+  "long_term_goal": "Every member of every club using Fieldside completes onboarding on their first attempt, without help from the secretary, and immediately sees something worth coming back for.",
+  "sprint_questions": [
+    "Can we design a member onboarding flow that completes in under 60 seconds on a mobile device?",
+    "Will members trust a 'join via invite link' model, or will they expect to be able to register independently?",
+    "Can we collect enough information during onboarding to be useful to the secretary without creating friction for the member?"
+  ],
+  "key_question_answered": "Yes — a three-step, one-question-per-screen invite-link flow can complete in under 60 seconds on mobile. The invite-link model is the right approach given GDPR constraints, but secretary adoption is the primary risk.",
+  "key_decision": "Invite-link onboarding model with one-question-per-screen flow. User and Member are separate database entities. Onboarding progress stored server-side against the invite token.",
+  "squad_participants": [
+    "Leo Finch (Visual Designer)",
+    "Dr. Lena Petrova (Design Engineer)",
+    "Marcus Thorne (Senior Developer)",
+    "Kira Sharma (Developer)",
+    "Dr. Aris Thorne (Strategist)",
+    "Elias Vance (Client)"
+  ],
+  "elias_dissent": "Challenged the invite-link model — argued that it creates a dependency on secretary proactivity and that a club-code open registration model would reduce per-member secretary burden. Overruled on GDPR grounds. Review trigger set in dissent-register.md.",
+  "living_docs_updated": [
+    "research/DECISIONS.md",
+    "research/dissent-register.md",
+    "research/sprint-status.md",
+    "docs/decisions/003-onboarding-model.md"
+  ],
+  "next_action": "Sprint 002 should be fixture management (backlog item 003). The secretary needs a reason to invite members — fixture management gives them that reason before any members are on the platform.",
+  "open_questions": [
+    "How long should invite links be valid? (Recommendation: 7 days, resendable from admin panel)",
+    "How do we handle multi-team clubs (men's, women's, youth)?"
+  ]
+}
