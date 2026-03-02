@@ -875,8 +875,15 @@
     </div>
     <div class="sidebar-divider"></div>
     <div class="sidebar-section">
+      <div class="sidebar-label">How It Works</div>
+      <a href="#how-it-works">End-to-End Flow</a>
+      <a href="#the-brain">The Brain</a>
+    </div>
+    <div class="sidebar-divider"></div>
+    <div class="sidebar-section">
       <div class="sidebar-label">Init</div>
       <a href="#init">Project Setup</a>
+      <a href="#init-deep-dive">/init Deep Dive</a>
       <a href="#living-docs">Living Documents</a>
     </div>
     <div class="sidebar-divider"></div>
@@ -1060,6 +1067,237 @@
           <div class="persona-quote">Add when sprints involve new UI components, navigation patterns, or features used by a broad public audience. Produces WCAG compliance checklists and assistive technology test plans.</div>
         </div>
 
+      </div>
+    </div>
+
+    <!-- HOW IT WORKS -->
+    <div class="section" id="how-it-works">
+      <div class="section-header">
+        <div class="section-badge badge-init">→</div>
+        <div class="section-title-group">
+          <h2>How It Works</h2>
+          <div class="section-sub">From a completely blank slate to a validated decision — the end-to-end flow</div>
+        </div>
+      </div>
+
+      <p style="color:var(--text-2);font-size:14px;line-height:1.7;margin-bottom:24px;">The framework has three entry points depending on where you are in a project. Every path starts with the same command and ends with the same output: a decision, recorded, with the reasoning preserved.</p>
+
+      <!-- Blank Slate Flow -->
+      <div class="card" style="margin-bottom:20px;">
+        <div class="card-title">Starting from zero</div>
+        <div class="phase-timeline" style="margin-top:16px;">
+          <div class="phase-item">
+            <div class="phase-dot done">1</div>
+            <div class="phase-content">
+              <h4>Write <code>_meta/PROJECT_CONTEXT.md</code></h4>
+              <p>A single file describing your project: name, stack, known users, initial constraints. This is the only thing you write from scratch. Everything else is generated.</p>
+            </div>
+          </div>
+          <div class="phase-item">
+            <div class="phase-dot done">2</div>
+            <div class="phase-content">
+              <h4>Run <code>/init-project-squad</code></h4>
+              <p>The command reads your context file and scaffolds the full project structure: living documents pre-populated, sprint backlog seeded, dissent register ready. No blank files.</p>
+            </div>
+          </div>
+          <div class="phase-item">
+            <div class="phase-dot sprint">3</div>
+            <div class="phase-content">
+              <h4>Run Sprint 000 — Foundation</h4>
+              <p>Before any feature work: establish shared understanding of who the users are, what the constraints are, and what "good" looks like. The squad speaks. Aris reframes. Elias challenges. Decisions are logged.</p>
+            </div>
+          </div>
+          <div class="phase-item">
+            <div class="phase-dot sprint">4</div>
+            <div class="phase-content">
+              <h4>Run Sprint 001+ — Feature Sprints</h4>
+              <p>Each sprint targets one moment in the user journey. Seven personas sketch the problem. One solution is chosen. Elias's dissent is recorded with a review trigger. A <code>summary.json</code> is written.</p>
+            </div>
+          </div>
+          <div class="phase-item">
+            <div class="phase-dot spike">⚡</div>
+            <div class="phase-content">
+              <h4>Run Spikes when blocked</h4>
+              <p>One question. A qualification test. A 4-hour time box. An Answer-First output. The recommendation unblocks the next sprint and appends to <code>DECISIONS.md</code>.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Three entry points -->
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:24px;">
+        <div style="background:var(--surface);border:1px solid var(--border);border-top:3px solid var(--blue);border-radius:8px;padding:18px;">
+          <div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--blue);margin-bottom:8px;">New Project</div>
+          <div style="font-size:13px;color:var(--text-2);line-height:1.6;">Context → <code>/init</code> → Sprint 000 → Sprint 001+</div>
+        </div>
+        <div style="background:var(--surface);border:1px solid var(--border);border-top:3px solid var(--purple);border-radius:8px;padding:18px;">
+          <div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--purple);margin-bottom:8px;">New Feature</div>
+          <div style="font-size:13px;color:var(--text-2);line-height:1.6;">Read living docs → <code>/create-sprint</code> → Sketch → Decide</div>
+        </div>
+        <div style="background:var(--surface);border:1px solid var(--border);border-top:3px solid var(--amber);border-radius:8px;padding:18px;">
+          <div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--amber);margin-bottom:8px;">Uncertainty</div>
+          <div style="font-size:13px;color:var(--text-2);line-height:1.6;">One question → <code>/create-spike</code> → Qualify → Recommend</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- THE BRAIN -->
+    <div class="section" id="the-brain">
+      <div class="section-header">
+        <div class="section-badge badge-init">🧠</div>
+        <div class="section-title-group">
+          <h2>The Brain of the Project</h2>
+          <div class="section-sub">Three living documents that give the AI permanent memory</div>
+        </div>
+      </div>
+
+      <p style="color:var(--text-2);font-size:14px;line-height:1.7;margin-bottom:24px;">Without these three files, the AI has no memory between sessions. With them, it acts like a senior team member who was in every meeting. The Brain is not documentation — it is the AI's working context. If it is weak, the AI guesses. If it is strong, the AI reasons.</p>
+
+      <!-- Brain diagram: three columns -->
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:28px;">
+        <!-- PRINCIPLES -->
+        <div style="padding:24px;border-right:1px solid var(--border);">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+            <div style="width:10px;height:10px;border-radius:50%;background:#4a1a6b;flex-shrink:0;"></div>
+            <code style="font-size:13px;">PRINCIPLES.md</code>
+          </div>
+          <div style="font-size:20px;font-weight:700;color:var(--text);margin-bottom:6px;">The Rules</div>
+          <div style="font-size:13px;color:var(--text-2);line-height:1.6;margin-bottom:16px;">Design patterns and architectural standards. Every correction you make to the AI becomes a rule here.</div>
+          <div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--text-3);margin-bottom:8px;">Achieved by</div>
+          <div style="font-size:13px;color:var(--text-2);line-height:1.6;">Correcting a mistake → write the correction as a rule. The AI never makes the same mistake twice.</div>
+          <div style="margin-top:14px;padding:10px 12px;background:var(--purple-bg);border:1px solid var(--purple-border);border-radius:6px;font-size:12px;color:var(--purple);">
+            <strong>Example:</strong> AI built a desktop table. You corrected it. Rule added: <em>"Mobile-First: always use cards, never tables."</em>
+          </div>
+        </div>
+        <!-- PERSONAS -->
+        <div style="padding:24px;border-right:1px solid var(--border);">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+            <div style="width:10px;height:10px;border-radius:50%;background:#1a6b3c;flex-shrink:0;"></div>
+            <code style="font-size:13px;">PERSONAS.md</code>
+          </div>
+          <div style="font-size:20px;font-weight:700;color:var(--text);margin-bottom:6px;">The Users</div>
+          <div style="font-size:13px;color:var(--text-2);line-height:1.6;margin-bottom:16px;">Goals, pain points, and journeys. Not invented — discovered through sprint synthesis.</div>
+          <div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--text-3);margin-bottom:8px;">Achieved by</div>
+          <div style="font-size:13px;color:var(--text-2);line-height:1.6;">Mapping a user journey → the insight becomes a persona entry. Ask: <em>"Who is the most stressed person in this system?"</em></div>
+          <div style="margin-top:14px;padding:10px 12px;background:var(--green-bg);border:1px solid var(--green-border);border-radius:6px;font-size:12px;color:var(--green);">
+            <strong>Example:</strong> Sprint 000 mapped the secretary's journey. Pain point discovered: <em>"Fears admin burden more than poor features."</em>
+          </div>
+        </div>
+        <!-- DECISIONS -->
+        <div style="padding:24px;">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+            <div style="width:10px;height:10px;border-radius:50%;background:#7a4f00;flex-shrink:0;"></div>
+            <code style="font-size:13px;">DECISIONS.md</code>
+          </div>
+          <div style="font-size:20px;font-weight:700;color:var(--text);margin-bottom:6px;">The History</div>
+          <div style="font-size:13px;color:var(--text-2);line-height:1.6;margin-bottom:16px;">Append-only log of every significant choice. Log the fork in the road, not the destination.</div>
+          <div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--text-3);margin-bottom:8px;">Achieved by</div>
+          <div style="font-size:13px;color:var(--text-2);line-height:1.6;">Every sprint Decide phase → log the decision <em>and the rejected alternative</em>. The why matters more than the what.</div>
+          <div style="margin-top:14px;padding:10px 12px;background:var(--amber-bg);border:1px solid var(--amber-border);border-radius:6px;font-size:12px;color:var(--amber);">
+            <strong>Example:</strong> Chose invite links over open registration. Logged: <em>"Rejected public sign-up to prevent spam and preserve secretary control."</em>
+          </div>
+        </div>
+      </div>
+
+      <!-- How they grow -->
+      <div class="card">
+        <div class="card-title">How the Brain grows over time</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:4px;">
+          <div>
+            <div style="font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--text-3);margin-bottom:10px;">Inputs → Brain</div>
+            <div style="display:flex;flex-direction:column;gap:8px;">
+              <div style="display:flex;gap:10px;align-items:flex-start;font-size:13px;color:var(--text-2);">
+                <span style="font-family:var(--font-mono);font-size:11px;color:var(--blue);font-weight:700;flex-shrink:0;margin-top:2px;">CTX</span>
+                <span><code>/init-project-squad</code> reads <code>PROJECT_CONTEXT.md</code> and seeds all three files with your initial knowledge.</span>
+              </div>
+              <div style="display:flex;gap:10px;align-items:flex-start;font-size:13px;color:var(--text-2);">
+                <span style="font-family:var(--font-mono);font-size:11px;color:var(--blue);font-weight:700;flex-shrink:0;margin-top:2px;">SPRINT</span>
+                <span>Synthesise phase updates <code>PERSONAS.md</code>. Decide phase appends to <code>DECISIONS.md</code>.</span>
+              </div>
+              <div style="display:flex;gap:10px;align-items:flex-start;font-size:13px;color:var(--text-2);">
+                <span style="font-family:var(--font-mono);font-size:11px;color:var(--purple);font-weight:700;flex-shrink:0;margin-top:2px;">SPIKE</span>
+                <span>Recommendation appends to <code>DECISIONS.md</code>. Open questions feed the next sprint backlog.</span>
+              </div>
+              <div style="display:flex;gap:10px;align-items:flex-start;font-size:13px;color:var(--text-2);">
+                <span style="font-family:var(--font-mono);font-size:11px;color:var(--amber);font-weight:700;flex-shrink:0;margin-top:2px;">FIX</span>
+                <span>Every correction you make to the AI strengthens <code>PRINCIPLES.md</code>. Mistakes compound into rules.</span>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div style="font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--text-3);margin-bottom:10px;">Brain → Outputs</div>
+            <div style="display:flex;flex-direction:column;gap:8px;">
+              <div style="padding:10px 14px;background:var(--green-bg);border:1px solid var(--green-border);border-radius:6px;font-size:13px;color:var(--green);">AI acts like a senior team member who was in every meeting</div>
+              <div style="padding:10px 14px;background:var(--blue-bg);border:1px solid var(--blue-border);border-radius:6px;font-size:13px;color:var(--blue);">New developers onboard in minutes, not weeks</div>
+              <div style="padding:10px 14px;background:var(--purple-bg);border:1px solid var(--purple-border);border-radius:6px;font-size:13px;color:var(--purple);">Consistent quality across every PR — the rules travel with the project</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- INIT DEEP DIVE -->
+    <div class="section" id="init-deep-dive">
+      <div class="section-header">
+        <div class="section-badge badge-init">⚙</div>
+        <div class="section-title-group">
+          <h2>Inside <code>/init-project-squad</code></h2>
+          <div class="section-sub">What the command actually does, step by step</div>
+        </div>
+      </div>
+
+      <div class="command-pill">init-project-squad</div>
+
+      <p style="color:var(--text-2);font-size:14px;line-height:1.7;margin-bottom:24px;"><code>/init-project-squad</code> is not a generator — it is a reader. It reads what you know, then creates the structure to capture what you will learn. The command runs once per project and should never need to be run again.</p>
+
+      <div class="phase-timeline" style="margin-bottom:28px;">
+        <div class="phase-item">
+          <div class="phase-dot done">1</div>
+          <div class="phase-content">
+            <h4>Pre-flight: Read <code>_meta/PROJECT_CONTEXT.md</code></h4>
+            <p>Silently reads your context file. Extracts: project name, stack, known personas, initial principles, open questions. If the file does not exist, prompts you to create it from the template before proceeding.</p>
+          </div>
+        </div>
+        <div class="phase-item">
+          <div class="phase-dot done">2</div>
+          <div class="phase-content">
+            <h4>Scaffold the directory structure</h4>
+            <p>Creates <code>research/</code>, <code>research/sprints/</code>, <code>research/spikes/</code>, <code>docs/decisions/</code>, <code>.squad/</code>, and <code>.claude/commands/</code>. No files yet — just the skeleton.</p>
+          </div>
+        </div>
+        <div class="phase-item">
+          <div class="phase-dot done">3</div>
+          <div class="phase-content">
+            <h4>Seed the Living Documents</h4>
+            <p>Creates <code>PRINCIPLES.md</code>, <code>PERSONAS.md</code>, and <code>DECISIONS.md</code> pre-populated from your context file. Not placeholder text — real content. The secretary persona, the mobile-first principle, the tech stack decision are all in there from day one.</p>
+          </div>
+        </div>
+        <div class="phase-item">
+          <div class="phase-dot done">4</div>
+          <div class="phase-content">
+            <h4>Create the operational files</h4>
+            <p>Creates <code>sprint-backlog.md</code> seeded with the open questions from your context file as sprint candidates. Creates <code>sprint-status.md</code> (empty, ready for Sprint 000). Creates <code>dissent-register.md</code> with the Review Trigger column header.</p>
+          </div>
+        </div>
+        <div class="phase-item">
+          <div class="phase-dot done">5</div>
+          <div class="phase-content">
+            <h4>Merge <code>CLAUDE.md</code></h4>
+            <p>Reads your existing <code>CLAUDE.md</code> (if present) and appends the Project Squad framework rules as a named section. Your project-specific context stays at the top — the framework rules sit below it. The AI reads both.</p>
+          </div>
+        </div>
+        <div class="phase-item">
+          <div class="phase-dot sprint">6</div>
+          <div class="phase-content">
+            <h4>Confirm and recommend Sprint 000</h4>
+            <p>Prints a summary of what was created, confirms the toolkit version (v1.1.0), and recommends running <code>/create-sprint</code> with "Foundation" as the topic. Sprint 000 is not optional.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout warning">
+        <div class="callout-icon">⚠</div>
+        <div><strong>The quality of the output depends entirely on the quality of your context file.</strong> A thin <code>PROJECT_CONTEXT.md</code> produces thin living documents. Spend 20 minutes on it. The more you put in, the less you have to explain in every subsequent sprint.</div>
       </div>
     </div>
 
