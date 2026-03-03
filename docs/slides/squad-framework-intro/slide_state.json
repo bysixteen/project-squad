@@ -75,7 +75,7 @@
     {
       "id": "what_it_is",
       "title": "What the framework is",
-      "summary": "A two-layer architecture: the Portable Toolkit (travels unchanged between projects) and the Project Context (project-specific, populated by commands). Three commands drive everything: /init-project-squad, /create-sprint, /create-spike.",
+      "summary": "A two-layer architecture: the Portable Toolkit (travels unchanged between projects) and the Project Context (project-specific, populated by commands). Five commands drive everything: /init-project-squad, /create-sprint, /create-workshop, /create-spike, /import-personas.",
       "image_plan": "Use a suitable image if needed",
       "slide_template_key": ""
     },
@@ -117,7 +117,7 @@
     {
       "id": "when_to_use",
       "title": "Run this before every project and every significant feature",
-      "summary": "The framework is most valuable at three moments: project kickoff (Sprint 000 Foundation), before a significant new feature (Full Design Sprint), and when a technical decision is uncertain (Spike). Show the decision tree for which mode to use.",
+      "summary": "The framework is most valuable at four moments: project kickoff (Sprint 000 Foundation), before a significant new feature (Full Design Sprint), when a quick decision is needed under time pressure (Workshop), and when a technical decision is uncertain (Spike). Show the decision tree for which mode to use.",
       "image_plan": "Use a suitable image if needed",
       "slide_template_key": ""
     },

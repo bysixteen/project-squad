@@ -38,9 +38,9 @@
       
       .content-area {
         flex: 1;
-        padding: 60px;
+        padding: 40px 50px;
         display: flex;
-        gap: 40px;
+        gap: 24px;
         justify-content: center;
       }
       
@@ -49,7 +49,7 @@
         background: #252526;
         border: 1px solid #3E3E42;
         border-radius: 8px;
-        padding: 30px;
+        padding: 24px 20px;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -69,46 +69,48 @@
       
       .kickoff::before { background: #569CD6; } /* Blue */
       .feature::before { background: #C586C0; } /* Purple */
+      .decision::before { background: #BD10E0; } /* Workshop Purple */
       .blocked::before { background: #CE9178; } /* Orange */
       
       .icon-circle {
-        width: 80px;
-        height: 80px;
+        width: 60px;
+        height: 60px;
         border-radius: 50%;
         background: #1E1E1E;
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 32px;
-        margin-bottom: 20px;
+        font-size: 26px;
+        margin-bottom: 16px;
         border: 1px solid #3E3E42;
       }
       
       .kickoff .icon-circle { color: #569CD6; border-color: #569CD6; }
       .feature .icon-circle { color: #C586C0; border-color: #C586C0; }
+      .decision .icon-circle { color: #BD10E0; border-color: #BD10E0; }
       .blocked .icon-circle { color: #CE9178; border-color: #CE9178; }
       
       .card-title {
-        font-size: 24px;
+        font-size: 20px;
         font-weight: 700;
         color: #FFFFFF;
-        margin-bottom: 10px;
+        margin-bottom: 8px;
       }
-      
+
       .card-desc {
-        font-size: 16px;
+        font-size: 14px;
         color: #CCCCCC;
-        margin-bottom: 30px;
+        margin-bottom: 20px;
         line-height: 1.4;
         flex: 1;
       }
-      
+
       .cmd-block {
         background: #1E1E1E;
-        padding: 15px;
+        padding: 12px;
         border-radius: 4px;
         font-family: 'Fira Code', monospace;
-        font-size: 14px;
+        font-size: 12px;
         color: #DCDCAA;
         border: 1px solid #3E3E42;
         width: 100%;
@@ -127,7 +129,7 @@
     <div class="slide-container">
         <div class="header">
             <h2>Run this before every project and every significant feature</h2>
-            <div class="subtitle">The three moments that matter</div>
+            <div class="subtitle">The four moments that matter</div>
         </div>
         
         <div class="content-area">
@@ -163,7 +165,23 @@
                 <div class="outcome">Output: Validated Spec</div>
             </div>
             
-            <!-- Case 3: Blocked -->
+            <!-- Case 3: Quick Decision -->
+            <div class="use-case-card decision">
+                <div class="icon-circle">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <div class="card-title">Quick Decision</div>
+                <div class="card-desc">
+                    Deadline looming? Stress-test a leading option with the squad.
+                </div>
+                <div class="cmd-block">
+                    /create-workshop<br>
+                    <span style="color: #6A9955;"># Compressed Sprint</span>
+                </div>
+                <div class="outcome">Output: Decision</div>
+            </div>
+
+            <!-- Case 4: Blocked -->
             <div class="use-case-card blocked">
                 <div class="icon-circle">
                     <i class="fas fa-question"></i>
