@@ -85,7 +85,7 @@ Output these three answers as a `## Context` block in the workshop document.
 
 ## Step 3 — Rapid Perspectives (30 minutes)
 
-Assign three to four personas from the core squad. In a workshop, you do not need all seven. Recommended selection:
+**Elias Vance is mandatory in all workshops** (Key Rule 3). Select 2–3 additional personas from the table below. You do not need all seven.
 
 | Always include | Include if relevant |
 |---|---|
@@ -93,7 +93,7 @@ Assign three to four personas from the core squad. In a workshop, you do not nee
 | Dr. Aris Thorne (strategic framing) | Dr. Lena Petrova (if technical decision) |
 | Marcus Thorne (scope/constraints) | Kira Sharma (if implementation detail) |
 
-For each assigned persona, generate a **single paragraph** in their voice. No sketches. No extended exploration. Just their immediate reaction to the decision question and the options on the table.
+For each assigned persona, generate a **single paragraph (75–100 words)** in their voice. No sketches. No extended exploration. Just their immediate reaction to the decision question and the options on the table.
 
 **Format:**
 
@@ -122,7 +122,7 @@ Record the decision. If Elias's perspective was overruled, log it in `research/d
 
 ## Step 5 — Synthesise
 
-**Output:** Create `research/sprints/workshop-NNN-[topic]/workshop.md` using the following template:
+**Output:** Create `research/workshops/workshop-NNN-[topic]/workshop.md` using the following template:
 
 ```yaml
 ---
@@ -135,6 +135,7 @@ decision: "[The chosen option — one sentence, past tense]"
 options_considered: ["[Option A]", "[Option B]"]
 trigger: "[Workshop trigger condition(s)]"
 personas: [aris, marcus, elias]
+adr: ""
 feeds-into: []
 depends-on: []
 tags: []
@@ -182,6 +183,14 @@ tags: []
 ## Next Action
 
 [What happens next as a result of this decision.]
+
+## Ideas & Opportunities
+
+[Ideas that surfaced during the workshop but weren't the focus of the decision. Keep brief — each one that gets pursued becomes its own sprint or spike.]
+
+| # | Idea | Suggested By |
+|---|------|-------------|
+| 1 | | |
 ```
 
 **`summary.json` template:**
@@ -207,6 +216,19 @@ tags: []
   ]
 }
 ```
+
+---
+
+## Step 6 — Update Living Documents
+
+After writing the workshop output, update the following living documents:
+
+1. **`research/DECISIONS.md`** — Add the decision with a reference to the workshop folder.
+2. **`research/sprint-status.md`** — Add a row for this workshop (type: workshop).
+3. **`research/dissent-register.md`** — If Elias's dissent was overruled, log it with a review trigger condition.
+4. **`research/PERSONAS.md`** — If the workshop revealed new information about a client persona, update their entry.
+
+If a significant technical decision was made, create an ADR in `docs/decisions/` and set the `adr:` field in the workshop frontmatter.
 
 ---
 

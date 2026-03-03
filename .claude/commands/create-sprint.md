@@ -43,10 +43,14 @@ Before we begin, I need to understand the challenge.
 3. Sprint format?
    (Full) Four phases: Map → Sketch → Decide → Synthesise
    (Lite) Two phases: Map → Decide (faster, for lower-stakes decisions)
-   (Workshop) Single session, all phases compressed
+   (Workshop) → Run /create-workshop instead (see Workshop Trigger Conditions in CLAUDE.md)
 
 4. Which Project Squad personas are joining this sprint?
    [Display the team selection guide from .squad/project-squad.md and recommend personas based on the challenge type.]
+
+5. Will this sprint produce a creative brief?
+   (Yes) — For user-facing features where the next step is "build this thing"
+   (No)  — For technical/architectural decisions or early exploration
 ```
 
 ---
@@ -288,6 +292,65 @@ decision: "[One sentence — the chosen direction, past tense.]"
 
 ---
 
+## Phase 3b — Creative Brief *(skip if user selected No at Step 0, question 5)*
+
+> This phase applies to user-facing feature sprints only. Skip for technical/architectural decisions.
+
+Led by **Leo Finch** and **Dr. Aris Thorne**. The creative brief translates the decision into actionable direction for building. It is forward-looking and prescriptive — unlike `synthesis.md`, which is retrospective.
+
+**Output:** Create `research/sprints/sprint-NNN-[topic]/creative-brief.md`:
+
+```yaml
+---
+title: "Sprint NNN: Creative Brief"
+type: sprint-creative-brief
+status: complete
+date: YYYY-MM-DD
+sprint: NNN
+decision: "decision.md"
+---
+
+**TL;DR:** [One sentence: what are we building, for whom, and why?]
+
+---
+
+## Positioning
+
+[One sentence a stakeholder could repeat. What is this thing?]
+
+## Target User
+
+[Primary persona from PERSONAS.md + their specific context for this feature.]
+
+## The Problem
+
+[The validated problem from decision.md — what's broken today, in plain language.]
+
+## Solution Direction
+
+[What we decided to build, framed as user benefit — not a technical spec.]
+
+## Design Direction
+
+[How should it feel? Which PRINCIPLES.md entries apply? Tone, emotional register, key interactions.]
+
+## Success Criteria
+
+1. [Observable or measurable outcome]
+2. [Observable or measurable outcome]
+3. [Observable or measurable outcome]
+
+## Constraints
+
+[Technical, brand, timeline — from brief.md constraints plus anything new from the sprint.]
+
+## What This Is NOT
+
+[From decision.md "What We Are NOT Doing" — reframed as guardrails for the people building this.]
+```
+
+---
+
 ## Phase 4 — Synthesise (Led by Dr. Aris Thorne)
 
 Auto-update the following living documents:
@@ -296,7 +359,42 @@ Auto-update the following living documents:
 - `research/PERSONAS.md` — Update if the sprint revealed new insights about user personas.
 - `research/PRINCIPLES.md` — Update if the sprint established new design or technical principles.
 
-**Output:** Create `research/sprints/sprint-NNN-[topic]/synthesis.md` and `research/sprints/sprint-NNN-[topic]/summary.json`.
+**Output:** Create the following files in `research/sprints/sprint-NNN-[topic]/`:
+- `ideas.md` — ideas and opportunities captured during the sprint
+- `synthesis.md` — retrospective synthesis
+- `summary.json` — machine-readable output
+
+**Generating `ideas.md`:** Review `sketches.md` and discussion from all phases. Extract ideas, feature suggestions, and opportunities that were mentioned but not pursued. Record them in `ideas.md`. These are not open questions (unknowns) or rejected alternatives (non-decisions) — they are things worth exploring in future sprints. If no ideas surfaced beyond the sprint scope, record that explicitly.
+
+**`ideas.md` template:**
+
+```yaml
+---
+title: "Sprint NNN: Ideas & Opportunities"
+type: sprint-ideas
+status: complete
+date: YYYY-MM-DD
+sprint: NNN
+---
+
+**TL;DR:** [N] ideas captured during this sprint for future exploration.
+
+---
+
+| # | Idea | Source Phase | Suggested By | Priority |
+|---|------|-------------|-------------|----------|
+| 1 | [Short description] | [Map / Sketch / Decide] | [Persona or User] | [High / Medium / Low] |
+| 2 | | | | |
+| 3 | | | | |
+
+---
+
+## Notes
+
+[Optional: brief context on the most promising ideas. Keep short — each idea that gets pursued becomes its own sprint or spike.]
+```
+
+---
 
 **`synthesis.md` template:**
 
@@ -322,6 +420,10 @@ sprint: NNN
 1. [Key insight 1]
 2. [Key insight 2]
 3. [Key insight 3]
+
+## Ideas & Opportunities
+
+[Ideas, feature suggestions, and directions that surfaced during the sprint but weren't the focus. These are not unknowns — they are things worth exploring in future sprints. Reference `ideas.md` for the full list.]
 
 ## Open Questions
 
@@ -359,7 +461,9 @@ _Appendix: Full sprint folder at `research/sprints/sprint-NNN-[topic]/`_
   "next_action": "[The single most important next step.]",
   "open_questions": [
     "[Open question 1]"
-  ]
+  ],
+  "ideas_count": 0,
+  "creative_brief": false
 }
 ```
 
@@ -392,8 +496,10 @@ After completing the sprint, verify:
 - [ ] `brief.md` has YAML frontmatter + TL;DR within first 20 lines.
 - [ ] `sketches.md` has all selected personas represented in their own voice.
 - [ ] `decision.md` has Elias Vance's dissent recorded.
+- [ ] `ideas.md` has been created (even if "No ideas surfaced beyond the sprint scope").
+- [ ] If creative brief was requested: `creative-brief.md` has YAML frontmatter + TL;DR within first 20 lines.
 - [ ] `synthesis.md` has been created.
-- [ ] `summary.json` has been created and is valid JSON.
+- [ ] `summary.json` has been created, is valid JSON, and `creative_brief` + `ideas_count` fields are populated.
 - [ ] `research/DECISIONS.md` has been updated.
 - [ ] `research/sprint-status.md` has been updated with participating personas.
 - [ ] `research/dissent-register.md` has been updated if dissent was significant.
