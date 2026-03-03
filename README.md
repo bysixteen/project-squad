@@ -47,6 +47,8 @@ The Project Squad Framework is a set of Claude commands, persona definitions, an
 | `/create-spike` | Run a time-boxed investigation to reduce excess uncertainty. Includes a Spike Qualification Test. |
 | `/import-personas` | Import externally-created client personas into `research/PERSONAS.md`. |
 
+Not sure which command to use? See `docs/DECISION-GUIDE.md` for a command comparison, decision flow, and ROI framing.
+
 ---
 
 ## The File Structure

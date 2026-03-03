@@ -1,0 +1,26 @@
+{
+  "type": "spike",
+  "spike_id": "spike-001",
+  "topic": "Push Notifications without a Native App",
+  "question": "Can we deliver reliable push notifications to club members using a web app (PWA), without building a native iOS/Android app?",
+  "date_completed": "2026-02-10",
+  "answer": "Yes, with caveats. Web Push via a PWA is viable for Android and desktop. iOS 16.4+ requires home screen installation. ~85% coverage achievable. Email fallback is mandatory.",
+  "recommendation": "proceed-with-pwa-push",
+  "confidence": "medium",
+  "key_finding": "~85% coverage. Email fallback essential. iOS home screen prompt must be placed after emotional payoff (squad list). Implementation: 3.5–4 days.",
+  "conditions": [
+    "Add iOS home screen prompt to onboarding flow after squad list (not before)",
+    "Always maintain email as a fallback notification channel — every push must have an email equivalent",
+    "Build subscription expiry detection and re-prompt from the start"
+  ],
+  "elias_note": "Elias's concern about expired iOS subscriptions became Condition 02. Not a dissent — a condition. Incorporated into the recommendation.",
+  "unblocks": ["sprint-002-fixture-management"],
+  "updated_living_docs": ["DECISIONS.md", "PRINCIPLES.md", "sprint-status.md"],
+  "open_questions": [
+    "What is the right re-subscription UX when a push subscription expires?",
+    "Should we use a third-party push service (e.g. web-push npm package) or manage subscriptions ourselves?"
+  ],
+  "adr": "docs/decisions/002-push-notifications.md",
+  "effort_estimate": "3.5–4 days including email fallback",
+  "participants": ["lena", "marcus", "kira", "elias"]
+}

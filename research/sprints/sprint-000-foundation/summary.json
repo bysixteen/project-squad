@@ -1,0 +1,30 @@
+{
+  "type": "sprint",
+  "sprint_id": "sprint-000",
+  "topic": "Foundation",
+  "date_completed": "2026-01-15",
+  "long_term_goal": "A grassroots football club secretary can manage their entire club from one app, spending less than 10 minutes per week on admin.",
+  "sprint_questions": [
+    "Who are the users, and what do they actually need?",
+    "What are the hard technical constraints for v1?",
+    "What design principles should govern every screen?",
+    "What tech stack decisions have been made, and what is still open?"
+  ],
+  "key_decisions": [
+    "Tech stack: Next.js 14 + Supabase + Vercel (D-001)",
+    "Auth: NextAuth.js v5, magic link + Google OAuth (D-002)",
+    "Secretary-first constraint adopted as governing design principle"
+  ],
+  "participants": ["aris", "marcus", "lena", "elias"],
+  "elias_dissent": null,
+  "updated_living_docs": ["PERSONAS.md", "PRINCIPLES.md", "DECISIONS.md", "sprint-backlog.md", "sprint-status.md"],
+  "next_action": "Run Sprint 001 — Member Onboarding. Target the invite-link to squad-list moment.",
+  "open_questions": [
+    "How does the secretary generate and manage invite links?",
+    "What happens when an invite link expires?",
+    "Does the secretary need to see which members have accepted their invite?"
+  ],
+  "ideas_count": 3,
+  "creative_brief": false,
+  "format": "full"
+}
