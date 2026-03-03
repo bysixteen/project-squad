@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Decision Guide — Project Squad Framework</title>
+<style>
+  :root {
+    --bg: #f7f6f3;
+    --surface: #ffffff;
+    --surface-2: #f0efe9;
+    --border: #e2e0d8;
+    --border-strong: #c8c5bb;
+    --text: #1a1917;
+    --text-2: #5a5750;
+    --text-3: #8a8680;
+    --accent: #2d2d2d;
+    --green: #1a6b3c;
+    --green-bg: #edf7f2;
+    --green-border: #b3dfc8;
+    --amber: #7a4f00;
+    --amber-bg: #fdf6e3;
+    --amber-border: #f0d080;
+    --red: #8b1a1a;
+    --red-bg: #fdf0f0;
+    --red-border: #e8b4b4;
+    --blue: #1a3a6b;
+    --blue-bg: #edf2fd;
+    --blue-border: #b3c8e8;
+    --purple: #4a1a6b;
+    --purple-bg: #f5edfb;
+    --purple-border: #d4b3e8;
+    --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    --font-mono: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: var(--font-sans);
+    background: var(--bg);
+    color: var(--text);
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  /* ── HEADER ── */
+  .site-header {
+    background: var(--accent);
+    color: #fff;
+    padding: 0 48px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .site-header .logo {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    opacity: 0.9;
+  }
+  .site-header .version {
+    font-size: 12px;
+    opacity: 0.5;
+    font-family: var(--font-mono);
+  }
+
+  /* ── LAYOUT ── */
+  .page-wrapper {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    min-height: calc(100vh - 56px);
+  }
+
+  /* ── SIDEBAR NAV ── */
+  .sidebar {
+    background: var(--surface);
+    border-right: 1px solid var(--border);
+    padding: 32px 0;
+    position: sticky;
+    top: 56px;
+    height: calc(100vh - 56px);
+    overflow-y: auto;
+  }
+  .sidebar-section {
+    padding: 0 20px 24px;
+  }
+  .sidebar-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-3);
+    margin-bottom: 8px;
+    padding: 0 4px;
+  }
+  .sidebar a {
+    display: block;
+    padding: 6px 8px;
+    border-radius: 6px;
+    font-size: 13px;
+    color: var(--text-2);
+    text-decoration: none;
+    transition: background 0.15s, color 0.15s;
+  }
+  .sidebar a:hover { background: var(--surface-2); color: var(--text); }
+  .sidebar a.active { background: var(--accent); color: #fff; }
+  .sidebar a.back-link { color: var(--text-3); font-size: 12px; }
+  .sidebar a.back-link::before { content: '← '; }
+  .sidebar-divider {
+    height: 1px;
+    background: var(--border);
+    margin: 0 20px 24px;
+  }
+
+  /* ── MAIN CONTENT ── */
+  .main {
+    padding: 48px 64px 96px;
+    max-width: 900px;
+  }
+
+  /* ── HERO ── */
+  .hero { margin-bottom: 64px; }
+  .hero-eyebrow {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-3);
+    margin-bottom: 12px;
+  }
+  .hero h1 {
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-bottom: 16px;
+  }
+  .hero h1 span { color: var(--text-3); }
+  .hero-desc {
+    font-size: 16px;
+    color: var(--text-2);
+    max-width: 600px;
+    line-height: 1.7;
+  }
+
+  /* ── SECTION ── */
+  .section {
+    margin-bottom: 72px;
+    scroll-margin-top: 80px;
+  }
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 28px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border);
+  }
+  .section-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .badge-guide { background: var(--surface-2); color: var(--text-2); border: 1px solid var(--border-strong); }
+  .section-title-group h2 {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+  .section-title-group .section-sub {
+    font-size: 13px;
+    color: var(--text-3);
+    margin-top: 2px;
+  }
+
+  /* ── CARDS ── */
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 16px;
+  }
+  .card-title {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--text-3);
+    margin-bottom: 12px;
+  }
+  .card p {
+    font-size: 14px;
+    color: var(--text-2);
+    line-height: 1.65;
+  }
+  .card p + p { margin-top: 10px; }
+
+  /* ── CALLOUT ── */
+  .callout {
+    border-radius: 10px;
+    padding: 16px 18px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    line-height: 1.6;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  .callout-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+  .callout.info { background: var(--blue-bg); border: 1px solid var(--blue-border); color: var(--blue); }
+  .callout.warning { background: var(--amber-bg); border: 1px solid var(--amber-border); color: var(--amber); }
+  .callout.success { background: var(--green-bg); border: 1px solid var(--green-border); color: var(--green); }
+
+  /* ── TLDR ── */
+  .tldr {
+    background: var(--surface-2);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 8px 8px 0;
+    padding: 12px 16px;
+    font-size: 14px;
+    color: var(--text-2);
+    margin-bottom: 24px;
+    line-height: 1.6;
+  }
+  .tldr strong { color: var(--text); }
+
+  /* ── COMPARISON TABLE ── */
+  .comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    background: var(--surface);
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    margin-bottom: 24px;
+  }
+  .comparison-table th {
+    padding: 12px 16px;
+    text-align: left;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--border);
+  }
+  .comparison-table th:first-child { background: var(--surface-2); color: var(--text-3); }
+  .comparison-table th.col-sprint { color: var(--blue); background: var(--blue-bg); border-bottom-color: var(--blue-border); }
+  .comparison-table th.col-workshop { color: var(--green); background: var(--green-bg); border-bottom-color: var(--green-border); }
+  .comparison-table th.col-spike { color: var(--purple); background: var(--purple-bg); border-bottom-color: var(--purple-border); }
+  .comparison-table td {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border);
+    color: var(--text-2);
+    vertical-align: top;
+    line-height: 1.55;
+  }
+  .comparison-table tr:last-child td { border-bottom: none; }
+  .comparison-table td:first-child {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--text-3);
+    white-space: nowrap;
+    background: var(--surface-2);
+    border-right: 1px solid var(--border);
+    width: 100px;
+  }
+
+  /* ── DECISION FLOW ── */
+  .decision-flow { display: flex; flex-direction: column; gap: 0; margin-bottom: 32px; }
+  .flow-question {
+    background: var(--surface);
+    border: 1px solid var(--border-strong);
+    border-radius: 10px;
+    padding: 16px 20px;
+  }
+  .flow-question .q-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-3);
+    margin-bottom: 6px;
+  }
+  .flow-question .q-text {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 14px;
+  }
+  .flow-answers { display: flex; gap: 10px; flex-wrap: wrap; }
+  .flow-answer {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 8px 14px;
+    font-size: 13px;
+    color: var(--text-2);
+  }
+  .flow-answer .ans-label {
+    font-weight: 700;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--text-3);
+  }
+  .flow-answer.yes { border-color: var(--green-border); background: var(--green-bg); }
+  .flow-answer.yes .ans-label { color: var(--green); }
+  .flow-answer .ans-arrow { color: var(--text-3); }
+  .flow-connector {
+    width: 2px;
+    height: 20px;
+    background: var(--border-strong);
+    margin: 0 auto;
+  }
+
+  /* ── SEQUENCE CARDS ── */
+  .sequence-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+  .sequence-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 18px;
+  }
+  .sequence-card .seq-pattern {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+  .seq-step {
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 700;
+  }
+  .seq-step.sprint { background: var(--blue-bg); color: var(--blue); border: 1px solid var(--blue-border); }
+  .seq-step.workshop { background: var(--green-bg); color: var(--green); border: 1px solid var(--green-border); }
+  .seq-step.spike { background: var(--purple-bg); color: var(--purple); border: 1px solid var(--purple-border); }
+  .seq-arrow { color: var(--text-3); font-size: 14px; }
+  .sequence-card .seq-desc { font-size: 13px; color: var(--text-3); line-height: 1.55; }
+
+  /* ── ROI GRID ── */
+  .roi-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+  .roi-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 18px;
+  }
+  .roi-card .roi-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-3);
+    margin-bottom: 8px;
+  }
+  .roi-card .roi-value {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+  .roi-card .roi-desc { font-size: 12px; color: var(--text-3); line-height: 1.5; }
+
+  /* ── OUTPUT LIST ── */
+  .output-list {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 16px;
+  }
+  .output-list-header {
+    padding: 12px 18px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .output-list-header.sprint { background: var(--blue-bg); border-bottom-color: var(--blue-border); }
+  .output-list-header.workshop { background: var(--green-bg); border-bottom-color: var(--green-border); }
+  .output-list-header.spike { background: var(--purple-bg); border-bottom-color: var(--purple-border); }
+  .output-list-header .cmd { font-family: var(--font-mono); font-size: 12px; font-weight: 700; }
+  .output-list-header.sprint .cmd { color: var(--blue); }
+  .output-list-header.workshop .cmd { color: var(--green); }
+  .output-list-header.spike .cmd { color: var(--purple); }
+  .output-row {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    align-items: center;
+    padding: 10px 18px;
+    border-bottom: 1px solid var(--border);
+    gap: 16px;
+  }
+  .output-row:last-child { border-bottom: none; }
+  .output-filename { font-family: var(--font-mono); font-size: 12px; font-weight: 600; color: var(--text); }
+  .output-desc { font-size: 13px; color: var(--text-3); line-height: 1.5; }
+  .output-tag {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 1px 6px;
+    border-radius: 4px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-right: 6px;
+  }
+  .tag-handoff { background: var(--green-bg); color: var(--green); border: 1px solid var(--green-border); }
+  .tag-archived { background: var(--surface-2); color: var(--text-3); border: 1px solid var(--border-strong); }
+  .tag-machine { background: var(--purple-bg); color: var(--purple); border: 1px solid var(--purple-border); }
+
+  /* ── INLINE CODE ── */
+  code {
+    font-family: var(--font-mono);
+    font-size: 0.88em;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    padding: 1px 5px;
+    border-radius: 4px;
+    color: var(--text);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .page-wrapper { grid-template-columns: 1fr; }
+    .sidebar { display: none; }
+    .main { padding: 32px 24px 64px; }
+    .roi-grid { grid-template-columns: 1fr; }
+    .sequence-grid { grid-template-columns: 1fr; }
+    .output-row { grid-template-columns: 1fr; gap: 4px; }
+  }
+
+  html { scroll-behavior: smooth; }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="logo">Project Squad Framework</div>
+  <div class="version">v1.2.0 · decision guide</div>
+</header>
+
+<div class="page-wrapper">
+
+  <nav class="sidebar">
+    <div class="sidebar-section">
+      <div class="sidebar-label">Navigation</div>
+      <a href="index.html" class="back-link">Back to Demo</a>
+    </div>
+    <div class="sidebar-divider"></div>
+    <div class="sidebar-section">
+      <div class="sidebar-label">This Page</div>
+      <a href="#overview">Overview</a>
+      <a href="#roi">Is It Worth It?</a>
+      <a href="#comparison">Command Comparison</a>
+      <a href="#decision-flow">Decision Flow</a>
+      <a href="#sequencing">Sequencing Patterns</a>
+      <a href="#outputs">What You Walk Away With</a>
+      <a href="#handoff">The Handoff</a>
+    </div>
+  </nav>
+
+  <main class="main">
+
+    <div class="hero" id="overview">
+      <div class="hero-eyebrow">Project Squad Framework · Guide</div>
+      <h1>Choosing the <span>right command</span></h1>
+      <p class="hero-desc">Use the lightest tool that gets you a decision you can build on. This guide explains when to use each command, what you walk away with, and how to know the process was worth running.</p>
+    </div>
+
+    <div class="tldr">
+      <strong>TL;DR:</strong> Sprint for foundational product decisions. Workshop to align on a leading option under time pressure. Spike to resolve a specific unknown blocking progress.
+    </div>
+
+    <!-- ROI -->
+    <div class="section" id="roi">
+      <div class="section-header">
+        <div class="section-badge badge-guide">?</div>
+        <div class="section-title-group">
+          <h2>Is this process worth it?</h2>
+          <div class="section-sub">The honest answer before you commit</div>
+        </div>
+      </div>
+
+      <div class="callout warning">
+        <div class="callout-icon">↻</div>
+        <div>The cost of a bad foundational decision almost always exceeds the cost of running the process. If you skip this and build the wrong thing, you don't get the time back.</div>
+      </div>
+
+      <div class="roi-grid">
+        <div class="roi-card">
+          <div class="roi-label">Sprint</div>
+          <div class="roi-value">A spec you can build from</div>
+          <div class="roi-desc">The <code>creative-brief.md</code> success criteria become the validation checklist. No more arguing about what "done" means.</div>
+        </div>
+        <div class="roi-card">
+          <div class="roi-label">Spike</div>
+          <div class="roi-value">An unblocked decision</div>
+          <div class="roi-desc">You stop arguing about the unknown. The answer is evidence-backed — not a guess, not a meeting outcome.</div>
+        </div>
+        <div class="roi-card">
+          <div class="roi-label">Workshop</div>
+          <div class="roi-value">Alignment in 2–3 hours</div>
+          <div class="roi-desc">A decision memo that replaces a 3-hour stakeholder meeting with a 30-minute read.</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">The compounding benefit</div>
+        <p>The Dissent Register means you stop re-litigating the same closed decisions. Each sprint's <code>summary.json</code> is read by the next sprint's pre-flight check — context builds automatically rather than being reconstructed from memory.</p>
+        <p>By the third sprint, you spend almost no time on "why did we decide X?" — it is already in the documents.</p>
+      </div>
+    </div>
+
+    <!-- COMPARISON -->
+    <div class="section" id="comparison">
+      <div class="section-header">
+        <div class="section-badge badge-guide">≡</div>
+        <div class="section-title-group">
+          <h2>Command Comparison</h2>
+          <div class="section-sub">Sprint vs. Workshop vs. Spike at a glance</div>
+        </div>
+      </div>
+
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th></th>
+            <th class="col-sprint">/create-sprint</th>
+            <th class="col-workshop">/create-workshop</th>
+            <th class="col-spike">/create-spike</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Time</td>
+            <td>Half-day to 1 day</td>
+            <td>2–3 hours</td>
+            <td>1–4 hours</td>
+          </tr>
+          <tr>
+            <td>Best for</td>
+            <td>Foundational product decisions — you don't know what to build yet</td>
+            <td>Aligning on a leading option — stress-testing it, not discovering it</td>
+            <td>Resolving one specific unknown blocking a decision or estimate</td>
+          </tr>
+          <tr>
+            <td>Use when</td>
+            <td>Defining a user moment, feature direction, or product principle for the first time</td>
+            <td>A stakeholder, deadline, or previous sprint forces a decision and you already have a candidate</td>
+            <td>A decision can't be made without answering a concrete question first</td>
+          </tr>
+          <tr>
+            <td>Skip when</td>
+            <td>A workshop or spike would get there faster</td>
+            <td>You haven't formed a view yet — run a sprint</td>
+            <td>There are multiple open questions — split into multiple spikes</td>
+          </tr>
+          <tr>
+            <td>Primary output</td>
+            <td><code>decision.md</code> + <code>creative-brief.md</code> + <code>synthesis.md</code></td>
+            <td><code>workshop.md</code></td>
+            <td><code>output.md</code> (answer-first)</td>
+          </tr>
+          <tr>
+            <td>Also produces</td>
+            <td><code>brief.md</code>, <code>sketches.md</code>, <code>ideas.md</code>, <code>summary.json</code></td>
+            <td><code>summary.json</code></td>
+            <td><code>brief.md</code>, <code>summary.json</code>, ADR (if technical)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- DECISION FLOW -->
+    <div class="section" id="decision-flow">
+      <div class="section-header">
+        <div class="section-badge badge-guide">→</div>
+        <div class="section-title-group">
+          <h2>Decision Flow</h2>
+          <div class="section-sub">Four questions to pick the right command</div>
+        </div>
+      </div>
+
+      <div class="decision-flow">
+        <div class="flow-question">
+          <div class="q-label">Step 1</div>
+          <div class="q-text">Can you articulate what you are deciding in one sentence?</div>
+          <div class="flow-answers">
+            <div class="flow-answer no">
+              <span class="ans-label">No</span>
+              <span class="ans-arrow">→</span>
+              Run a Sprint. The Map phase will sharpen the problem.
+            </div>
+            <div class="flow-answer yes">
+              <span class="ans-label">Yes</span>
+              <span class="ans-arrow">→</span>
+              Continue to Step 2
+            </div>
+          </div>
+        </div>
+        <div class="flow-connector"></div>
+        <div class="flow-question">
+          <div class="q-label">Step 2</div>
+          <div class="q-text">Do you already have a leading option?</div>
+          <div class="flow-answers">
+            <div class="flow-answer no">
+              <span class="ans-label">No</span>
+              <span class="ans-arrow">→</span>
+              Run a Sprint to evaluate from scratch.
+            </div>
+            <div class="flow-answer yes">
+              <span class="ans-label">Yes</span>
+              <span class="ans-arrow">→</span>
+              Continue to Step 3
+            </div>
+          </div>
+        </div>
+        <div class="flow-connector"></div>
+        <div class="flow-question">
+          <div class="q-label">Step 3</div>
+          <div class="q-text">Are you blocked by a specific unknown — technical, research, or design?</div>
+          <div class="flow-answers">
+            <div class="flow-answer yes">
+              <span class="ans-label">Yes</span>
+              <span class="ans-arrow">→</span>
+              Run a Spike first. Return to Step 1 with the answer in hand.
+            </div>
+            <div class="flow-answer no">
+              <span class="ans-label">No</span>
+              <span class="ans-arrow">→</span>
+              Continue to Step 4
+            </div>
+          </div>
+        </div>
+        <div class="flow-connector"></div>
+        <div class="flow-question">
+          <div class="q-label">Step 4</div>
+          <div class="q-text">Is a decision needed within 24–48 hours, or are you under external time pressure?</div>
+          <div class="flow-answers">
+            <div class="flow-answer yes">
+              <span class="ans-label">Yes</span>
+              <span class="ans-arrow">→</span>
+              Run a Workshop to stress-test the leading option.
+            </div>
+            <div class="flow-answer no">
+              <span class="ans-label">No</span>
+              <span class="ans-arrow">→</span>
+              Run a Sprint to evaluate it properly.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout info">
+        <div class="callout-icon">ℹ</div>
+        <div>If you can't articulate the decision in one sentence — "we're choosing between X and Y, and we need an answer by Thursday" — run a Sprint. Workshops stress-test; they don't discover.</div>
+      </div>
+    </div>
+
+    <!-- SEQUENCING -->
+    <div class="section" id="sequencing">
+      <div class="section-header">
+        <div class="section-badge badge-guide">⇢</div>
+        <div class="section-title-group">
+          <h2>Sequencing Patterns</h2>
+          <div class="section-sub">Commands are often stacked — these are the common combinations</div>
+        </div>
+      </div>
+
+      <div class="sequence-grid">
+        <div class="sequence-card">
+          <div class="seq-pattern">
+            <span class="seq-step spike">Spike</span>
+            <span class="seq-arrow">→</span>
+            <span class="seq-step sprint">Sprint</span>
+          </div>
+          <div class="seq-desc">An unknown is blocking the sprint. Resolve it first, then run the sprint with the answer in hand. The spike's <code>output.md</code> feeds into the sprint brief.</div>
+        </div>
+        <div class="sequence-card">
+          <div class="seq-pattern">
+            <span class="seq-step sprint">Sprint</span>
+            <span class="seq-arrow">→</span>
+            <span class="seq-step workshop">Workshop</span>
+          </div>
+          <div class="seq-desc">A sprint produced a foundational decision. A follow-up question needs quick alignment before the next build cycle without reopening the sprint.</div>
+        </div>
+        <div class="sequence-card">
+          <div class="seq-pattern">
+            <span class="seq-step workshop">Workshop</span>
+            <span class="seq-arrow">→</span>
+            <span class="seq-step spike">Spike</span>
+          </div>
+          <div class="seq-desc">A workshop surfaced an assumption the team can't validate without research. A spike answers it before the next sprint or build cycle.</div>
+        </div>
+        <div class="sequence-card">
+          <div class="seq-pattern">
+            <span class="seq-step sprint">Sprint</span>
+            <span class="seq-arrow">→</span>
+            <span class="seq-step sprint">Sprint</span>
+          </div>
+          <div class="seq-desc">Each sprint's <code>synthesis.md</code> and <code>summary.json</code> feed the next. Sprint 000 (Foundation) sets personas, principles, and first decisions. Subsequent sprints build on them automatically.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- OUTPUTS -->
+    <div class="section" id="outputs">
+      <div class="section-header">
+        <div class="section-badge badge-guide">◫</div>
+        <div class="section-title-group">
+          <h2>What You Walk Away With</h2>
+          <div class="section-sub">Concrete files produced by each command</div>
+        </div>
+      </div>
+
+      <div class="output-list">
+        <div class="output-list-header sprint">
+          <span class="cmd">create-sprint</span>
+        </div>
+        <div class="output-row">
+          <div class="output-filename">brief.md</div>
+          <div class="output-desc"><span class="output-tag tag-archived">Archived</span>The sprint challenge, HMW questions, target user, and persona roster. Context for the sprint — not handed to builders.</div>
+        </div>
+        <div class="output-row">
+          <div class="output-filename">sketches.md</div>
+          <div class="output-desc"><span class="output-tag tag-archived">Archived</span>All seven persona perspectives in their own voice. Internal reasoning — preserved for decision traceability.</div>
+        </div>
+        <div class="output-row">
+          <div class="output-filename">decision.md</div>
+          <div class="output-desc"><span class="output-tag tag-handoff">Handoff</span>The decision, rationale, rejected alternatives, and Elias's dissent. Primary reference for builders: "why did we build it this way?"</div>
+        </div>
+        <div class="output-row">
+          <div class="output-filename">creative-brief.md</div>
+          <div class="output-desc"><span class="output-tag tag-handoff">Handoff</span>The spec: target user, problem, solution direction, success criteria, guardrails. Produced for user-facing features. Success criteria become the validation checklist.</div>
+        </div>
+        <div class="output-row">
+          <div class="output-filename">ideas.md</div>
+          <div class="output-desc"><span class="output-tag tag-archived">Archived</span>Opportunities that surfaced but weren't the focus. Feeds the sprint backlog for future work.</div>
+        </div>
+        <div class="output-row">
+          <div class="output-filename">synthesis.md</div>
+          <div class="output-desc"><span class="output-tag tag-handoff">Handoff</span>What changed, what the next sprint should know, open questions. Read by the next sprint's pre-flight check.</div>
+        </div>
+        <div class="output-row">
+          <div class="output-filename">summary.json</div>
+          <div class="output-desc"><span class="output-tag tag-machine">Machine</span>Machine-readable record. Read by future sprint pre-flight checks to surface context, open questions, and Elias's dissent without loading every document.</div>
+        </div>
+      </div>
+
+      <div class="output-list">
+        <div class="output-list-header workshop">
+          <span class="cmd">create-workshop</span>
+        </div>
+        <div class="output-row">
+          <div class="output-filename">workshop.md</div>
+          <div class="output-desc"><span class="output-tag tag-handoff">Handoff</span>Decision memo: context, decision, rationale, rejected options, Elias's position, next action. Same structure as a sprint decision but compressed to 2–3 hours.</div>
+        </div>
+        <div class="output-row">
+          <div class="output-filename">summary.json</div>
+          <div class="output-desc"><span class="output-tag tag-machine">Machine</span>Machine-readable record read by future sprint pre-flight checks.</div>
+        </div>
+      </div>
+
+      <div class="output-list">
+        <div class="output-list-header spike">
+          <span class="cmd">create-spike</span>
+        </div>
+        <div class="output-row">
+          <div class="output-filename">brief.md</div>
+          <div class="output-desc"><span class="output-tag tag-archived">Archived</span>The specific question, acceptance criteria, investigation angles, and constraints. Context for the spike.</div>
+        </div>
+        <div class="output-row">
+          <div class="output-filename">output.md</div>
+          <div class="output-desc"><span class="output-tag tag-handoff">Handoff</span>Answer first, then evidence and recommendation. Read only the top half in practice — raw research sits below the stop line as backup.</div>
+        </div>
+        <div class="output-row">
+          <div class="output-filename">summary.json</div>
+          <div class="output-desc"><span class="output-tag tag-machine">Machine</span>Includes confidence level (high/medium/low) and which work the spike unblocks.</div>
+        </div>
+        <div class="output-row">
+          <div class="output-filename">ADR (if technical)</div>
+          <div class="output-desc"><span class="output-tag tag-handoff">Handoff</span>Saved to <code>docs/decisions/</code> if the spike resolves a significant technical decision. Referenced from the spike frontmatter.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- HANDOFF -->
+    <div class="section" id="handoff">
+      <div class="section-header">
+        <div class="section-badge badge-guide">↗</div>
+        <div class="section-title-group">
+          <h2>The Handoff</h2>
+          <div class="section-sub">What builders receive — and what stays archived</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">What developers and designers receive</div>
+        <p><strong>creative-brief.md</strong> — the spec and success criteria. This is what the builder works from.</p>
+        <p><strong>decision.md</strong> — the rationale and what was rejected. Answers "why did we build it this way?" without a meeting.</p>
+        <p><strong>Spike output.md</strong> — if a specific unknown was resolved upstream, the builder gets the answer and recommendation.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-title">What stays archived</div>
+        <p><strong>sketches.md</strong> — internal persona reasoning. Preserved for decision traceability, not operational for builders.</p>
+        <p><strong>brief.md</strong> — sprint context. Archived for audit trail and future sprint pre-flight checks.</p>
+      </div>
+
+      <div class="callout success">
+        <div class="callout-icon">✓</div>
+        <div>The <code>creative-brief.md</code> success criteria become the validation checklist. If validation fails, the finding is logged in <code>research/DECISIONS.md</code> and a new sprint is triggered — not a patch to the prototype. The framework ends at the decision.</div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">See also</div>
+        <p><a href="index.html" style="color: var(--blue); text-decoration: none; font-weight: 500;">Project Squad Demo</a> — a full example sprint and spike in action, showing every output in context.</p>
+        <p style="margin-top: 8px;"><code>docs/VALIDATION-BOUNDARY.md</code> — where the framework ends and delivery begins.</p>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<script>
+  const sections = document.querySelectorAll('.section, .hero');
+  const links = document.querySelectorAll('.sidebar a');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.id;
+        links.forEach(link => {
+          link.classList.toggle('active', link.getAttribute('href') === '#' + id);
+        });
+      }
+    });
+  }, { rootMargin: '-20% 0px -70% 0px' });
+  document.querySelectorAll('[id]').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
