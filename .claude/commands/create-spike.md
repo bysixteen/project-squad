@@ -4,6 +4,8 @@
 
 Run a structured, time-boxed investigation to reduce excess uncertainty before committing to development. A spike produces knowledge, not features. It answers a specific question so that a decision can be made or a story can be estimated.
 
+> **CRITICAL:** Read `.squad/project-squad.md` before starting. Assign investigation angles to named Project Squad personas — never use generic roles (Researcher, Analyst, Engineer, etc.). Elias Vance must provide a perspective on user impact in the spike output.
+
 ---
 
 ## Pre-Flight Checks

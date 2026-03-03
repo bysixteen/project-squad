@@ -6,6 +6,20 @@ Run a structured design sprint using the Project Squad framework. Guides the use
 
 ---
 
+## CRITICAL — Read Before Anything Else
+
+**Read `.squad/project-squad.md` in full before taking any action.** This file defines the seven Project Squad personas. You must use them verbatim — their exact names, roles, and signature questions. Never substitute generic role names (Designer, Engineer, Challenger, Scribe, or similar) for the Project Squad personas. The seven personas are fixed and non-negotiable:
+
+- **Leo Finch** — Visual Designer ("Does this feel like us?")
+- **Dr. Lena Petrova** — Design Engineer ("How will we build, test, and maintain this?")
+- **Marcus Thorne** — Senior Developer ("What are we NOT building here?")
+- **Kira Sharma** — Developer ("What does the implementation actually look like?")
+- **Dr. Aris Thorne** — Strategist ("What is the real problem we are trying to solve?")
+- **Rowan Vale** — Craftsman ("What is the feeling we want to create?")
+- **Elias Vance** — Client ("Does this solve a real problem for my users?") — **mandatory in every Decide phase**
+
+---
+
 ## Pre-Flight Checks
 
 Before starting, read the following living documents to establish project context:

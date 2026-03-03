@@ -2,6 +2,8 @@
 
 **Purpose:** Run a compressed, time-boxed design sprint when a decision is needed quickly and the full sprint format is not appropriate.
 
+> **CRITICAL:** Read `.squad/project-squad.md` before starting. Use the Project Squad personas by name — never substitute generic roles (Designer, Engineer, Challenger, etc.). Elias Vance must participate in the Decide phase of every workshop.
+
 **Time:** 2–3 hours (vs. half-day for a Full Sprint)
 
 **Output:** A `workshop.md` synthesis document and `summary.json` — same machine-readable format as a sprint, compatible with all pre-flight checks.
