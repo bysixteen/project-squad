@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body { margin: 0; padding: 0; overflow: hidden; background: #1E1E1E; }
+      .slide-container {
+        width: 1280px;
+        min-height: 720px;
+        background: #1E1E1E;
+        display: flex;
+        flex-direction: column;
+        font-family: 'Inter', sans-serif;
+        color: #D4D4D4;
+        position: relative;
+        overflow: hidden;
+      }
+      
+      .header {
+        padding: 40px 60px 20px;
+        border-bottom: 1px solid #333;
+      }
+      
+      h2 {
+        font-family: 'Inter', sans-serif;
+        font-size: 36px;
+        color: #D4D4D4;
+        margin-bottom: 10px;
+      }
+      
+      .subtitle {
+        font-family: 'Fira Code', monospace;
+        color: #858585;
+        font-size: 16px;
+      }
+      
+      .content-area {
+        flex: 1;
+        padding: 40px 60px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 30px;
+      }
+      
+      .roster-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+      }
+      
+      .roster-grid-bottom {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+        width: 75%;
+        margin: 0 auto;
+      }
+      
+      .persona-card {
+        background: #252526;
+        border: 1px solid #3E3E42;
+        border-radius: 6px;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        overflow: hidden;
+      }
+      
+      .persona-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 4px;
+        height: 100%;
+      }
+      
+      /* Role Colors */
+      .design::before { background: #C586C0; } /* Pink */
+      .dev::before { background: #569CD6; } /* Blue */
+      .strat::before { background: #4EC9B0; } /* Teal */
+      .client::before { background: #CE9178; } /* Orange */
+      
+      .p-name {
+        font-family: 'Inter', sans-serif;
+        font-weight: 700;
+        font-size: 18px;
+        color: #D4D4D4;
+        margin-bottom: 4px;
+      }
+      
+      .p-role {
+        font-family: 'Fira Code', monospace;
+        font-size: 12px;
+        color: #858585;
+        margin-bottom: 15px;
+        text-transform: uppercase;
+      }
+      
+      .p-quote {
+        font-size: 14px;
+        color: #CCCCCC;
+        font-style: italic;
+        line-height: 1.4;
+      }
+      
+      .icon-bg {
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        font-size: 40px;
+        color: rgba(255, 255, 255, 0.03);
+      }
+
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="header">
+            <h2>Seven personas replace a meeting room</h2>
+            <div class="subtitle">A multi-disciplinary team in your terminal</div>
+        </div>
+        
+        <div class="content-area">
+            <!-- Top Row: Makers -->
+            <div class="roster-grid">
+                <div class="persona-card design">
+                    <div class="p-name">Leo Finch</div>
+                    <div class="p-role">Visual Designer</div>
+                    <div class="p-quote">"Is it visually coherent and on-brand?"</div>
+                    <i class="fas fa-paint-brush icon-bg"></i>
+                </div>
+                
+                <div class="persona-card design">
+                    <div class="p-name">Dr. Lena Petrova</div>
+                    <div class="p-role">Design Engineer</div>
+                    <div class="p-quote">"Does this fit our existing system?"</div>
+                    <i class="fas fa-ruler-combined icon-bg"></i>
+                </div>
+                
+                <div class="persona-card dev">
+                    <div class="p-name">Marcus Thorne</div>
+                    <div class="p-role">Senior Developer</div>
+                    <div class="p-quote">"Is this scalable and maintainable?"</div>
+                    <i class="fas fa-server icon-bg"></i>
+                </div>
+                
+                <div class="persona-card dev">
+                    <div class="p-name">Kira Sharma</div>
+                    <div class="p-role">Developer</div>
+                    <div class="p-quote">"Can we actually build this?"</div>
+                    <i class="fas fa-code icon-bg"></i>
+                </div>
+            </div>
+            
+            <!-- Bottom Row: Strategy & Client -->
+            <div class="roster-grid-bottom">
+                <div class="persona-card strat">
+                    <div class="p-name">Dr. Aris Thorne</div>
+                    <div class="p-role">Strategist</div>
+                    <div class="p-quote">"Are we solving the right problem?"</div>
+                    <i class="fas fa-chess icon-bg"></i>
+                </div>
+                
+                <div class="persona-card design">
+                    <div class="p-name">Rowan Vale</div>
+                    <div class="p-role">Craftsman</div>
+                    <div class="p-quote">"How does the end-to-end experience feel?"</div>
+                    <i class="fas fa-hand-sparkles icon-bg"></i>
+                </div>
+                
+                <div class="persona-card client">
+                    <div class="p-name">Elias Vance</div>
+                    <div class="p-role">Client (External)</div>
+                    <div class="p-quote">"Does this solve a real problem for my users?"</div>
+                    <i class="fas fa-user-tie icon-bg"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

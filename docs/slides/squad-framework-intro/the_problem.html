@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body { margin: 0; padding: 0; overflow: hidden; background: #1E1E1E; }
+      .slide-container {
+        width: 1280px;
+        min-height: 720px;
+        background: #1E1E1E;
+        display: flex;
+        flex-direction: column;
+        font-family: 'Inter', sans-serif;
+        color: #D4D4D4;
+        position: relative;
+        overflow: hidden;
+      }
+      
+      .header {
+        padding: 40px 60px 20px;
+        border-bottom: 1px solid #333;
+      }
+      
+      h2 {
+        font-family: 'Inter', sans-serif;
+        font-size: 36px;
+        color: #D4D4D4;
+        margin-bottom: 10px;
+      }
+      
+      .subtitle {
+        font-family: 'Fira Code', monospace;
+        color: #858585;
+        font-size: 16px;
+      }
+      
+      .content-area {
+        flex: 1;
+        padding: 60px;
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+      }
+      
+      .error-container {
+        display: flex;
+        gap: 40px;
+      }
+      
+      .error-card {
+        flex: 1;
+        background: #252526;
+        border: 1px solid #F48771; /* Red/Salmon */
+        border-radius: 6px;
+        padding: 30px;
+        font-family: 'Fira Code', monospace;
+        position: relative;
+        overflow: hidden;
+      }
+      
+      .error-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 6px;
+        height: 100%;
+        background: #F48771;
+      }
+      
+      .error-title {
+        color: #F48771;
+        font-size: 18px;
+        font-weight: 700;
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      
+      .error-msg {
+        color: #D4D4D4;
+        font-size: 16px;
+        line-height: 1.5;
+        margin-bottom: 20px;
+      }
+      
+      .stack-trace {
+        color: #858585;
+        font-size: 13px;
+        background: #1E1E1E;
+        padding: 15px;
+        border-radius: 4px;
+        line-height: 1.4;
+      }
+      
+      .impact-box {
+        margin-top: auto;
+        background: #1E1E1E;
+        border: 1px solid #3E3E42;
+        border-radius: 6px;
+        padding: 25px;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+      }
+      
+      .impact-icon {
+        font-size: 32px;
+        color: #CE9178;
+      }
+      
+      .impact-text {
+        font-size: 18px;
+        color: #CCCCCC;
+      }
+      
+      .highlight { color: #CE9178; font-weight: 600; }
+
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="header">
+            <h2>Most projects fail before the first commit</h2>
+            <div class="subtitle">Teams build the wrong thing because they skip structured thinking</div>
+        </div>
+        
+        <div class="content-area">
+            <div class="error-container">
+                <!-- Error 1 -->
+                <div class="error-card">
+                    <div class="error-title">
+                        <i class="fas fa-exclamation-circle"></i> Uncaught Exception: Groupthink
+                    </div>
+                    <div class="error-msg">
+                        The team converges on the first comfortable idea without testing it against real user needs.
+                    </div>
+                    <div class="stack-trace">
+                        at MeetingRoom.agree_quickly (culture.js:42)<br>
+                        at Team.avoid_conflict (human_nature.js:108)<br>
+                        at Product.build_feature_nobody_wants (roadmap.js:01)
+                    </div>
+                </div>
+                
+                <!-- Error 2 -->
+                <div class="error-card">
+                    <div class="error-title">
+                        <i class="fas fa-history"></i> ContextLossError
+                    </div>
+                    <div class="error-msg">
+                        New team members re-read 500 pages of history to understand "why".
+                    </div>
+                    <div class="stack-trace">
+                        at Developer.onboard (new_hire.js:12)<br>
+                        at Slack.search_history (frustration.js:99)<br>
+                        at Project.repeat_mistakes (efficiency.js:00)
+                    </div>
+                </div>
+            </div>
+            
+            <div class="impact-box">
+                <i class="fas fa-clock impact-icon"></i>
+                <div class="impact-text">
+                    The result is <span class="highlight">efficient waste</span>: writing high-quality code for a feature that shouldn't exist.
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

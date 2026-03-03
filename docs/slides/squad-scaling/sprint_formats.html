@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600&family=DM+Sans:wght@400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { margin: 0; padding: 0; overflow: hidden; }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background-color: #0f1117;
+            font-family: 'DM Sans', sans-serif;
+            color: #e8eaf0;
+            position: relative;
+            /* keep top padding at 80px, reduce bottom padding to trim total height */
+            padding: 80px 80px 34px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .grid-bg {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: 
+                linear-gradient(rgba(42, 45, 58, 0.3) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(42, 45, 58, 0.3) 1px, transparent 1px);
+            background-size: 40px 40px;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .content { z-index: 1; position: relative; height: 100%; display: flex; flex-direction: column; }
+
+        h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 48px;
+            line-height: 1.1;
+            margin-bottom: 40px;
+        }
+
+        .formats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            gap: 24px;
+            flex-grow: 1;
+        }
+
+        .format-card {
+            background: #161922;
+            border: 1px solid #2a2d3a;
+            padding: 32px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .format-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 4px; height: 100%;
+        }
+
+        /* Card Variants */
+        .card-full::before { background: #4f8ef7; } /* Blue */
+        .card-lite::before { background: #50e3c2; } /* Green/Teal */
+        .card-workshop::before { background: #bd10e0; } /* Purple */
+        .card-spike::before { background: #f5a623; } /* Amber */
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+
+        .format-name {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 24px;
+            font-weight: 600;
+            color: #e8eaf0;
+        }
+
+        .format-time {
+            font-family: 'Space Mono', monospace;
+            font-size: 12px;
+            color: #8b949e;
+            background: #0f1117;
+            padding: 4px 8px;
+            border: 1px solid #2a2d3a;
+        }
+
+        .phases-container {
+            display: flex;
+            gap: 4px;
+            margin-bottom: 20px;
+        }
+
+        .phase-block {
+            height: 6px;
+            flex-grow: 1;
+            background: #2a2d3a;
+        }
+
+        .card-full .phase-block.active { background: #4f8ef7; }
+        .card-lite .phase-block.active { background: #50e3c2; }
+        .card-workshop .phase-block.active { background: #bd10e0; }
+        .card-spike .phase-block.active { background: #f5a623; }
+
+        .phase-labels {
+            font-family: 'Space Mono', monospace;
+            font-size: 10px;
+            color: #8b949e;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .use-case {
+            font-size: 16px;
+            line-height: 1.5;
+            color: #e8eaf0;
+            margin-top: auto;
+        }
+
+        .use-case-label {
+            font-family: 'Space Mono', monospace;
+            font-size: 10px;
+            color: #8b949e;
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="grid-bg"></div>
+        <div class="content">
+            <h2>Choose the right format.</h2>
+
+            <div class="formats-grid">
+                
+                <!-- Full Sprint -->
+                <div class="format-card card-full">
+                    <div class="card-header">
+                        <div class="format-name">Full Sprint</div>
+                        <div class="format-time">HALF DAY</div>
+                    </div>
+                    <div class="phases-container">
+                        <div class="phase-block active"></div>
+                        <div class="phase-block active"></div>
+                        <div class="phase-block active"></div>
+                        <div class="phase-block active"></div>
+                    </div>
+                    <div class="phase-labels">
+                        <span>MAP</span><span>SKETCH</span><span>DECIDE</span><span>SYNTH</span>
+                    </div>
+                    <div class="use-case">
+                        <span class="use-case-label">Use When</span>
+                        Complex features, high-stakes decisions, or entering new territory where alignment is critical.
+                    </div>
+                </div>
+
+                <!-- Lite Sprint -->
+                <div class="format-card card-lite">
+                    <div class="card-header">
+                        <div class="format-name">Lite Sprint</div>
+                        <div class="format-time">1-2 HOURS</div>
+                    </div>
+                    <div class="phases-container">
+                        <div class="phase-block active"></div>
+                        <div class="phase-block"></div> <!-- Empty -->
+                        <div class="phase-block active"></div>
+                        <div class="phase-block"></div> <!-- Empty -->
+                    </div>
+                    <div class="phase-labels">
+                        <span>MAP</span><span></span><span>DECIDE</span><span></span>
+                    </div>
+                    <div class="use-case">
+                        <span class="use-case-label">Use When</span>
+                        Lower-stakes decisions, refinements to existing features, or when the solution space is constrained.
+                    </div>
+                </div>
+
+                <!-- Workshop -->
+                <div class="format-card card-workshop">
+                    <div class="card-header">
+                        <div class="format-name">Workshop</div>
+                        <div class="format-time">2-3 HOURS</div>
+                    </div>
+                    <div class="phases-container">
+                        <div class="phase-block active" style="width: 100%;"></div>
+                    </div>
+                    <div class="phase-labels">
+                        <span>COMPRESSED PHASES</span>
+                    </div>
+                    <div class="use-case">
+                        <span class="use-case-label">Use When</span>
+                        Time is tight and you need to force a decision in a single synchronous session.
+                    </div>
+                </div>
+
+                <!-- Spike -->
+                <div class="format-card card-spike">
+                    <div class="card-header">
+                        <div class="format-name">Spike</div>
+                        <div class="format-time">4 HOURS MAX</div>
+                    </div>
+                    <div class="phases-container">
+                        <div class="phase-block active"></div>
+                        <div class="phase-block active"></div>
+                        <div class="phase-block active"></div>
+                    </div>
+                    <div class="phase-labels">
+                        <span>QUALIFY</span><span>INVESTIGATE</span><span>RECOMMEND</span>
+                    </div>
+                    <div class="use-case">
+                        <span class="use-case-label">Use When</span>
+                        A specific technical question or unknown is blocking progress. Output is knowledge, not design.
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600&family=DM+Sans:wght@400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { margin: 0; padding: 0; overflow: hidden; }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background-color: #0f1117;
+            font-family: 'DM Sans', sans-serif;
+            color: #e8eaf0;
+            position: relative;
+            padding: 80px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .grid-bg {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: 
+                linear-gradient(rgba(42, 45, 58, 0.3) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(42, 45, 58, 0.3) 1px, transparent 1px);
+            background-size: 40px 40px;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .content { z-index: 1; position: relative; width: 100%; }
+
+        h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 48px;
+            line-height: 1.1;
+            margin-bottom: 40px;
+        }
+
+        /* Data Table */
+        .sprint-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-family: 'Space Mono', monospace;
+            font-size: 14px;
+        }
+
+        .sprint-table th {
+            text-align: left;
+            color: #8b949e;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 16px;
+            border-bottom: 2px solid #2a2d3a;
+            font-size: 12px;
+        }
+
+        .sprint-table td {
+            padding: 20px 16px;
+            border-bottom: 1px solid #2a2d3a;
+            color: #e8eaf0;
+        }
+
+        .sprint-table tr:last-child td {
+            border-bottom: none;
+            color: #8b949e; /* Fade out the future sprints */
+        }
+
+        /* Column specific styles */
+        .col-id { color: #8b949e; width: 80px; }
+        .col-moment { font-family: 'DM Sans', sans-serif; font-size: 16px; font-weight: 500; }
+        .col-type { width: 120px; }
+        .col-output { color: #8b949e; font-size: 13px; }
+        .col-priority { width: 100px; text-align: right; }
+
+        /* Badges */
+        .badge {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .badge-sprint {
+            color: #4f8ef7;
+            background: rgba(79, 142, 247, 0.1);
+            border: 1px solid rgba(79, 142, 247, 0.3);
+        }
+
+        .badge-spike {
+            color: #a78bfa; /* Purple */
+            background: rgba(167, 139, 250, 0.1);
+            border: 1px solid rgba(167, 139, 250, 0.3);
+        }
+
+        /* Priority Colors */
+        .prio-must { color: #f5a623; }
+        .prio-should { color: #4f8ef7; }
+        .prio-could { color: #8b949e; }
+
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="grid-bg"></div>
+        <div class="content">
+            <h2>A typical sprint sequence</h2>
+            
+            <table class="sprint-table">
+                <thead>
+                    <tr>
+                        <th class="col-id">ID</th>
+                        <th class="col-moment">Moment in Journey</th>
+                        <th class="col-type">Type</th>
+                        <th class="col-output">Primary Output</th>
+                        <th class="col-priority">Priority</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="col-id">000</td>
+                        <td class="col-moment">Foundation</td>
+                        <td class="col-type"><span class="badge badge-sprint">Sprint</span></td>
+                        <td class="col-output">Living docs seeded, stack decided</td>
+                        <td class="col-priority prio-must">MUST</td>
+                    </tr>
+                    <tr>
+                        <td class="col-id">001</td>
+                        <td class="col-moment">Onboarding (First Contact)</td>
+                        <td class="col-type"><span class="badge badge-sprint">Sprint</span></td>
+                        <td class="col-output">Validated spec, ADR logged</td>
+                        <td class="col-priority prio-must">MUST</td>
+                    </tr>
+                    <tr>
+                        <td class="col-id">S-01</td>
+                        <td class="col-moment">Push Notification Tech Check</td>
+                        <td class="col-type"><span class="badge badge-spike">Spike</span></td>
+                        <td class="col-output">Recommendation (unblocks 003)</td>
+                        <td class="col-priority prio-must">MUST</td>
+                    </tr>
+                    <tr>
+                        <td class="col-id">002</td>
+                        <td class="col-moment">Core Loop (Creating a Fixture)</td>
+                        <td class="col-type"><span class="badge badge-sprint">Sprint</span></td>
+                        <td class="col-output">Validated spec, PERSONAS updated</td>
+                        <td class="col-priority prio-must">MUST</td>
+                    </tr>
+                    <tr>
+                        <td class="col-id">003</td>
+                        <td class="col-moment">Notifications & Reminders</td>
+                        <td class="col-type"><span class="badge badge-sprint">Sprint</span></td>
+                        <td class="col-output">Spec, dissent review triggered</td>
+                        <td class="col-priority prio-should">SHOULD</td>
+                    </tr>
+                    <tr>
+                        <td class="col-id">004+</td>
+                        <td class="col-moment">Refinements & Edge Cases</td>
+                        <td class="col-type"><span class="badge badge-sprint">Sprint</span></td>
+                        <td class="col-output">Backlog evolves (plan 3-5 ahead)</td>
+                        <td class="col-priority prio-could">COULD</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

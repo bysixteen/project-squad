@@ -1,0 +1,108 @@
+{
+  "project_info": {
+    "title": "Scaling to a Larger Project",
+    "created": 1772469723.7483666,
+    "last_updated": 1772469943.7510254,
+    "total_slides": 8
+  },
+  "slides": [
+    {
+      "id": "title",
+      "state": "edited",
+      "pageNum": 1
+    },
+    {
+      "id": "the_problem",
+      "state": "edited",
+      "pageNum": 2
+    },
+    {
+      "id": "journey_first",
+      "state": "edited",
+      "pageNum": 3
+    },
+    {
+      "id": "sprint_sequence",
+      "state": "edited",
+      "pageNum": 4
+    },
+    {
+      "id": "four_rules",
+      "state": "edited",
+      "pageNum": 5
+    },
+    {
+      "id": "sprint_formats",
+      "state": "edited",
+      "pageNum": 6
+    },
+    {
+      "id": "brain_compounds",
+      "state": "edited",
+      "pageNum": 7
+    },
+    {
+      "id": "closing",
+      "state": "edited",
+      "pageNum": 8
+    }
+  ],
+  "outline": [
+    {
+      "id": "title",
+      "title": "Scaling to a Larger Project",
+      "summary": "Title slide. The framework is not limited to a single sprint. A large project is a sequence of focused sprints, each targeting a single moment in the user journey.",
+      "image_plan": "Use a suitable image if needed",
+      "slide_template_key": ""
+    },
+    {
+      "id": "the_problem",
+      "title": "The problem with big projects",
+      "summary": "Large projects fail when the team tries to design everything at once. The solution is not a bigger sprint — it is a sequence of smaller, focused ones. One moment. One sprint. One decision.",
+      "image_plan": "Use a suitable image if needed",
+      "slide_template_key": ""
+    },
+    {
+      "id": "journey_first",
+      "title": "Map the journey first, assign sprints second",
+      "summary": "Before running a single sprint, map the user's journey from first contact to the long-term goal. Each step in that journey is a candidate sprint. Sprint 000 is always first. After that, prioritise by risk — the riskiest, least-understood moment gets the next sprint.",
+      "image_plan": "Use a suitable image if needed",
+      "slide_template_key": ""
+    },
+    {
+      "id": "sprint_sequence",
+      "title": "A typical sprint sequence for a large project",
+      "summary": "Visual table showing a realistic sprint sequence: Sprint 000 Foundation, Sprint 001 Onboarding, Spike 01 (technical question), Sprint 002 Core Feature, Sprint 003 Notifications, Sprint 004+ onwards. Shows type, what it produces, and priority (Must/Should/Could).",
+      "image_plan": "Use a suitable image if needed",
+      "slide_template_key": ""
+    },
+    {
+      "id": "four_rules",
+      "title": "Four rules for running sprints at scale",
+      "summary": "Rule 1: One moment per sprint — if you find two sprint questions about different moments, split it. Rule 2: The Brain compounds — each sprint makes the next one cheaper; by Sprint 005 the AI has deep context. Rule 3: Spikes run in parallel — a spike only blocks a sprint if the sprint depends on its answer. Rule 4: Dissent review triggers fire — overruled concerns from early sprints surface automatically when later sprints hit the relevant territory.",
+      "image_plan": "Use a suitable image if needed",
+      "slide_template_key": ""
+    },
+    {
+      "id": "sprint_formats",
+      "title": "Choose the right format for each sprint",
+      "summary": "Four sprint formats: Full Sprint (Map→Sketch→Decide→Synthesise, half day, complex features), Lite Sprint (Map→Decide, 1-2 hours, refinements), Workshop (compressed, 2-3 hours, time-pressured), Spike (Qualify→Investigate→Recommend, 4 hours max, blocking technical questions).",
+      "image_plan": "Use a suitable image if needed",
+      "slide_template_key": ""
+    },
+    {
+      "id": "brain_compounds",
+      "title": "The Brain gets smarter with every sprint",
+      "summary": "The three living documents (PRINCIPLES.md, PERSONAS.md, DECISIONS.md) accumulate knowledge across sprints. Sprint 003 pre-flights automatically read decisions from Sprints 001 and 002. By Sprint 005, the AI acts like a senior team member who has been on the project from day one. Compounding engineering — the work you do today reduces the cost of every future sprint.",
+      "image_plan": "Use a suitable image if needed",
+      "slide_template_key": ""
+    },
+    {
+      "id": "closing",
+      "title": "Start small. Scale deliberately.",
+      "summary": "Closing slide. You don't need to plan every sprint upfront — plan the first 3 to 5 and let the backlog evolve. The sprint backlog is the roadmap. The definition of done is when all Must moments have a validated spec and the decisions are logged.",
+      "image_plan": "Use a suitable image if needed",
+      "slide_template_key": ""
+    }
+  ]
+}

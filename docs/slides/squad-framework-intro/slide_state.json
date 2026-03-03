@@ -1,0 +1,132 @@
+{
+  "project_info": {
+    "title": "Project Squad Framework",
+    "created": 1772466572.664048,
+    "last_updated": 1772466735.5569234,
+    "total_slides": 10
+  },
+  "slides": [
+    {
+      "id": "title",
+      "state": "edited",
+      "pageNum": 1
+    },
+    {
+      "id": "the_problem",
+      "state": "edited",
+      "pageNum": 2
+    },
+    {
+      "id": "what_it_is",
+      "state": "edited",
+      "pageNum": 3
+    },
+    {
+      "id": "theory_knapp",
+      "state": "edited",
+      "pageNum": 4
+    },
+    {
+      "id": "the_squad",
+      "state": "edited",
+      "pageNum": 5
+    },
+    {
+      "id": "mandatory_dissent",
+      "state": "edited",
+      "pageNum": 6
+    },
+    {
+      "id": "sprints_spikes",
+      "state": "edited",
+      "pageNum": 7
+    },
+    {
+      "id": "living_docs",
+      "state": "edited",
+      "pageNum": 8
+    },
+    {
+      "id": "when_to_use",
+      "state": "edited",
+      "pageNum": 9
+    },
+    {
+      "id": "how_to_start",
+      "state": "edited",
+      "pageNum": 10
+    }
+  ],
+  "outline": [
+    {
+      "id": "title",
+      "title": "Project Squad Framework",
+      "summary": "Title slide. Tagline: A structured approach to building the right thing before writing a line of code. Establishes the IDE/dark code aesthetic.",
+      "image_plan": "Use a suitable image if needed",
+      "slide_template_key": ""
+    },
+    {
+      "id": "the_problem",
+      "title": "Most projects fail before the first commit",
+      "summary": "The core problem the framework solves: teams build the wrong thing because they skip structured thinking. Reference the two failure modes — groupthink and context loss. Set up the case for why a framework is needed.",
+      "image_plan": "Use a suitable image if needed",
+      "slide_template_key": ""
+    },
+    {
+      "id": "what_it_is",
+      "title": "What the framework is",
+      "summary": "A two-layer architecture: the Portable Toolkit (travels unchanged between projects) and the Project Context (project-specific, populated by commands). Three commands drive everything: /init-project-squad, /create-sprint, /create-spike.",
+      "image_plan": "Use a suitable image if needed",
+      "slide_template_key": ""
+    },
+    {
+      "id": "theory_knapp",
+      "title": "Built on Jake Knapp's Design Sprint methodology",
+      "summary": "The framework's sprint model is grounded in Jake Knapp's Design Sprint (Sprint, 2016) and Make Time (2018). The five-phase structure (Map, Sketch, Decide, Prototype, Synthesise) maps directly to Knapp's Monday–Friday sprint. Explain the adaptation for AI-assisted, async, multi-project use.",
+      "image_plan": "Use a suitable image if needed",
+      "slide_template_key": ""
+    },
+    {
+      "id": "the_squad",
+      "title": "Seven personas replace a meeting room",
+      "summary": "The seven core personas (Leo, Lena, Marcus, Kira, Aris, Rowan, Elias) each represent a distinct discipline and stake. They replace the need for a physical multi-disciplinary team in the room. Show the roster and each persona's signature question.",
+      "image_plan": "Use a suitable image if needed",
+      "slide_template_key": ""
+    },
+    {
+      "id": "mandatory_dissent",
+      "title": "Groupthink is the enemy — Elias is the defence",
+      "summary": "Elias Vance is the only non-maker. His Mandatory Dissent rule is a structural defence against groupthink. Every team has a bias toward building; Elias's only stake is whether it solves the user's problem. His dissent is recorded even if overruled.",
+      "image_plan": "Use a suitable image if needed",
+      "slide_template_key": ""
+    },
+    {
+      "id": "sprints_spikes",
+      "title": "Sprints explore problems. Spikes answer questions.",
+      "summary": "Explain the distinction between a Sprint (structured design exploration across multiple phases) and a Spike (a time-boxed investigation into a single, specific question). The Spike Qualification Test: one question, bounded scope, clear output. Show the two sprint modes: Full Design Sprint vs Lite Sprint.",
+      "image_plan": "Use a suitable image if needed",
+      "slide_template_key": ""
+    },
+    {
+      "id": "living_docs",
+      "title": "Distil, don't repeat — the three living documents",
+      "summary": "The Synthesis & Validation Framework principle: the output of a sprint is not raw artifacts but synthesised knowledge. Three living documents (PRINCIPLES.md, PERSONAS.md, DECISIONS.md) serve as the single source of truth. Eliminates context burn. Grounded in the 'Distil, Don't Repeat' principle.",
+      "image_plan": "Use a suitable image if needed",
+      "slide_template_key": ""
+    },
+    {
+      "id": "when_to_use",
+      "title": "Run this before every project and every significant feature",
+      "summary": "The framework is most valuable at three moments: project kickoff (Sprint 000 Foundation), before a significant new feature (Full Design Sprint), and when a technical decision is uncertain (Spike). Show the decision tree for which mode to use.",
+      "image_plan": "Use a suitable image if needed",
+      "slide_template_key": ""
+    },
+    {
+      "id": "how_to_start",
+      "title": "One command to start. Three files to maintain.",
+      "summary": "Practical onboarding: write PROJECT_CONTEXT.md, run /init-project-squad, and the framework scaffolds everything. The only ongoing obligation is maintaining the three living documents and running a sprint or spike when a decision needs structured thinking. Close with the permanent documentation site URL.",
+      "image_plan": "Use a suitable image if needed",
+      "slide_template_key": ""
+    }
+  ]
+}

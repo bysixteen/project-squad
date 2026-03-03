@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600&family=DM+Sans:wght@400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { margin: 0; padding: 0; overflow: hidden; }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background-color: #0f1117;
+            font-family: 'DM Sans', sans-serif;
+            color: #e8eaf0;
+            position: relative;
+            padding: 80px;
+            display: grid;
+            grid-template-columns: 400px 1fr;
+            gap: 60px;
+        }
+
+        .grid-bg {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: 
+                linear-gradient(rgba(42, 45, 58, 0.3) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(42, 45, 58, 0.3) 1px, transparent 1px);
+            background-size: 40px 40px;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .content-col { z-index: 1; display: flex; flex-direction: column; justify-content: center; }
+        .visual-col { z-index: 1; position: relative; display: flex; align-items: center; justify-content: center; }
+
+        h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 56px;
+            line-height: 1.1;
+            margin-bottom: 32px;
+        }
+
+        p {
+            font-size: 20px;
+            line-height: 1.6;
+            color: #8b949e;
+            margin-bottom: 40px;
+        }
+
+        .stat-block {
+            border-top: 1px solid #2a2d3a;
+            padding-top: 24px;
+            margin-top: auto;
+        }
+
+        .stat-label {
+            font-family: 'Space Mono', monospace;
+            font-size: 12px;
+            color: #4f8ef7;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .stat-value {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 32px;
+            color: #e8eaf0;
+        }
+
+        /* Visual Diagram */
+        .brain-container {
+            width: 100%;
+            height: 500px;
+            position: relative;
+            /* border: 1px dashed #2a2d3a; */
+        }
+
+        /* The Brain Hub */
+        .brain-hub {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 240px;
+            height: 160px;
+            background: #161922;
+            border: 2px solid #e8eaf0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+        }
+
+        .brain-label {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .file-list {
+            font-family: 'Space Mono', monospace;
+            font-size: 12px;
+            color: #8b949e;
+            line-height: 1.6;
+        }
+
+        /* Sprints orbiting */
+        .sprint-node {
+            position: absolute;
+            width: 160px;
+            padding: 12px;
+            background: #161922;
+            border: 1px solid #4f8ef7;
+            font-family: 'Space Mono', monospace;
+            font-size: 12px;
+            color: #4f8ef7;
+        }
+
+        .sprint-001 { top: 10%; left: 10%; }
+        .sprint-002 { top: 10%; right: 10%; }
+        .sprint-005 { bottom: 10%; left: 50%; transform: translateX(-50%); border-color: #f5a623; color: #f5a623; }
+
+        /* Connection Lines */
+        .line {
+            position: absolute;
+            background: #2a2d3a;
+            z-index: 1;
+        }
+
+        /* 001 to Brain (Write) */
+        .line-1 {
+            top: 20%; left: 25%; width: 20%; height: 2px;
+            transform: rotate(25deg);
+            background: linear-gradient(90deg, #4f8ef7, #2a2d3a);
+        }
+
+        /* Brain to 002 (Read) */
+        .line-2 {
+            top: 20%; right: 25%; width: 20%; height: 2px;
+            transform: rotate(-25deg);
+            background: linear-gradient(90deg, #2a2d3a, #4f8ef7);
+        }
+
+        /* Brain to 005 (Deep Read) */
+        .line-3 {
+            bottom: 35%; left: 50%; width: 2px; height: 15%;
+            background: linear-gradient(180deg, #e8eaf0, #f5a623);
+        }
+
+        .action-label {
+            position: absolute;
+            font-family: 'Space Mono', monospace;
+            font-size: 10px;
+            background: #0f1117;
+            padding: 2px 6px;
+            color: #8b949e;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="grid-bg"></div>
+
+        <div class="content-col">
+            <h2>The Brain compounds.</h2>
+            <p>Every sprint produces more than just code. It produces context. Decisions, principles, and persona insights are stored in the living documents.</p>
+            <p>By Sprint 005, the AI isn't guessing. It's acting like a senior team member who has been there since Day 1.</p>
+
+            <div class="stat-block">
+                <div class="stat-label">Result</div>
+                <div class="stat-value">Zero Context Loss</div>
+            </div>
+        </div>
+
+        <div class="visual-col">
+            <div class="brain-container">
+                <!-- The Hub -->
+                <div class="brain-hub">
+                    <div class="brain-label">THE BRAIN</div>
+                    <div class="file-list">
+                        PRINCIPLES.md<br>
+                        PERSONAS.md<br>
+                        DECISIONS.md
+                    </div>
+                </div>
+
+                <!-- Sprint 001 -->
+                <div class="sprint-node sprint-001">
+                    SPRINT 001<br>
+                    <span style="color: #e8eaf0;">Foundation</span>
+                </div>
+                <div class="line line-1"></div>
+                <div class="action-label" style="top: 25%; left: 30%;">WRITES CONTEXT</div>
+
+                <!-- Sprint 002 -->
+                <div class="sprint-node sprint-002">
+                    SPRINT 002<br>
+                    <span style="color: #e8eaf0;">Core Feature</span>
+                </div>
+                <div class="line line-2"></div>
+                <div class="action-label" style="top: 25%; right: 30%;">READS CONTEXT</div>
+
+                <!-- Sprint 005 -->
+                <div class="sprint-node sprint-005">
+                    SPRINT 005<br>
+                    <span style="color: #e8eaf0;">Optimization</span>
+                </div>
+                <div class="line line-3"></div>
+                <div class="action-label" style="bottom: 30%; left: 51%;">DEEP CONTEXT</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

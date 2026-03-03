@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600&family=DM+Sans:wght@400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { margin: 0; padding: 0; overflow: hidden; }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background-color: #0f1117;
+            font-family: 'DM Sans', sans-serif;
+            color: #e8eaf0;
+            position: relative;
+            /* keep top padding (title spacing) at 80px, reduce bottom padding to avoid overflow */
+            padding: 80px 80px 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+
+        .grid-bg {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: 
+                linear-gradient(rgba(42, 45, 58, 0.3) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(42, 45, 58, 0.3) 1px, transparent 1px);
+            background-size: 40px 40px;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .content { z-index: 1; position: relative; }
+
+        h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 56px;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            max-width: 800px;
+        }
+
+        p {
+            font-size: 24px;
+            line-height: 1.5;
+            color: #8b949e;
+            max-width: 700px;
+            margin-bottom: 80px;
+        }
+
+        /* Timeline Visual */
+        .timeline-container {
+            display: flex;
+            align-items: flex-start;
+            gap: 40px;
+            position: relative;
+            margin-top: 40px;
+        }
+
+        .timeline-line {
+            position: absolute;
+            top: 24px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: #2a2d3a;
+            z-index: 0;
+        }
+
+        .step {
+            position: relative;
+            z-index: 1;
+            width: 220px;
+        }
+
+        .step-marker {
+            width: 48px;
+            height: 48px;
+            background: #0f1117;
+            border: 2px solid #8b949e;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Space Mono', monospace;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: #8b949e;
+        }
+
+        .step-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 20px;
+            margin-bottom: 8px;
+            color: #e8eaf0;
+        }
+
+        .step-desc {
+            font-size: 14px;
+            color: #8b949e;
+            line-height: 1.4;
+            margin-bottom: 24px;
+        }
+
+        /* Sprint Card attached to step */
+        .sprint-card {
+            background: #161922;
+            border: 1px solid #4f8ef7;
+            padding: 16px;
+            border-radius: 4px;
+            position: relative;
+        }
+
+        .sprint-card::before {
+            content: '';
+            position: absolute;
+            top: -26px; /* Connect to timeline */
+            left: 24px;
+            width: 1px;
+            height: 26px;
+            background: #4f8ef7;
+            border-left: 1px dashed #4f8ef7;
+        }
+
+        .sprint-label {
+            font-family: 'Space Mono', monospace;
+            font-size: 10px;
+            color: #4f8ef7;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+            display: block;
+        }
+
+        .sprint-name {
+            font-size: 14px;
+            font-weight: 600;
+            color: #e8eaf0;
+        }
+
+        /* Highlighting the Riskiest Step */
+        .step.riskiest .step-marker {
+            border-color: #f5a623;
+            color: #f5a623;
+            background: rgba(245, 166, 35, 0.1);
+        }
+        
+        .step.riskiest .sprint-card {
+            border-color: #f5a623;
+        }
+        
+        .step.riskiest .sprint-label {
+            color: #f5a623;
+        }
+        
+        .step.riskiest .sprint-card::before {
+            background: #f5a623;
+            border-left: 1px dashed #f5a623;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="grid-bg"></div>
+        <div class="content">
+            <h2>Map the journey first.<br>Assign sprints second.</h2>
+            <p>Don't plan sprints based on features. Plan them based on user moments. Prioritise by risk — the scariest moment gets the first sprint.</p>
+
+            <div class="timeline-container">
+                <div class="timeline-line"></div>
+
+                <!-- Step 1 -->
+                <div class="step">
+                    <div class="step-marker">01</div>
+                    <div class="step-title">Discover</div>
+                    <div class="step-desc">User hears about the product.</div>
+                    <!-- No sprint here yet -->
+                </div>
+
+                <!-- Step 2 -->
+                <div class="step riskiest">
+                    <div class="step-marker">02</div>
+                    <div class="step-title">Onboard</div>
+                    <div class="step-desc">User creates account and sets up profile. High friction.</div>
+                    <div class="sprint-card">
+                        <span class="sprint-label">SPRINT 001 (MUST)</span>
+                        <div class="sprint-name">Frictionless Entry</div>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="step">
+                    <div class="step-marker">03</div>
+                    <div class="step-title">First Value</div>
+                    <div class="step-desc">User completes their first key action.</div>
+                    <div class="sprint-card" style="border-color: #2a2d3a;">
+                        <span class="sprint-label" style="color: #8b949e;">SPRINT 002 (SHOULD)</span>
+                        <div class="sprint-name">Core Loop</div>
+                    </div>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="step">
+                    <div class="step-marker">04</div>
+                    <div class="step-title">Retain</div>
+                    <div class="step-desc">User comes back next week.</div>
+                    <div class="sprint-card" style="border-color: #2a2d3a;">
+                        <span class="sprint-label" style="color: #8b949e;">SPRINT 003 (COULD)</span>
+                        <div class="sprint-name">Notifications</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

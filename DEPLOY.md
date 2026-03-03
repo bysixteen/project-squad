@@ -14,6 +14,8 @@ cp -r /path/to/project-squad/.squad .
 cp /path/to/project-squad/.claude/commands/create-sprint.md .claude/commands/
 cp /path/to/project-squad/.claude/commands/create-spike.md .claude/commands/
 cp /path/to/project-squad/.claude/commands/init-project-squad.md .claude/commands/
+cp /path/to/project-squad/.claude/commands/create-workshop.md .claude/commands/
+cp /path/to/project-squad/.claude/commands/import-personas.md .claude/commands/
 ```
 
 ### 2. (Optional but Recommended) Create a Project Context File

@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body { margin: 0; padding: 0; overflow: hidden; background: #1E1E1E; }
+      .slide-container {
+        width: 1280px;
+        min-height: 720px;
+        background: #1E1E1E;
+        display: flex;
+        flex-direction: column;
+        font-family: 'Inter', sans-serif;
+        color: #D4D4D4;
+        position: relative;
+        overflow: hidden;
+      }
+      
+      .header {
+        padding: 40px 60px 20px;
+        border-bottom: 1px solid #333;
+      }
+      
+      h2 {
+        font-family: 'Inter', sans-serif;
+        font-size: 36px;
+        color: #D4D4D4;
+        margin-bottom: 10px;
+      }
+      
+      .subtitle {
+        font-family: 'Fira Code', monospace;
+        color: #858585;
+        font-size: 16px;
+      }
+      
+      .content-area {
+        flex: 1;
+        padding: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 40px;
+      }
+      
+      /* Section Styles */
+      .section {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+      
+      .section-title {
+        font-family: 'Fira Code', monospace;
+        font-size: 14px;
+        text-transform: uppercase;
+        color: #858585;
+        text-align: center;
+        margin-bottom: 10px;
+      }
+      
+      /* Raw Artifacts (Left) */
+      .raw-stack {
+        position: relative;
+        width: 200px;
+        height: 240px;
+      }
+      
+      .artifact {
+        background: #252526;
+        border: 1px solid #3E3E42;
+        padding: 15px;
+        border-radius: 4px;
+        position: absolute;
+        width: 100%;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        font-family: 'Fira Code', monospace;
+        font-size: 12px;
+        color: #858585;
+      }
+      
+      /* Synthesis Arrow (Middle) */
+      .process-arrow {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: #007ACC;
+        gap: 10px;
+      }
+      
+      .arrow-line {
+        width: 100px;
+        height: 2px;
+        background: #007ACC;
+        position: relative;
+      }
+      
+      .arrow-line::after {
+        content: '';
+        position: absolute;
+        right: 0;
+        top: -4px;
+        border-left: 8px solid #007ACC;
+        border-top: 5px solid transparent;
+        border-bottom: 5px solid transparent;
+      }
+      
+      .process-label {
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        background: #1E1E1E;
+        padding: 4px 8px;
+        border: 1px solid #007ACC;
+        border-radius: 4px;
+      }
+      
+      /* Living Docs (Right) */
+      .living-docs {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        width: 400px;
+      }
+      
+      .doc-card {
+        background: #252526;
+        border-left: 4px solid;
+        padding: 20px;
+        border-radius: 0 4px 4px 0;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+      }
+      
+      .doc-icon { font-size: 24px; }
+      
+      .doc-info {
+        display: flex;
+        flex-direction: column;
+      }
+      
+      .doc-name {
+        font-family: 'Fira Code', monospace;
+        font-size: 16px;
+        font-weight: 700;
+        color: #D4D4D4;
+        margin-bottom: 4px;
+      }
+      
+      .doc-desc {
+        font-size: 13px;
+        color: #CCCCCC;
+      }
+      
+      .principles { border-color: #C586C0; } /* Purple */
+      .principles .doc-icon { color: #C586C0; }
+      
+      .personas { border-color: #6A9955; } /* Green */
+      .personas .doc-icon { color: #6A9955; }
+      
+      .decisions { border-color: #CE9178; } /* Orange */
+      .decisions .doc-icon { color: #CE9178; }
+      
+      .quote-box {
+        position: absolute;
+        bottom: 40px;
+        left: 60px;
+        right: 60px;
+        text-align: center;
+        font-style: italic;
+        color: #858585;
+        font-size: 16px;
+      }
+
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="header">
+            <h2>Distill, don't repeat — the three living documents</h2>
+            <div class="subtitle">Eliminate context burn by maintaining a single source of truth</div>
+        </div>
+        
+        <div class="content-area">
+            <!-- Left: Raw Input -->
+            <div class="section">
+                <div class="section-title">Raw Artifacts (The Noise)</div>
+                <div class="raw-stack">
+                    <div class="artifact" style="top: 0; transform: rotate(-2deg);">sprint-001/notes.md</div>
+                    <div class="artifact" style="top: 20px; transform: rotate(1deg);">chat-logs-2026.txt</div>
+                    <div class="artifact" style="top: 40px; transform: rotate(-1deg);">meeting-transcript.json</div>
+                    <div class="artifact" style="top: 60px; transform: rotate(2deg);">rough-sketches.png</div>
+                </div>
+            </div>
+            
+            <!-- Middle: Process -->
+            <div class="process-arrow">
+                <div class="process-label">Synthesis</div>
+                <div class="arrow-line"></div>
+            </div>
+            
+            <!-- Right: Living Docs -->
+            <div class="section">
+                <div class="section-title">Living Documents (The Signal)</div>
+                <div class="living-docs">
+                    <div class="doc-card principles">
+                        <i class="fas fa-gavel doc-icon"></i>
+                        <div class="doc-info">
+                            <div class="doc-name">PRINCIPLES.md</div>
+                            <div class="doc-desc">The Rules. Design patterns & architectural standards.</div>
+                        </div>
+                    </div>
+                    
+                    <div class="doc-card personas">
+                        <i class="fas fa-users doc-icon"></i>
+                        <div class="doc-info">
+                            <div class="doc-name">PERSONAS.md</div>
+                            <div class="doc-desc">The Users. Goals, pain points, and journeys.</div>
+                        </div>
+                    </div>
+                    
+                    <div class="doc-card decisions">
+                        <i class="fas fa-history doc-icon"></i>
+                        <div class="doc-info">
+                            <div class="doc-name">DECISIONS.md</div>
+                            <div class="doc-desc">The Log. Append-only record of what we decided and why.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="quote-box">
+            "The output of a sprint is not the raw artifacts themselves, but the synthesized knowledge extracted from them."
+        </div>
+    </div>
+</body>
+</html>

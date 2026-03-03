@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body { margin: 0; padding: 0; overflow: hidden; background: #1E1E1E; }
+      .slide-container {
+        width: 1280px;
+        min-height: 720px;
+        background: #1E1E1E;
+        display: flex;
+        flex-direction: column;
+        font-family: 'Inter', sans-serif;
+        color: #D4D4D4;
+        position: relative;
+        overflow: hidden;
+      }
+      
+      .header {
+        padding: 40px 60px 20px;
+        border-bottom: 1px solid #333;
+      }
+      
+      h2 {
+        font-family: 'Inter', sans-serif;
+        font-size: 36px;
+        color: #D4D4D4;
+        margin-bottom: 10px;
+      }
+      
+      .subtitle {
+        font-family: 'Fira Code', monospace;
+        color: #858585;
+        font-size: 16px;
+      }
+      
+      .content-area {
+        flex: 1;
+        padding: 60px;
+        display: flex;
+        gap: 60px;
+      }
+      
+      /* Left: The Makers */
+      .makers-col {
+        flex: 1;
+        border: 1px solid #3E3E42;
+        background: #252526;
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+      }
+      
+      .col-title {
+        font-family: 'Fira Code', monospace;
+        font-size: 18px;
+        text-transform: uppercase;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      
+      .maker-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+        margin-bottom: 30px;
+      }
+      
+      .maker-badge {
+        background: #1E1E1E;
+        border: 1px solid #333;
+        padding: 8px 12px;
+        font-size: 14px;
+        color: #CCCCCC;
+      }
+      
+      .bias-box {
+        margin-top: auto;
+        border-left: 3px solid #569CD6; /* Blue */
+        padding-left: 15px;
+      }
+      
+      .bias-label {
+        font-size: 12px;
+        color: #858585;
+        text-transform: uppercase;
+        margin-bottom: 5px;
+      }
+      
+      .bias-text {
+        font-size: 16px;
+        color: #D4D4D4;
+        line-height: 1.4;
+      }
+      
+      /* Right: Elias */
+      .elias-col {
+        flex: 1;
+        border: 1px solid #CE9178; /* Amber */
+        background: rgba(206, 145, 120, 0.05);
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+      }
+      
+      .elias-card {
+        background: #1E1E1E;
+        border: 1px solid #CE9178;
+        padding: 20px;
+        margin-bottom: 30px;
+      }
+      
+      .elias-name {
+        font-size: 24px;
+        font-weight: 700;
+        color: #CE9178;
+        margin-bottom: 5px;
+      }
+      
+      .elias-role {
+        font-family: 'Fira Code', monospace;
+        font-size: 14px;
+        color: #D4D4D4;
+      }
+      
+      .dissent-box {
+        margin-top: auto;
+        border-left: 3px solid #CE9178;
+        padding-left: 15px;
+      }
+      
+      /* Bottom Rule */
+      .rule-bar {
+        position: absolute;
+        bottom: 40px;
+        left: 60px;
+        right: 60px;
+        background: #1E1E1E;
+        border: 1px dashed #CE9178;
+        padding: 15px 20px;
+        font-family: 'Fira Code', monospace;
+        font-size: 14px;
+        color: #CE9178;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="header">
+            <h2>Groupthink is the enemy — Elias is the defence</h2>
+            <div class="subtitle">Structural protection against "building the wrong thing efficiently"</div>
+        </div>
+        
+        <div class="content-area">
+            <!-- Left: The Makers -->
+            <div class="makers-col">
+                <div class="col-title" style="color: #569CD6;">
+                    <i class="fas fa-tools"></i> The Makers (6)
+                </div>
+                
+                <div class="maker-grid">
+                    <div class="maker-badge">Leo</div>
+                    <div class="maker-badge">Lena</div>
+                    <div class="maker-badge">Marcus</div>
+                    <div class="maker-badge">Kira</div>
+                    <div class="maker-badge">Aris</div>
+                    <div class="maker-badge">Rowan</div>
+                </div>
+                
+                <div class="bias-box">
+                    <div class="bias-label">The Bias</div>
+                    <div class="bias-text">
+                        "We want to ship. We want it to be elegant. We want it to be fast."<br>
+                        <strong>Risk:</strong> Converging on a solution that is buildable but useless.
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Right: Elias -->
+            <div class="elias-col">
+                <div class="col-title" style="color: #CE9178;">
+                    <i class="fas fa-user-shield"></i> The Client (1)
+                </div>
+                
+                <div class="elias-card">
+                    <div class="elias-name">Elias Vance</div>
+                    <div class="elias-role">Mandatory Challenger</div>
+                </div>
+                
+                <div class="dissent-box">
+                    <div class="bias-label" style="color: #CE9178;">The Defence</div>
+                    <div class="bias-text">
+                        "Does this actually solve the user's problem?"<br>
+                        <strong>Role:</strong> He is the only non-maker. He has no stake in the solution, only the problem.
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="rule-bar">
+            <i class="fas fa-exclamation-triangle"></i>
+            RULE: Elias must be included in the Decide phase. His dissent is recorded in dissent-register.md even if overruled.
+        </div>
+    </div>
+</body>
+</html>

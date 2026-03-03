@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600&family=DM+Sans:wght@400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { margin: 0; padding: 0; overflow: hidden; }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background-color: #0f1117;
+            font-family: 'DM Sans', sans-serif;
+            color: #e8eaf0;
+            position: relative;
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            overflow: hidden;
+        }
+        
+        /* Grid Background */
+        .grid-bg {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: 
+                linear-gradient(rgba(42, 45, 58, 0.3) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(42, 45, 58, 0.3) 1px, transparent 1px);
+            background-size: 40px 40px;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* Main Content Area */
+        .content-area {
+            padding: 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            z-index: 1;
+            border-right: 1px solid #2a2d3a;
+        }
+
+        .eyebrow {
+            font-family: 'Space Mono', monospace;
+            color: #4f8ef7;
+            font-size: 16px;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .eyebrow::before {
+            content: '>';
+            color: #f5a623;
+            font-weight: 700;
+        }
+
+        h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 80px;
+            line-height: 1.1;
+            font-weight: 600;
+            margin-bottom: 32px;
+            letter-spacing: -1px;
+        }
+
+        .subtitle {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 28px;
+            color: #8b949e;
+            max-width: 600px;
+            line-height: 1.5;
+        }
+
+        /* Sidebar System Status */
+        .sidebar {
+            background-color: #161922;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            z-index: 1;
+        }
+
+        .status-block {
+            font-family: 'Space Mono', monospace;
+            font-size: 14px;
+            color: #8b949e;
+        }
+
+        .status-item {
+            margin-bottom: 24px;
+            border-bottom: 1px solid #2a2d3a;
+            padding-bottom: 8px;
+        }
+
+        .status-label {
+            display: block;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+            color: #4f8ef7;
+        }
+
+        .status-value {
+            color: #e8eaf0;
+        }
+
+        .logo-mark {
+            width: 40px;
+            height: 40px;
+            border: 2px solid #4f8ef7;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            color: #4f8ef7;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="grid-bg"></div>
+        
+        <div class="content-area">
+            <div class="eyebrow">PROJECT SQUAD FRAMEWORK</div>
+            <h1>Scaling to a<br>Larger Project</h1>
+            <div class="subtitle">One moment. One sprint. One decision.<br>How to build big things without losing context.</div>
+        </div>
+
+        <div class="sidebar">
+            <div class="logo-mark">PS</div>
+            
+            <div class="status-block">
+                <div class="status-item">
+                    <span class="status-label">Module</span>
+                    <span class="status-value">SCALING_OPS</span>
+                </div>
+                <div class="status-item">
+                    <span class="status-label">Version</span>
+                    <span class="status-value">v1.1.0</span>
+                </div>
+                <div class="status-item">
+                    <span class="status-label">Status</span>
+                    <span class="status-value" style="color: #4f8ef7;">● ACTIVE</span>
+                </div>
+            </div>
+
+            <div class="status-block">
+                <div class="status-item" style="border: none;">
+                    <span class="status-label">Date</span>
+                    <span class="status-value">2026-03-02</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

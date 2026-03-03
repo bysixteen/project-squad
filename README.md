@@ -1,6 +1,6 @@
 # Project Squad Framework
 
-A portable toolkit for running structured design sprints and technical spikes with AI assistance. Built for use with Claude.
+A portable toolkit for running structured design sprints, workshops, and technical spikes with AI assistance. Built for use with Claude.
 
 ---
 
@@ -21,9 +21,10 @@ The Project Squad Framework is a set of Claude commands, persona definitions, an
 
 1. Copy `.squad/` and `.claude/commands/` into your project root.
 2. Open Claude Code in your project directory.
-3. Run `/init-project-squad`.
-4. Customise `research/PERSONAS.md` with your project's user personas.
-5. Run `/create-sprint` to start your first sprint.
+3. Create `_meta/PROJECT_CONTEXT.md` using `examples/project-context-template.md`.
+4. Run `/init-project-squad` — it reads your context file and scaffolds everything.
+5. If you have existing personas, run `/import-personas` before your first sprint.
+6. Run `/create-sprint` to start Sprint 000 (Foundation).
 
 ### Option B: Manual setup
 
@@ -36,13 +37,15 @@ The Project Squad Framework is a set of Claude commands, persona definitions, an
 
 ---
 
-## The Three Commands
+## The Five Commands
 
 | Command | Purpose |
 |---------|---------|
-| `/init-project-squad` | Bootstrap the framework in a new project. Run once per project. |
-| `/create-sprint` | Run a structured design sprint. Supports Guided Wizard, Paste, and Link input modes. |
+| `/init-project-squad` | Bootstrap the framework in a new project. Reads `_meta/PROJECT_CONTEXT.md` and scaffolds all living documents. Run once per project. |
+| `/create-sprint` | Run a Full or Lite Design Sprint. Supports Guided Wizard, Paste, and Link input modes. |
+| `/create-workshop` | Run a compressed 2–3 hour sprint for time-pressured decisions. |
 | `/create-spike` | Run a time-boxed investigation to reduce excess uncertainty. Includes a Spike Qualification Test. |
+| `/import-personas` | Import externally-created client personas into `research/PERSONAS.md`. |
 
 ---
 
@@ -51,20 +54,26 @@ The Project Squad Framework is a set of Claude commands, persona definitions, an
 Once initialised, your project will have:
 
 ```
+_meta/
+└── PROJECT_CONTEXT.md            ← Your project seed (written before init)
+
 .squad/
 └── project-squad.md              ← Portable Constant: 7 persona definitions
 
 .claude/commands/
 ├── init-project-squad.md         ← Scaffolding command
 ├── create-sprint.md              ← Sprint command
-└── create-spike.md               ← Spike command
+├── create-workshop.md            ← Workshop command
+├── create-spike.md               ← Spike command
+└── import-personas.md            ← Persona import command
 
 research/                         ← Project Context (project-specific)
 ├── PRINCIPLES.md                 ← Design & technical principles
-├── PERSONAS.md                   ← Project user personas
+├── PERSONAS.md                   ← Project user personas (client personas live here)
 ├── DECISIONS.md                  ← Decision log
 ├── sprint-status.md              ← Sprint history
-├── dissent-register.md           ← Dissent log
+├── sprint-backlog.md             ← Upcoming sprint candidates
+├── dissent-register.md           ← Dissent log with review triggers
 ├── sprints/
 │   └── sprint-NNN-[topic]/
 │       ├── brief.md
@@ -72,14 +81,20 @@ research/                         ← Project Context (project-specific)
 │       ├── decision.md
 │       ├── synthesis.md
 │       └── summary.json          ← Machine-readable summary
+├── workshops/
+│   └── workshop-NNN-[topic]/
+│       ├── workshop.md
+│       └── summary.json          ← Machine-readable summary
 └── spikes/
     └── spike-NNN-[topic]/
         ├── brief.md
         ├── output.md
         └── summary.json          ← Machine-readable summary
 
-docs/decisions/
-└── NNN-[topic].md                ← Architecture Decision Records (ADRs)
+docs/
+├── decisions/
+│   └── NNN-[topic].md            ← Architecture Decision Records (ADRs)
+└── VALIDATION-BOUNDARY.md        ← Where the framework ends and delivery begins
 ```
 
 ---
@@ -92,7 +107,7 @@ The files in `.squad/` and `.claude/commands/` are the portable constant. They t
 
 ### Layer 2: Project Context (project-specific)
 
-The files in `research/` and `docs/decisions/` are project-specific. They start empty (or from templates) and are populated as sprints and spikes run. The `/create-sprint` and `/create-spike` commands read these files at the start of each session and update them at the end.
+The files in `research/` and `docs/decisions/` are project-specific. They start empty (or from templates) and are populated as sprints, workshops, and spikes run.
 
 ---
 
@@ -110,7 +125,32 @@ Seven portable archetypes. They travel unchanged between projects.
 | 6 | Rowan Vale | Craftsman | "What is the feeling we want to create?" |
 | 7 | Elias Vance | Client (External) | "Does this solve a real problem for my users?" |
 
-**The Mandatory Dissent Rule:** Elias Vance must always be included in the Decide phase. His dissent — even if overruled — must be recorded in `research/dissent-register.md`.
+**The Mandatory Dissent Rule:** Elias Vance must always be included in the Decide phase. His dissent — even if overruled — must be recorded in `research/dissent-register.md` with a review trigger condition.
+
+---
+
+## Client Personas
+
+The framework distinguishes between two types of personas:
+
+| Type | Location | Purpose |
+|---|---|---|
+| **Project Squad Personas** | `.squad/project-squad.md` | Portable archetypes that *think about* the product. |
+| **Client Personas** | `research/PERSONAS.md` | Real users of *this* product. Project-specific. |
+
+If you already have research-backed personas, use `/import-personas` rather than recreating them. Elias Vance speaks on behalf of the imported client personas during the Decide phase. See `examples/client-personas-template.md` for the import format.
+
+---
+
+## Workshop Trigger Conditions
+
+Use `/create-workshop` (not `/create-sprint`) when at least two of the following are true:
+
+1. A decision is needed within 24–48 hours.
+2. The team already has a leading option — the workshop stress-tests it.
+3. A stakeholder, client, or deadline is forcing a decision before a full sprint is practical.
+4. The question is well-defined but the team has not formally aligned.
+5. A previous sprint raised a follow-up question that needs a quick answer.
 
 ---
 
@@ -120,8 +160,8 @@ The `/create-sprint` command supports three input modes:
 
 | Mode | When to Use |
 |------|------------|
-| **(A) Guided Wizard** | You want structured questions based on Jake Knapp's Monday Questions (Long-Term Goal, Sprint Questions, Map and Target) |
-| **(B) Paste Content** | You have a brief, notes, Slack thread, or document to share — Claude extracts the key inputs |
+| **(A) Guided Wizard** | You want structured questions based on Jake Knapp's Monday Questions |
+| **(B) Paste Content** | You have a brief, notes, Slack thread, or document to share |
 | **(C) Link** | You have a URL to a document — Claude fetches and extracts the key inputs |
 
 ---
@@ -134,13 +174,19 @@ Before every spike, the `/create-spike` command runs a three-question test:
 2. **Is this uncertainty actively blocking a decision?** (If NO → not urgent enough)
 3. **Is the primary goal knowledge, not a feature?** (If NO → it's a feature, not a spike)
 
-This prevents the most common spike anti-pattern: using spikes for normal uncertainty.
+---
+
+## The Validation Boundary
+
+The framework ends at a decision and a synthesis document. What happens after — prototyping, usability testing, stakeholder review — is a delivery concern. The sprint's acceptance criteria become the validation checklist for whatever is built next.
+
+See `docs/VALIDATION-BOUNDARY.md` for the full pattern.
 
 ---
 
 ## Output Synthesis Rules
 
-All sprint and spike outputs follow these rules to prevent context burning:
+All sprint, workshop, and spike outputs follow these rules:
 
 1. YAML frontmatter is mandatory on every file.
 2. TL;DR or Answer is always the first body section.
@@ -155,7 +201,7 @@ All sprint and spike outputs follow these rules to prevent context burning:
 
 ### The "First 20 Lines" Rule
 
-Every output file is designed so an LLM reading only the first 20 lines can determine relevance, extract the key decision, and know where to find detail. YAML frontmatter + TL;DR block must fit within 20 lines.
+Every output file is designed so an LLM reading only the first 20 lines can determine relevance, extract the key decision, and know where to find detail.
 
 ---
 
@@ -166,20 +212,24 @@ Every output file is designed so an LLM reading only the first 20 lines can dete
 ```bash
 # From your project root
 cp -r /path/to/project-squad/.squad .
-cp -r /path/to/project-squad/.claude/commands/create-sprint.md .claude/commands/
-cp -r /path/to/project-squad/.claude/commands/create-spike.md .claude/commands/
-cp -r /path/to/project-squad/.claude/commands/init-project-squad.md .claude/commands/
+mkdir -p .claude/commands
+cp /path/to/project-squad/.claude/commands/create-sprint.md .claude/commands/
+cp /path/to/project-squad/.claude/commands/create-spike.md .claude/commands/
+cp /path/to/project-squad/.claude/commands/create-workshop.md .claude/commands/
+cp /path/to/project-squad/.claude/commands/import-personas.md .claude/commands/
+cp /path/to/project-squad/.claude/commands/init-project-squad.md .claude/commands/
 ```
 
-Then run `/init-project-squad` in Claude Code to generate the project context scaffold.
+Then create `_meta/PROJECT_CONTEXT.md` (use `examples/project-context-template.md`) and run `/init-project-squad`.
 
 ### What to customise
 
-After deploying, the only files you need to customise are the living documents in `research/`:
+After deploying, the only files you need to customise are:
 
-1. **`research/PERSONAS.md`** — Add your project's user personas (not the Project Squad personas — those are portable).
-2. **`research/PRINCIPLES.md`** — Add your project's design and technical principles.
-3. **`research/DECISIONS.md`** — Add any existing technical decisions.
+1. **`_meta/PROJECT_CONTEXT.md`** — Your project seed. The better this is, the better the init output.
+2. **`research/PERSONAS.md`** — Add your project's user personas, or use `/import-personas`.
+3. **`research/PRINCIPLES.md`** — Add your project's design and technical principles.
+4. **`research/DECISIONS.md`** — Add any existing technical decisions.
 
 The first sprint should always be Sprint 000 (Foundation) to establish the baseline context.
 
@@ -189,3 +239,4 @@ The first sprint should always be Sprint 000 (Foundation) to establish the basel
 
 - [The Sprint Book — Jake Knapp](https://www.thesprintbook.com/the-design-sprint)
 - [Spikes — Mountain Goat Software](https://www.mountaingoatsoftware.com/blog/spikes)
+- [Live Documentation Site](https://bysixteen.github.io/project-squad/)

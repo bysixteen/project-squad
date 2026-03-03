@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body { margin: 0; padding: 0; overflow: hidden; background: #1E1E1E; }
+      .slide-container {
+        width: 1280px;
+        min-height: 720px;
+        background: #1E1E1E;
+        display: flex;
+        flex-direction: column;
+        font-family: 'Inter', sans-serif;
+        color: #D4D4D4;
+        position: relative;
+        overflow: hidden;
+      }
+      
+      .header {
+        padding: 40px 60px 20px;
+        border-bottom: 1px solid #333;
+      }
+      
+      h2 {
+        font-family: 'Inter', sans-serif;
+        font-size: 36px;
+        color: #D4D4D4;
+        margin-bottom: 10px;
+      }
+      
+      .subtitle {
+        font-family: 'Fira Code', monospace;
+        color: #858585;
+        font-size: 16px;
+      }
+      
+      .content-area {
+        flex: 1;
+        padding: 60px;
+        display: flex;
+        gap: 60px;
+      }
+      
+      /* Left Column: Architecture */
+      .arch-col {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+      }
+      
+      .layer-box {
+        background: #252526;
+        border: 1px solid #3E3E42;
+        border-radius: 8px;
+        padding: 30px;
+        position: relative;
+      }
+      
+      .layer-title {
+        font-family: 'Fira Code', monospace;
+        font-size: 16px;
+        font-weight: 700;
+        margin-bottom: 15px;
+        text-transform: uppercase;
+      }
+      
+      .layer-desc {
+        font-size: 15px;
+        color: #CCCCCC;
+        line-height: 1.5;
+      }
+      
+      .portable { border-color: #007ACC; }
+      .portable .layer-title { color: #007ACC; }
+      
+      .context { border-color: #6A9955; }
+      .context .layer-title { color: #6A9955; }
+      
+      /* Right Column: Interface */
+      .interface-col {
+        flex: 1;
+        background: #1E1E1E;
+        border-left: 1px solid #3E3E42;
+        padding-left: 60px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 30px;
+      }
+      
+      .cmd-box {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+      }
+      
+      .cmd-text {
+        font-family: 'Fira Code', monospace;
+        font-size: 20px;
+        color: #DCDCAA; /* Yellow */
+        background: #252526;
+        padding: 10px 15px;
+        border-radius: 4px;
+        border: 1px solid #3E3E42;
+        width: 280px;
+      }
+      
+      .cmd-desc {
+        font-size: 15px;
+        color: #858585;
+        flex: 1;
+      }
+      
+      .arrow-down {
+        font-size: 24px;
+        color: #858585;
+        align-self: center;
+      }
+
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="header">
+            <h2>What the framework is</h2>
+            <div class="subtitle">A two-layer architecture driven by three commands</div>
+        </div>
+        
+        <div class="content-area">
+            <!-- Left: Architecture -->
+            <div class="arch-col">
+                <div class="layer-box portable">
+                    <div class="layer-title"><i class="fas fa-suitcase"></i> Portable Toolkit</div>
+                    <div class="layer-desc">
+                        Travels unchanged between every project.<br>
+                        Contains the squad logic, templates, and rules.<br>
+                        <code>.squad/</code>, <code>.claude/commands/</code>
+                    </div>
+                </div>
+                
+                <div class="arrow-down"><i class="fas fa-arrow-down"></i></div>
+                
+                <div class="layer-box context">
+                    <div class="layer-title"><i class="fas fa-brain"></i> Project Context</div>
+                    <div class="layer-desc">
+                        Specific to this project.<br>
+                        Populated by the commands.<br>
+                        <code>research/</code>, <code>docs/decisions/</code>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Right: Interface -->
+            <div class="interface-col">
+                <div class="cmd-box">
+                    <div class="cmd-text">/init-project-squad</div>
+                    <div class="cmd-desc">Run once per project. Scaffolds the structure.</div>
+                </div>
+                
+                <div class="cmd-box">
+                    <div class="cmd-text">/create-sprint</div>
+                    <div class="cmd-desc">Run for every feature. Structured design exploration.</div>
+                </div>
+                
+                <div class="cmd-box">
+                    <div class="cmd-text">/create-spike</div>
+                    <div class="cmd-desc">Run for specific questions. Time-boxed investigation.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600&family=DM+Sans:wght@400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { margin: 0; padding: 0; overflow: hidden; }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background-color: #0f1117;
+            font-family: 'DM Sans', sans-serif;
+            color: #e8eaf0;
+            position: relative;
+            padding: 80px 64px 64px; /* keep top padding at 80px */
+            display: flex;
+            flex-direction: column;
+        }
+
+        .grid-bg {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: 
+                linear-gradient(rgba(42, 45, 58, 0.3) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(42, 45, 58, 0.3) 1px, transparent 1px);
+            background-size: 40px 40px;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .content { z-index: 1; position: relative; height: 100%; display: flex; flex-direction: column; }
+
+        h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 56px;
+            line-height: 1.1;
+            margin-bottom: 48px;
+        }
+
+        .rules-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            gap: 24px; /* reduced from 32px to save vertical space */
+            flex-grow: 1;
+        }
+
+        .rule-card {
+            background: #161922;
+            border: 1px solid #2a2d3a;
+            padding: 24px; /* reduced from 32px */
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .rule-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 4px;
+        }
+
+        .card-1::before { background: #4f8ef7; } /* Blue */
+        .card-2::before { background: #10b981; } /* Green */
+        .card-3::before { background: #8b5cf6; } /* Purple */
+        .card-4::before { background: #f5a623; } /* Amber */
+
+        .rule-number {
+            font-family: 'Space Mono', monospace;
+            font-size: 14px;
+            color: #8b949e;
+            margin-bottom: 12px; /* slightly reduced */
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .rule-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #e8eaf0;
+        }
+
+        .rule-desc {
+            font-size: 16px;
+            line-height: 1.5;
+            color: #8b949e;
+        }
+
+        .highlight { color: #e8eaf0; font-weight: 500; }
+
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="grid-bg"></div>
+        <div class="content">
+            <h2>Four rules for running sprints at scale</h2>
+            
+            <div class="rules-grid">
+                <!-- Rule 1 -->
+                <div class="rule-card card-1">
+                    <div class="rule-number">
+                        <span>RULE_01</span>
+                        <span style="color: #4f8ef7;">FOCUS</span>
+                    </div>
+                    <div class="rule-title">One moment per sprint</div>
+                    <div class="rule-desc">
+                        If you find yourself writing two sprint questions about different moments, <span class="highlight">split it into two sprints</span>. Focused sprints produce clear decisions. Broad sprints produce noise.
+                    </div>
+                </div>
+
+                <!-- Rule 2 -->
+                <div class="rule-card card-2">
+                    <div class="rule-number">
+                        <span>RULE_02</span>
+                        <span style="color: #10b981;">EFFICIENCY</span>
+                    </div>
+                    <div class="rule-title">The Brain compounds</div>
+                    <div class="rule-desc">
+                        Each sprint makes the next one cheaper. By Sprint 005, the AI has deep context from <span class="highlight">PRINCIPLES.md</span> and <span class="highlight">DECISIONS.md</span> and barely needs re-explaining.
+                    </div>
+                </div>
+
+                <!-- Rule 3 -->
+                <div class="rule-card card-3">
+                    <div class="rule-number">
+                        <span>RULE_03</span>
+                        <span style="color: #8b5cf6;">VELOCITY</span>
+                    </div>
+                    <div class="rule-title">Spikes run in parallel</div>
+                    <div class="rule-desc">
+                        A spike only blocks a sprint if the sprint depends on its answer. Otherwise, <span class="highlight">run them concurrently</span>. Treat technical investigations as separate workstreams.
+                    </div>
+                </div>
+
+                <!-- Rule 4 -->
+                <div class="rule-card card-4">
+                    <div class="rule-number">
+                        <span>RULE_04</span>
+                        <span style="color: #f5a623;">SAFETY</span>
+                    </div>
+                    <div class="rule-title">Dissent review triggers fire</div>
+                    <div class="rule-desc">
+                        Overruled concerns from early sprints aren't lost. They surface automatically when later sprints hit the relevant territory or trigger condition. <span class="highlight">Nothing is forgotten.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

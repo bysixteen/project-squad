@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body { margin: 0; padding: 0; overflow: hidden; background: #1E1E1E; }
+      .slide-container {
+        width: 1280px;
+        min-height: 720px;
+        background: #1E1E1E;
+        display: flex;
+        flex-direction: column;
+        font-family: 'Inter', sans-serif;
+        color: #D4D4D4;
+        position: relative;
+        overflow: hidden;
+      }
+      
+      .header {
+        padding: 40px 60px 20px;
+        border-bottom: 1px solid #333;
+      }
+      
+      h2 {
+        font-family: 'Inter', sans-serif;
+        font-size: 36px;
+        color: #D4D4D4;
+        margin-bottom: 10px;
+      }
+      
+      .subtitle {
+        font-family: 'Fira Code', monospace;
+        color: #858585;
+        font-size: 16px;
+      }
+      
+      .content-area {
+        flex: 1;
+        padding: 60px;
+        display: flex;
+        gap: 40px;
+        justify-content: center;
+      }
+      
+      .use-case-card {
+        flex: 1;
+        background: #252526;
+        border: 1px solid #3E3E42;
+        border-radius: 8px;
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+      
+      .use-case-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+      }
+      
+      .kickoff::before { background: #569CD6; } /* Blue */
+      .feature::before { background: #C586C0; } /* Purple */
+      .blocked::before { background: #CE9178; } /* Orange */
+      
+      .icon-circle {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        background: #1E1E1E;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 32px;
+        margin-bottom: 20px;
+        border: 1px solid #3E3E42;
+      }
+      
+      .kickoff .icon-circle { color: #569CD6; border-color: #569CD6; }
+      .feature .icon-circle { color: #C586C0; border-color: #C586C0; }
+      .blocked .icon-circle { color: #CE9178; border-color: #CE9178; }
+      
+      .card-title {
+        font-size: 24px;
+        font-weight: 700;
+        color: #FFFFFF;
+        margin-bottom: 10px;
+      }
+      
+      .card-desc {
+        font-size: 16px;
+        color: #CCCCCC;
+        margin-bottom: 30px;
+        line-height: 1.4;
+        flex: 1;
+      }
+      
+      .cmd-block {
+        background: #1E1E1E;
+        padding: 15px;
+        border-radius: 4px;
+        font-family: 'Fira Code', monospace;
+        font-size: 14px;
+        color: #DCDCAA;
+        border: 1px solid #3E3E42;
+        width: 100%;
+      }
+      
+      .outcome {
+        margin-top: 20px;
+        font-size: 14px;
+        color: #858585;
+        font-style: italic;
+      }
+
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="header">
+            <h2>Run this before every project and every significant feature</h2>
+            <div class="subtitle">The three moments that matter</div>
+        </div>
+        
+        <div class="content-area">
+            <!-- Case 1: Kickoff -->
+            <div class="use-case-card kickoff">
+                <div class="icon-circle">
+                    <i class="fas fa-flag-checkered"></i>
+                </div>
+                <div class="card-title">Project Kickoff</div>
+                <div class="card-desc">
+                    Starting a new codebase? Establish the foundation, stack decisions, and core principles first.
+                </div>
+                <div class="cmd-block">
+                    /init-project-squad<br>
+                    <span style="color: #6A9955;"># Then Sprint 000</span>
+                </div>
+                <div class="outcome">Output: Shared Context</div>
+            </div>
+            
+            <!-- Case 2: Feature -->
+            <div class="use-case-card feature">
+                <div class="icon-circle">
+                    <i class="fas fa-star"></i>
+                </div>
+                <div class="card-title">New Feature</div>
+                <div class="card-desc">
+                    Building something complex? Map the journey and sketch the solution before coding.
+                </div>
+                <div class="cmd-block">
+                    /create-sprint<br>
+                    <span style="color: #6A9955;"># Full Design Sprint</span>
+                </div>
+                <div class="outcome">Output: Validated Spec</div>
+            </div>
+            
+            <!-- Case 3: Blocked -->
+            <div class="use-case-card blocked">
+                <div class="icon-circle">
+                    <i class="fas fa-question"></i>
+                </div>
+                <div class="card-title">Uncertainty</div>
+                <div class="card-desc">
+                    Stuck on a technical choice or user need? Investigate one specific question.
+                </div>
+                <div class="cmd-block">
+                    /create-spike<br>
+                    <span style="color: #6A9955;"># Time-boxed</span>
+                </div>
+                <div class="outcome">Output: Recommendation</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
