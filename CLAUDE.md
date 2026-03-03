@@ -19,6 +19,7 @@ A portable toolkit for running structured design sprints, workshops, and technic
 
 - **Portable Toolkit** (`.squad/`, `.claude/commands/`) — travels unchanged between projects
 - **Project Context** (`research/`, `docs/decisions/`) — project-specific, populated by commands
+- **Specialists** (`.squad/specialists.md`) — optional domain-specific roles, additive only
 
 ## Key Rules
 

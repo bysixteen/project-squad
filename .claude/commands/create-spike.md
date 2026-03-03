@@ -11,8 +11,11 @@ Run a structured, time-boxed investigation to reduce excess uncertainty before c
 Before starting, read the following living documents:
 - `research/DECISIONS.md`
 - `research/sprint-status.md`
+- `research/sprint-backlog.md` (if it exists)
 
 Determine the next spike number from the spikes folder.
+
+**Sprint Backlog Check:** If `research/sprint-backlog.md` exists and has spike candidates with `Status: Candidate`, present the top candidate(s) to the user and ask: "Your sprint backlog has a spike candidate ready: [topic]. Would you like to investigate this, or define a new spike?"
 
 ---
 

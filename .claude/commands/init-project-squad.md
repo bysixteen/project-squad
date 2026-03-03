@@ -8,13 +8,15 @@ Bootstrap the Project Squad framework in the current project. This command creat
 
 ## Pre-Flight Checks
 
-Before creating anything, perform these checks:
+Before creating anything, perform these checks in order:
 
 1. **Check for existing scaffold:** Does a `.squad/` or `research/` directory already exist?
    - If yes: Inform the user — "This project appears to already have a Project Squad framework. Running this command again will not overwrite existing files, but will add any missing ones. Proceed? (y/n)"
    - If no: Proceed immediately.
 
-2. **Confirm project name:** Ask the user: "What is the name of this project? This will be used to pre-fill documentation headers."
+2. **Check for a Project Context file:** Does `_meta/PROJECT_CONTEXT.md` exist?
+   - If yes: Read it silently. You will use its content to pre-populate the living documents in Step 3. Inform the user: "Found `_meta/PROJECT_CONTEXT.md` — will use it to pre-populate your living documents."
+   - If no: Ask the user: "What is the name of this project? This will be used to pre-fill documentation headers." Proceed with the name they provide.
 
 ---
 
@@ -42,14 +44,22 @@ Copy the following files from the toolkit source to the project (do not overwrit
 - `.claude/commands/create-sprint.md` — The sprint command.
 - `.claude/commands/create-spike.md` — The spike command.
 
+If `.squad/specialists.md` exists in the toolkit source, copy it as well. It is optional and additive.
+
 ### Step 3 — Generate Project Context Scaffold
 
 Create the following files using the templates below. If a file already exists, skip it.
+
+If `_meta/PROJECT_CONTEXT.md` was found in the pre-flight check, use its content to pre-populate the placeholders in each template rather than leaving them blank. Specifically:
+- Use the project name, description, and tech stack to populate `PRINCIPLES.md` and `DECISIONS.md` headers.
+- Use any persona or user role information to seed `PERSONAS.md` with real entries instead of placeholders.
+- Use any stated principles or constraints to seed `PRINCIPLES.md` with real entries.
 
 **`research/PRINCIPLES.md`** — See template in this file.
 **`research/PERSONAS.md`** — See template in this file.
 **`research/DECISIONS.md`** — See template in this file.
 **`research/sprint-status.md`** — See template in this file.
+**`research/sprint-backlog.md`** — See template in this file.
 **`research/dissent-register.md`** — See template in this file.
 
 ### Step 4 — Confirm and Guide
@@ -57,7 +67,7 @@ Create the following files using the templates below. If a file already exists, 
 Print the following success message:
 
 ```
-✓ Project Squad framework initialized for: [PROJECT NAME]
+✓ Project Squad framework v1.1.0 initialized for: [PROJECT NAME]
 
 Files created:
   .squad/project-squad.md
@@ -67,13 +77,14 @@ Files created:
   research/PERSONAS.md
   research/DECISIONS.md
   research/sprint-status.md
+  research/sprint-backlog.md
   research/dissent-register.md
 
 Next steps:
-  1. Customize research/PERSONAS.md with your project's user personas.
-  2. Add any known design or technical principles to research/PRINCIPLES.md.
-  3. Run /create-sprint to start your first sprint.
-  4. Run /create-spike when you encounter a question that needs investigation.
+  1. If PERSONAS.md is still using placeholders, populate it with your project's real user personas.
+  2. If PRINCIPLES.md is still using placeholders, add your known design and technical principles.
+  3. Add any known sprint or spike candidates to research/sprint-backlog.md.
+  4. Run /create-sprint to start your Foundation sprint (Sprint 000).
 
 The Project Squad personas in .squad/project-squad.md are portable archetypes — do not modify them.
 ```
@@ -163,6 +174,26 @@ This document is a high-level log of significant decisions made during sprints a
 | 000 | Foundation | [DATE] | Complete | All | `research/sprints/sprint-000-foundation/` |
 ```
 
+### Template: `research/sprint-backlog.md`
+
+```markdown
+# [PROJECT NAME] — Sprint & Spike Backlog
+
+**Last updated:** [DATE]
+
+This document is a lightweight backlog of sprint and spike candidates. It is the input to `/create-sprint` and `/create-spike` — those commands will read this file and offer to pull the next candidate from it.
+
+**How to use:**
+- Add a row whenever a new sprint or spike candidate is identified.
+- Set `Status` to `Candidate` when first added, `In Progress` when running, and `Done` when complete.
+- Set `Priority` to `High`, `Medium`, or `Low`.
+- The `Blocking` column identifies what work cannot start until this sprint or spike is complete.
+
+| # | Type | Topic / Question | Priority | Status | Blocking |
+|---|------|-----------------|----------|--------|----------|
+| — | — | _No candidates yet. Add sprint and spike ideas here._ | — | — | — |
+```
+
 ### Template: `research/dissent-register.md`
 
 ```markdown
@@ -172,7 +203,9 @@ This document is a high-level log of significant decisions made during sprints a
 
 This document records all significant dissenting opinions raised during sprints and spikes, primarily from Elias Vance (the Mandatory Challenger). Dissent is a feature. Recording it ensures that overruled concerns are not lost and can be revisited.
 
-| Sprint / Spike | Topic | Dissenting Persona | Dissenting View | Outcome |
-|---|---|---|---|---|
-| — | _No dissent recorded yet._ | — | — | — |
+The `Review Trigger` column specifies the condition under which a dissenting view should be actively revisited. The `/create-sprint` command scans this column before each sprint and surfaces any entries whose trigger matches the upcoming sprint's topic.
+
+| Sprint / Spike | Topic | Dissenting Persona | Dissenting View | Outcome | Review Trigger |
+|---|---|---|---|---|---|
+| — | _No dissent recorded yet._ | — | — | — | — |
 ```
