@@ -87,13 +87,15 @@ Output these three answers as a `## Context` block in the workshop document.
 
 ## Step 3 — Rapid Perspectives (30 minutes)
 
-**Elias Vance is mandatory in all workshops** (Key Rule 3). Select 2–3 additional personas from the table below. You do not need all seven.
+**Elias Vance is mandatory in all workshops** (Key Rule 3). Select 2–4 additional personas from the table below. You do not need all nine.
 
 | Always include | Include if relevant |
 |---|---|
 | Elias Vance (Mandatory Dissent) | Leo Finch (if visual/brand decision) |
 | Dr. Aris Thorne (strategic framing) | Dr. Lena Petrova (if technical decision) |
 | Marcus Thorne (scope/constraints) | Kira Sharma (if implementation detail) |
+| | Nara Shin (if evidence/research needed) |
+| | Ines Alvarez (if UX/interaction decision) |
 
 For each assigned persona, generate a **single paragraph (75–100 words)** in their voice. No sketches. No extended exploration. Just their immediate reaction to the decision question and the options on the table.
 

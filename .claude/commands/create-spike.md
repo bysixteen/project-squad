@@ -143,9 +143,9 @@ Based on the spike type, suggest the appropriate Project Squad personas from `.s
 | Spike Type | Recommended Personas |
 |---|---|
 | Technical | Dr. Lena Petrova, Marcus Thorne, Kira Sharma |
-| Functional | Dr. Lena Petrova, Dr. Aris Thorne, Kira Sharma |
-| Design | Leo Finch, Rowan Vale, Dr. Lena Petrova |
-| Research | Dr. Aris Thorne, Elias Vance |
+| Functional | Ines Alvarez, Dr. Lena Petrova, Kira Sharma |
+| Design | Ines Alvarez, Leo Finch, Rowan Vale, Dr. Lena Petrova |
+| Research | Nara Shin, Dr. Aris Thorne, Elias Vance |
 
 Ask the user to confirm or adjust the selection.
 
@@ -317,6 +317,28 @@ All spike output files must follow the same 10 rules as sprint outputs (see `cre
 - **ADR reference is mandatory** if a significant technical decision was made.
 - **`summary.json` is mandatory.** This is the machine-readable summary for future context.
 
+**Generate spike HTML page:** Create `site/spikes/spike-NNN/index.html` — a browsable HTML page rendering the spike question, answer, evidence, and constraints. Use the shared design system:
+- Link to `../../styles.css` for shared tokens and components
+- Link to `../../layout.js` for header and sidebar injection
+- Set `<body data-layout="spike" data-root="../.." data-spike="NNN">`
+- Structure: spike hero (number + topic + date), question block (purple), answer block (green with confidence badge), evidence table, constraints discovered, unblocked work, artifacts list
+- Create the `site/spikes/spike-NNN/` directory if it doesn't exist
+
+**Update sprint manifest:** Append an entry to `site/sprints.json`. If the file doesn't exist, create it as a JSON array. Each entry has:
+```json
+{
+  "type": "spike",
+  "id": "spike-NNN",
+  "number": "SNNN",
+  "topic": "[Topic]",
+  "date": "YYYY-MM-DD",
+  "status": "complete",
+  "decision": "[One-sentence answer from output.md]",
+  "confidence": "high | medium | low",
+  "href": "spikes/spike-NNN/index.html"
+}
+```
+
 ---
 
 ## Verification Checklist
@@ -326,6 +348,8 @@ After completing the spike, verify:
 - [ ] `output.md` has the Answer as the first body section.
 - [ ] `output.md` has raw research below a `---` horizontal rule.
 - [ ] `summary.json` has been created and is valid JSON.
+- [ ] `site/spikes/spike-NNN/index.html` has been created with shared design system (`styles.css` + `layout.js`).
+- [ ] `site/sprints.json` has been updated with the new spike entry.
 - [ ] `research/DECISIONS.md` has been updated if a decision was made.
 - [ ] ADR has been created in `docs/decisions/` if a significant technical decision was made.
 - [ ] The spike branch (if used) has NOT been merged to `main` or `dev`.

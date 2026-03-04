@@ -7,9 +7,9 @@ status: optional
 
 # Project Squad — Specialist Roles
 
-This file defines optional specialist roles that can be added to a sprint or spike when the challenge requires domain-specific expertise beyond the core seven personas.
+This file defines optional specialist roles that can be added to a sprint or spike when the challenge requires domain-specific expertise beyond the core nine personas.
 
-**Important:** This file is additive. The seven core personas in `project-squad.md` are the portable constant and must never be modified. Specialists are pulled in for specific sprints only — they do not replace any core persona.
+**Important:** This file is additive. The nine core personas in `project-squad.md` are the portable constant and must never be modified. Specialists are pulled in for specific sprints only — they do not replace any core persona.
 
 ---
 

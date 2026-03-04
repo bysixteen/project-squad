@@ -10,7 +10,7 @@ The Project Squad Framework is a set of Claude commands, persona definitions, an
 
 - **Portable** — set up in any project with a single command.
 - **Context-efficient** — every output is structured so an LLM can extract key decisions from the first 20 lines without reading the full document.
-- **Persona-driven** — seven named archetypes provide diverse perspectives and prevent groupthink.
+- **Persona-driven** — nine named archetypes provide diverse perspectives and prevent groupthink.
 - **Lift-and-shift ready** — the Portable Toolkit travels unchanged between projects; only the Project Context is project-specific.
 
 ---
@@ -60,7 +60,7 @@ _meta/
 └── PROJECT_CONTEXT.md            ← Your project seed (written before init)
 
 .squad/
-└── project-squad.md              ← Portable Constant: 7 persona definitions
+└── project-squad.md              ← Portable Constant: 9 persona definitions
 
 .claude/commands/
 ├── init-project-squad.md         ← Scaffolding command
@@ -115,7 +115,7 @@ The files in `research/` and `docs/decisions/` are project-specific. They start 
 
 ## The Project Squad Personas
 
-Seven portable archetypes. They travel unchanged between projects.
+Nine portable archetypes. They travel unchanged between projects.
 
 | # | Name | Role | Signature Question |
 |---|------|------|-------------------|
@@ -126,6 +126,8 @@ Seven portable archetypes. They travel unchanged between projects.
 | 5 | Dr. Aris Thorne | Strategist | "What is the real problem we are trying to solve?" |
 | 6 | Rowan Vale | Craftsman | "What is the feeling we want to create?" |
 | 7 | Elias Vance | Client (External) | "Does this solve a real problem for my users?" |
+| 8 | Nara Shin | UX Researcher | "What does the evidence say?" |
+| 9 | Ines Alvarez | UX Designer | "Where will users get stuck?" |
 
 **The Mandatory Dissent Rule:** Elias Vance must always be included in the Decide phase. His dissent — even if overruled — must be recorded in `research/dissent-register.md` with a review trigger condition.
 

@@ -1,9 +1,9 @@
 # Project Squad Framework
-<!-- version: 1.2.1 -->
+<!-- version: 3.0.0 -->
 
 ## What This Is
 
-A portable toolkit for running structured design sprints, workshops, and technical spikes with Claude. Seven named personas provide diverse perspectives; five commands drive the workflow.
+A portable toolkit for running structured design sprints, workshops, and technical spikes with Claude. Nine named personas provide diverse perspectives; five commands drive the workflow.
 
 ## Commands
 
@@ -24,7 +24,7 @@ A portable toolkit for running structured design sprints, workshops, and technic
 ## Key Rules
 
 1. **Do not modify** `.squad/project-squad.md` — it is the portable constant
-2. **Read `.squad/project-squad.md` before running any command** — the seven persona names, roles, and signature questions are defined there and must be used verbatim. Never substitute generic roles (Designer, Engineer, Challenger, Scribe, etc.) for the named personas.
+2. **Read `.squad/project-squad.md` before running any command** — the nine persona names, roles, and signature questions are defined there and must be used verbatim. Never substitute generic roles (Designer, Engineer, Challenger, Scribe, etc.) for the named personas.
 3. **First 20 Lines** — every output must have YAML frontmatter + TL;DR within 20 lines
 4. **Elias Vance always dissents** — his challenge must be recorded even if overruled
 5. **One question per spike** — multiple questions = multiple spikes

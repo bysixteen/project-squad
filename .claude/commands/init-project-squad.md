@@ -54,7 +54,7 @@ docs/decisions/
 
 Copy the following files from the toolkit source to the project (do not overwrite if they already exist):
 
-- `.squad/project-squad.md` — The seven persona definitions. This file is the portable constant.
+- `.squad/project-squad.md` — The nine persona definitions. This file is the portable constant.
 - `.claude/commands/create-sprint.md` — The sprint command.
 - `.claude/commands/create-workshop.md` — The workshop command.
 - `.claude/commands/create-spike.md` — The spike command.
@@ -150,7 +150,7 @@ _Describe the quality bar. What does a well-executed piece of work look like her
 **Last updated:** [DATE] — Sprint 000 (Foundation)
 **Next review:** Sprint 002
 
-> **Note:** These are the project's *user* personas — the real people who will use the product. They are distinct from the Project Squad personas (the seven archetypes in `.squad/project-squad.md`).
+> **Note:** These are the project's *user* personas — the real people who will use the product. They are distinct from the Project Squad personas (the nine archetypes in `.squad/project-squad.md`).
 
 ---
 

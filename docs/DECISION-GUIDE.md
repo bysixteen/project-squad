@@ -79,7 +79,7 @@ Each sprint's `synthesis.md` and `summary.json` feed the next one. Sprint 000 (F
 
 ### `/create-sprint`
 - `brief.md` — the sprint challenge and questions
-- `sketches.md` — all seven persona perspectives (archived, not handed to builders)
+- `sketches.md` — all persona perspectives (archived, not handed to builders)
 - `decision.md` — the decision, rationale, rejected alternatives, Elias's dissent
 - `creative-brief.md` — the spec: positioning, success criteria, guardrails (produced for user-facing features)
 - `ideas.md` — opportunities that surfaced but weren't the focus

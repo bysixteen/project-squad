@@ -10,6 +10,27 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/). Ver
 
 ---
 
+## [3.0.0] — 2026-03-04
+
+### Added
+
+- **Nara Shin — UX Researcher** (persona #8). The Evidence Hunter. Signature question: "What does the evidence say?" Leads evidence gathering in Map phase, validates solutions against external research. Inspired by Jakob Nielsen's empirical usability methodology.
+- **Ines Alvarez — UX Designer** (persona #9). The Interaction Architect. Signature question: "Where will users get stuck?" Leads interaction design in Sketch phase, evaluates usability and task completion. Inspired by Irene Pereyra's detective approach to UX.
+- Functional Spike type added to Team Selection Guide (Ines, Lena, Kira).
+- Research Checkpoint (Question 7) added to `/create-sprint` Map phase — Dr. Aris Thorne asks for evidence before committing to a pattern.
+
+### Changed
+
+- `.squad/project-squad.md` — Expanded from 7 to 9 core personas. Version bumped to 3.0.
+- Team Selection Guide updated: Nara included in research-heavy sprints and Research Spikes. Ines included in UX/experience, Brand, and Design Spikes.
+- All framework files updated to reference nine personas (previously seven).
+
+### Breaking
+
+- **Persona count changed from 7 to 9.** Projects using the framework should update their `CLAUDE.md` and any hardcoded persona references. Full Sprint teams should now include all 9 personas.
+
+---
+
 ## [1.1.0] — 2026-03-02
 
 ### Added
@@ -17,7 +38,7 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/). Ver
 - `examples/spikes/spike-000-example/output.md` — Complete example of a finished spike output, demonstrating the Answer-First structure, evidence tables, persona perspectives, and raw research appendix. Previously only `brief.md` existed.
 - `examples/spikes/spike-000-example/summary.json` — Machine-readable spike summary example, matching the format produced by `/create-spike`.
 - `CHANGELOG.md` — This file. Enables projects to track which version of the framework they are running.
-- `.squad/specialists.md` — Optional specialist roles file for teams that need domain-specific expertise beyond the core seven personas. Additive — does not modify the portable constant.
+- `.squad/specialists.md` — Optional specialist roles file for teams that need domain-specific expertise beyond the core personas. Additive — does not modify the portable constant.
 - `examples/sprint-retrospective-template.md` — Lightweight retrospective template for use at the end of a Full Design Sprint.
 - `examples/sprint-backlog-template.md` — Lightweight backlog for managing sprint and spike candidates across a project.
 
@@ -39,7 +60,7 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/). Ver
 ### Added
 
 - Initial release of the Project Squad framework.
-- `.squad/project-squad.md` — Seven persona definitions (the portable constant).
+- `.squad/project-squad.md` — Nine persona definitions (the portable constant).
 - `.claude/commands/init-project-squad.md` — Scaffolding command.
 - `.claude/commands/create-sprint.md` — Full Design Sprint command with Knapp's Monday Questions.
 - `.claude/commands/create-spike.md` — Technical spike command with Qualification Test and Question Formulation Framework.

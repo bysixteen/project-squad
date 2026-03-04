@@ -4,7 +4,7 @@
 
 ---
 
-**Project Squad** is a portable toolkit for running structured design sprints, workshops, and technical spikes with Claude. Seven AI personas provide diverse perspectives so you get rigorous thinking without needing a room full of people.
+**Project Squad** is a portable toolkit for running structured design sprints, workshops, and technical spikes with Claude. Nine AI personas provide diverse perspectives so you get rigorous thinking without needing a room full of people.
 
 **Five commands. That's the whole interface.**
 

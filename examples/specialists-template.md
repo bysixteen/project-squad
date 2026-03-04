@@ -8,7 +8,7 @@ status: optional
 
 This file defines any additional specialist roles needed for this project, beyond the four specialists already defined in `.squad/specialists.md`.
 
-**Important:** Do not copy the core seven personas or the shared specialists here. This file is only for roles that are unique to this project.
+**Important:** Do not copy the core nine personas or the shared specialists here. This file is only for roles that are unique to this project.
 
 ---
 

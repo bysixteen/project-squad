@@ -118,12 +118,12 @@ A good project-specific section will include the tech stack, key commands (e.g.,
 
 ## What NOT to Modify
 
-- `.squad/project-squad.md` — The 7 persona definitions are the portable constant. Do not change them per-project.
+- `.squad/project-squad.md` — The 9 persona definitions are the portable constant. Do not change them per-project.
 - `.claude/commands/create-sprint.md` — The sprint command is project-agnostic.
 - `.claude/commands/create-spike.md` — The spike command is project-agnostic.
 - `.claude/commands/init-project-squad.md` — The scaffolding command is project-agnostic.
 
-If you need domain-specific roles beyond the core seven, add them to `.squad/specialists.md` (see `examples/specialists-template.md`). This is additive — it does not modify the portable constant.
+If you need domain-specific roles beyond the core nine, add them to `.squad/specialists.md` (see `examples/specialists-template.md`). This is additive — it does not modify the portable constant.
 
 To see the full framework in action with realistic example content, see the `demo/example-project` branch in this repository.
 
@@ -139,7 +139,7 @@ When you deploy the framework to a project, record the version in your project's
 
 After deploying, verify:
 
-- [ ] `.squad/project-squad.md` exists with all 7 personas
+- [ ] `.squad/project-squad.md` exists with all 9 personas
 - [ ] `.claude/commands/create-sprint.md` exists
 - [ ] `.claude/commands/create-spike.md` exists
 - [ ] `.claude/commands/init-project-squad.md` exists
