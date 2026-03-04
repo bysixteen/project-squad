@@ -6,6 +6,19 @@ Bootstrap the Project Squad framework in the current project. This command creat
 
 ---
 
+## CRITICAL — Files to Create
+
+This command creates **exactly these files and no others**:
+- The directory structure (Step 1)
+- The Portable Toolkit files (Step 2)
+- The six living documents listed in Step 3
+
+Do NOT create any additional files — no `SPRINT_PROCESS.md`, no `METHODOLOGY.md`, no process guides, no role descriptions. The sprint process is defined in `.claude/commands/create-sprint.md`. Do not summarise or re-describe it here.
+
+Do NOT use generic role names (Designer, Engineer, Challenger, Scribe, etc.) anywhere in the generated files. The Project Squad personas are fixed: Leo Finch, Dr. Lena Petrova, Marcus Thorne, Kira Sharma, Dr. Aris Thorne, Rowan Vale, and Elias Vance. Their definitions live in `.squad/project-squad.md` — refer to them only by these names.
+
+---
+
 ## Pre-Flight Checks
 
 Before creating anything, perform these checks in order:
@@ -31,6 +44,7 @@ Create the following directories (skip if they already exist):
 .claude/commands/
 research/
 research/sprints/
+research/workshops/
 research/spikes/
 docs/
 docs/decisions/
@@ -40,9 +54,11 @@ docs/decisions/
 
 Copy the following files from the toolkit source to the project (do not overwrite if they already exist):
 
-- `.squad/project-squad.md` — The seven persona definitions. This file is the portable constant.
+- `.squad/project-squad.md` — The nine persona definitions. This file is the portable constant.
 - `.claude/commands/create-sprint.md` — The sprint command.
+- `.claude/commands/create-workshop.md` — The workshop command.
 - `.claude/commands/create-spike.md` — The spike command.
+- `.claude/commands/import-personas.md` — The persona import command.
 
 If `.squad/specialists.md` exists in the toolkit source, copy it as well. It is optional and additive.
 
@@ -72,7 +88,9 @@ Print the following success message:
 Files created:
   .squad/project-squad.md
   .claude/commands/create-sprint.md
+  .claude/commands/create-workshop.md
   .claude/commands/create-spike.md
+  .claude/commands/import-personas.md
   research/PRINCIPLES.md
   research/PERSONAS.md
   research/DECISIONS.md
@@ -81,10 +99,12 @@ Files created:
   research/dissent-register.md
 
 Next steps:
-  1. If PERSONAS.md is still using placeholders, populate it with your project's real user personas.
-  2. If PRINCIPLES.md is still using placeholders, add your known design and technical principles.
-  3. Add any known sprint or spike candidates to research/sprint-backlog.md.
-  4. Run /create-sprint to start your Foundation sprint (Sprint 000).
+  1. Customize research/PERSONAS.md with your project's user personas,
+     or run /import-personas if you already have research-backed personas.
+  2. Add any known design or technical principles to research/PRINCIPLES.md.
+  3. Run /create-sprint to start your first sprint (Sprint 000 Foundation).
+  4. Run /create-workshop when a quick decision is needed under time pressure.
+  5. Run /create-spike when you encounter a question that needs investigation.
 
 The Project Squad personas in .squad/project-squad.md are portable archetypes — do not modify them.
 ```
@@ -130,7 +150,7 @@ _Describe the quality bar. What does a well-executed piece of work look like her
 **Last updated:** [DATE] — Sprint 000 (Foundation)
 **Next review:** Sprint 002
 
-> **Note:** These are the project's *user* personas — the real people who will use the product. They are distinct from the Project Squad personas (the seven archetypes in `.squad/project-squad.md`).
+> **Note:** These are the project's *user* personas — the real people who will use the product. They are distinct from the Project Squad personas (the nine archetypes in `.squad/project-squad.md`).
 
 ---
 
@@ -191,7 +211,7 @@ This document is a lightweight backlog of sprint and spike candidates. It is the
 
 | # | Type | Topic / Question | Priority | Status | Blocking |
 |---|------|-----------------|----------|--------|----------|
-| — | — | _No candidates yet. Add sprint and spike ideas here._ | — | — | — |
+| 000 | Sprint | Foundation — establish shared context, principles, and personas | High | Candidate | — |
 ```
 
 ### Template: `research/dissent-register.md`

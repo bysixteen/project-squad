@@ -7,9 +7,9 @@ status: optional
 
 # Project Squad — Specialist Roles
 
-This file defines optional specialist roles that can be added to a sprint or spike when the challenge requires domain-specific expertise beyond the core seven personas.
+This file defines optional specialist roles that can be added to a sprint or spike when the challenge requires domain-specific expertise beyond the core nine personas.
 
-**Important:** This file is additive. The seven core personas in `project-squad.md` are the portable constant and must never be modified. Specialists are pulled in for specific sprints only — they do not replace any core persona.
+**Important:** This file is additive. The nine core personas in `project-squad.md` are the portable constant and must never be modified. Specialists are pulled in for specific sprints only — they do not replace any core persona.
 
 ---
 
@@ -68,6 +68,18 @@ Specialists should be used sparingly. If you find yourself adding a specialist t
 **When to add:** Sprints involving new UI components, navigation patterns, forms, or any feature that will be used by a broad or public audience.
 
 **Signature outputs:** Accessibility audits, WCAG compliance checklists, assistive technology test plans, and inclusive design recommendations.
+
+---
+
+### Riley Tanaka — Quality Assurance Specialist
+
+**Signature question:** "How will we know this actually worked?"
+
+**Lens:** Testability, acceptance criteria quality, and validation planning. Riley examines every decision through the lens of measurability: can the success criteria be observed or measured? Are the acceptance criteria specific enough to test against? What does the validation plan look like after the framework hands off? Riley does not write tests or build prototypes — that is beyond the validation boundary — but ensures the team has defined *what* to test and *how to know* if the decision was correct.
+
+**When to add:** Sprints that produce a creative brief (user-facing features), spikes where the confidence level is "medium" or "low", and any sprint where the acceptance criteria are qualitative rather than quantitative.
+
+**Signature outputs:** Acceptance criteria audits, testability assessments, validation plan recommendations, and "definition of done" checklists that travel across the validation boundary.
 
 ---
 
