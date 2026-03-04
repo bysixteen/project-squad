@@ -6,6 +6,22 @@ Run a structured design sprint using the Project Squad framework. Guides the use
 
 ---
 
+## CRITICAL — Read Before Anything Else
+
+**Read `.squad/project-squad.md` in full before taking any action.** This file defines the nine Project Squad personas. You must use them verbatim — their exact names, roles, and signature questions. Never substitute generic role names (Designer, Engineer, Challenger, Scribe, etc.) for the Project Squad personas. The nine personas are fixed and non-negotiable:
+
+- **Leo Finch** — Visual Designer ("Does this feel like us?")
+- **Dr. Lena Petrova** — Design Engineer ("How will we build, test, and maintain this?")
+- **Marcus Thorne** — Senior Developer ("What are we NOT building here?")
+- **Kira Sharma** — Developer ("What does the implementation actually look like?")
+- **Dr. Aris Thorne** — Strategist ("What is the real problem we are trying to solve?")
+- **Rowan Vale** — Craftsman ("What is the feeling we want to create?")
+- **Elias Vance** — Client ("Does this solve a real problem for my users?") — **mandatory in every Decide phase**
+- **Nara Shin** — UX Researcher ("What does the evidence say?")
+- **Ines Alvarez** — UX Designer ("Where will users get stuck?")
+
+---
+
 ## Pre-Flight Checks
 
 Before starting, read the following living documents to establish project context:
@@ -43,10 +59,14 @@ Before we begin, I need to understand the challenge.
 3. Sprint format?
    (Full) Four phases: Map → Sketch → Decide → Synthesise
    (Lite) Two phases: Map → Decide (faster, for lower-stakes decisions)
-   (Workshop) Single session, all phases compressed
+   (Workshop) → Run /create-workshop instead (see Workshop Trigger Conditions in CLAUDE.md)
 
 4. Which Project Squad personas are joining this sprint?
    [Display the team selection guide from .squad/project-squad.md and recommend personas based on the challenge type.]
+
+5. Will this sprint produce a creative brief?
+   (Yes) — For user-facing features where the next step is "build this thing"
+   (No)  — For technical/architectural decisions or early exploration
 ```
 
 ---
@@ -84,6 +104,11 @@ Walk the user through these questions in order. Do not rush. Each question build
 
 **Question 6 — Known Data and Assumptions**
 > "What do we already know? What existing research, analytics, or prior decisions are relevant? What assumptions are we making that we haven't validated yet?"
+
+**Question 7 — Research Checkpoint (Led by Dr. Aris Thorne)**
+> "Do we have evidence that the proposed approach is correct for this context? Are we adopting a pattern, technology, or solution because it's familiar, or because it's validated? What should we research before committing?"
+
+*Why this matters:* This checkpoint prevents the team from adopting patterns without evidence — a gap identified in Sprint 002 when a UI pattern was built and removed in one sprint cycle. If the user identifies research gaps, suggest running `/create-spike` first or conducting inline research (web search, pattern analysis) before proceeding to the next phase.
 
 ---
 
@@ -164,6 +189,8 @@ tags: []
 | Strategist | Dr. Aris Thorne | Map lead + Synthesise |
 | Craftsman | Rowan Vale | Sketch |
 | Client | Elias Vance | Decide (mandatory) |
+| UX Researcher | Nara Shin | Map + Sketch |
+| UX Designer | Ines Alvarez | Sketch + Decide |
 
 ## How Might We Questions
 
@@ -182,6 +209,21 @@ tags: []
 
 ---
 
+## Phase Transition Protocol
+
+Between each phase, perform a silent self-check before proceeding. Do not output this to the user unless a check fails.
+
+1. **Completeness check:** Did the previous phase produce all required outputs?
+2. **Coherence check:** Does the output from the previous phase provide sufficient input for the next phase to produce quality results?
+3. **Scope check:** Has the scope drifted from the original challenge statement in `brief.md`?
+
+If any check fails, pause and inform the user:
+> "Before we move to [next phase], I want to flag: [the issue]. Should we address this before continuing, or proceed as-is?"
+
+This protocol applies at every phase boundary. Claude performs facilitation as part of the command execution, not as a named character.
+
+---
+
 ## Phase 2 — Sketch (Lightning Docs)
 
 Each selected persona writes a ~150-word perspective **in their own voice**, using their signature question as the lens. Generate all perspectives. Present them to the user and ask if they want to adjust any before proceeding to the Decide phase.
@@ -195,6 +237,7 @@ type: sprint-sketches
 status: complete
 date: YYYY-MM-DD
 sprint: NNN
+feeds-from: "brief.md"
 ---
 
 ## Leo Finch — Visual Designer
@@ -242,7 +285,21 @@ sprint: NNN
 ## Elias Vance — Client (Mandatory Dissent)
 > "Does this solve a real problem for my users?"
 
-[Reality check. What assumption is this solution making? What is the strongest argument against proceeding? Steelman the alternative.]
+[Reality check. Reference specific client personas from research/PERSONAS.md by name — speak on behalf of their stated goals, frustrations, and context. What assumption is this solution making about them? What is the strongest argument against proceeding? Steelman the alternative.]
+
+---
+
+## Nara Shin — UX Researcher
+> "What does the evidence say?"
+
+[Evidence and validation. What do competitor products do? What does the research show? What patterns have been tested and validated in similar contexts? What are we assuming without evidence?]
+
+---
+
+## Ines Alvarez — UX Designer
+> "Where will users get stuck?"
+
+[Interaction design. What is the user flow? Where are the decision points, dead ends, and error states? Is the information architecture intuitive? Can users complete their task efficiently?]
 ```
 
 ---
@@ -263,6 +320,7 @@ status: complete
 date: YYYY-MM-DD
 sprint: NNN
 decision: "[One sentence — the chosen direction, past tense.]"
+feeds-from: "sketches.md"
 ---
 
 ## Decision
@@ -288,6 +346,72 @@ decision: "[One sentence — the chosen direction, past tense.]"
 
 ---
 
+## Phase 3b — Creative Brief *(skip if user selected No at Step 0, question 5)*
+
+> This phase applies to user-facing feature sprints only. Skip for technical/architectural decisions.
+
+Led by **Leo Finch** and **Dr. Aris Thorne**. The creative brief translates the decision into actionable direction for building. It is forward-looking and prescriptive — unlike `synthesis.md`, which is retrospective.
+
+**Acceptance Criteria Quality Check:** Before writing the creative brief, review each Success Criterion from the decision. For each one, apply Riley Tanaka's lens even if Riley is not a sprint participant:
+- Is this criterion observable or measurable? (Bad: "Users like it." Good: "80% of users complete the flow without support.")
+- Can this criterion be tested within one sprint cycle?
+- Is it specific to *this* decision, or is it a generic quality bar?
+
+If any criterion fails the check, rewrite it in the creative brief. Note the original wording and the revised version.
+
+**Output:** Create `research/sprints/sprint-NNN-[topic]/creative-brief.md`:
+
+```yaml
+---
+title: "Sprint NNN: Creative Brief"
+type: sprint-creative-brief
+status: complete
+date: YYYY-MM-DD
+sprint: NNN
+decision: "decision.md"
+---
+
+**TL;DR:** [One sentence: what are we building, for whom, and why?]
+
+---
+
+## Positioning
+
+[One sentence a stakeholder could repeat. What is this thing?]
+
+## Target User
+
+[Primary persona from PERSONAS.md + their specific context for this feature.]
+
+## The Problem
+
+[The validated problem from decision.md — what's broken today, in plain language.]
+
+## Solution Direction
+
+[What we decided to build, framed as user benefit — not a technical spec.]
+
+## Design Direction
+
+[How should it feel? Which PRINCIPLES.md entries apply? Tone, emotional register, key interactions.]
+
+## Success Criteria
+
+1. [Observable or measurable outcome]
+2. [Observable or measurable outcome]
+3. [Observable or measurable outcome]
+
+## Constraints
+
+[Technical, brand, timeline — from brief.md constraints plus anything new from the sprint.]
+
+## What This Is NOT
+
+[From decision.md "What We Are NOT Doing" — reframed as guardrails for the people building this.]
+```
+
+---
+
 ## Phase 4 — Synthesise (Led by Dr. Aris Thorne)
 
 Auto-update the following living documents:
@@ -296,7 +420,65 @@ Auto-update the following living documents:
 - `research/PERSONAS.md` — Update if the sprint revealed new insights about user personas.
 - `research/PRINCIPLES.md` — Update if the sprint established new design or technical principles.
 
-**Output:** Create `research/sprints/sprint-NNN-[topic]/synthesis.md` and `research/sprints/sprint-NNN-[topic]/summary.json`.
+**Output:** Create the following files in `research/sprints/sprint-NNN-[topic]/`:
+- `ideas.md` — ideas and opportunities captured during the sprint
+- `synthesis.md` — retrospective synthesis
+- `summary.json` — machine-readable output
+
+**Generate sprint HTML page:** Create `site/sprints/sprint-NNN/index.html` — a browsable HTML page rendering the sprint decision, rationale, dissent, and next action. Use the shared design system:
+- Link to `../../styles.css` for shared tokens and components
+- Link to `../../layout.js` for header and sidebar injection
+- Set `<body data-layout="sprint" data-root="../.." data-sprint="NNN">`
+- Page-specific styles go in a `<style>` block in `<head>`
+- Structure: sprint hero (number + topic + date), decision block (prominent pull-quote), rationale, dissent block, "what we are NOT doing" list, next action, artifacts list
+- Create the `site/sprints/sprint-NNN/` directory if it doesn't exist
+
+**Update sprint manifest:** Append an entry to `site/sprints.json`. If the file doesn't exist, create it as a JSON array. Each entry has:
+```json
+{
+  "type": "sprint",
+  "id": "sprint-NNN",
+  "number": "NNN",
+  "topic": "[Topic]",
+  "date": "YYYY-MM-DD",
+  "status": "complete",
+  "decision": "[One-sentence decision from decision.md]",
+  "personas": ["[Participating personas]"],
+  "href": "sprints/sprint-NNN/index.html"
+}
+```
+
+**Generating `ideas.md`:** Review `sketches.md` and discussion from all phases. Extract ideas, feature suggestions, and opportunities that were mentioned but not pursued. Record them in `ideas.md`. These are not open questions (unknowns) or rejected alternatives (non-decisions) — they are things worth exploring in future sprints. If no ideas surfaced beyond the sprint scope, record that explicitly.
+
+**`ideas.md` template:**
+
+```yaml
+---
+title: "Sprint NNN: Ideas & Opportunities"
+type: sprint-ideas
+status: complete
+date: YYYY-MM-DD
+sprint: NNN
+---
+
+**TL;DR:** [N] ideas captured during this sprint for future exploration.
+
+---
+
+| # | Idea | Source Phase | Suggested By | Priority |
+|---|------|-------------|-------------|----------|
+| 1 | [Short description] | [Map / Sketch / Decide] | [Persona or User] | [High / Medium / Low] |
+| 2 | | | | |
+| 3 | | | | |
+
+---
+
+## Notes
+
+[Optional: brief context on the most promising ideas. Keep short — each idea that gets pursued becomes its own sprint or spike.]
+```
+
+---
 
 **`synthesis.md` template:**
 
@@ -307,6 +489,7 @@ type: sprint-synthesis
 status: complete
 date: YYYY-MM-DD
 sprint: NNN
+feeds-from: "decision.md"
 ---
 
 **TL;DR:** [One sentence: what did this sprint decide and what happens next?]
@@ -322,6 +505,10 @@ sprint: NNN
 1. [Key insight 1]
 2. [Key insight 2]
 3. [Key insight 3]
+
+## Ideas & Opportunities
+
+[Ideas, feature suggestions, and directions that surfaced during the sprint but weren't the focus. These are not unknowns — they are things worth exploring in future sprints. Reference `ideas.md` for the full list.]
 
 ## Open Questions
 
@@ -359,7 +546,9 @@ _Appendix: Full sprint folder at `research/sprints/sprint-NNN-[topic]/`_
   "next_action": "[The single most important next step.]",
   "open_questions": [
     "[Open question 1]"
-  ]
+  ],
+  "ideas_count": 0,
+  "creative_brief": false
 }
 ```
 
@@ -392,8 +581,26 @@ After completing the sprint, verify:
 - [ ] `brief.md` has YAML frontmatter + TL;DR within first 20 lines.
 - [ ] `sketches.md` has all selected personas represented in their own voice.
 - [ ] `decision.md` has Elias Vance's dissent recorded.
+- [ ] `ideas.md` has been created (even if "No ideas surfaced beyond the sprint scope").
+- [ ] If creative brief was requested: `creative-brief.md` has YAML frontmatter + TL;DR within first 20 lines.
+- [ ] If creative brief was requested: Success criteria are measurable or observable — not aspirational.
 - [ ] `synthesis.md` has been created.
-- [ ] `summary.json` has been created and is valid JSON.
+- [ ] `summary.json` has been created, is valid JSON, and `creative_brief` + `ideas_count` fields are populated.
+- [ ] `site/sprints/sprint-NNN/index.html` has been created with shared design system (`styles.css` + `layout.js`).
+- [ ] `site/sprints.json` has been updated with the new sprint entry.
 - [ ] `research/DECISIONS.md` has been updated.
 - [ ] `research/sprint-status.md` has been updated with participating personas.
 - [ ] `research/dissent-register.md` has been updated if dissent was significant.
+
+---
+
+**After completing all checklist items, print this to the user:**
+
+```
+✓ Sprint NNN complete.
+
+Site updated: site/sprints/sprint-NNN/index.html
+Open in browser → file:///[project-root]/site/sprints/sprint-NNN/index.html
+```
+
+Substitute the actual sprint number for `NNN` and the absolute path to the project root directory for `[project-root]`.

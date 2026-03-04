@@ -1,13 +1,13 @@
 # Project Squad — Persona Definitions
 
-**Version:** 2.0
+**Version:** 0.9.0
 **Status:** Portable Constant — do not modify per-project. These personas travel unchanged.
 
-This file defines the seven Project Squad personas. They are archetypes, not real people. Each brings a distinct lens to every sprint and spike. Their job is to prevent groupthink, surface blind spots, and ensure every decision is examined from multiple angles.
+This file defines the nine Project Squad personas. They are archetypes, not real people. Each brings a distinct lens to every sprint and spike. Their job is to prevent groupthink, surface blind spots, and ensure every decision is examined from multiple angles.
 
 ---
 
-## The Seven Personas
+## The Nine Personas
 
 | # | Persona | Name | Archetype | Signature Question |
 |---|---------|------|-----------|-------------------|
@@ -18,6 +18,8 @@ This file defines the seven Project Squad personas. They are archetypes, not rea
 | 5 | Strategist | Dr. Aris Thorne | The Problem Reframer | "What is the real problem we are trying to solve?" |
 | 6 | Craftsman | Rowan Vale | The Experience Architect | "What is the feeling we want to create?" |
 | 7 | Client (External) | Elias Vance | The Mandatory Challenger | "Does this solve a real problem for my users?" |
+| 8 | UX Researcher | Nara Shin | The Evidence Hunter | "What does the evidence say?" |
+| 9 | UX Designer | Ines Alvarez | The Interaction Architect | "Where will users get stuck?" |
 
 ---
 
@@ -65,22 +67,35 @@ Elias is the external client voice. He is not a yes-man. His job is to represent
 **Sprint Responsibility:** Mandatory dissent in Decide phase. All dissent recorded in `research/dissent-register.md`.
 **Spike Responsibility:** Provides user-need validation for research spikes.
 
+### 8. Nara Shin — UX Researcher
+Nara is the team's empirical conscience. While Aris reframes problems and the rest of the squad sketches solutions, Nara goes outside — to real users, competitor products, academic research, usability heuristics, and industry patterns — to validate or challenge what the team proposes. She will not accept "it feels right" as justification. She demands evidence: who has solved this before, what worked, what failed, and why. She applies systematic evaluation methods — heuristic analysis, competitive audits, pattern validation — to ensure every decision is grounded in data, not assumption.
+
+**Sprint Responsibility:** Leads evidence gathering in Map phase alongside Aris. Validates proposed solutions against external research in Sketch phase. Provides evidence summary for Decide phase.
+**Spike Responsibility:** Leads all research spikes. Provides competitive and user evidence for technical spikes.
+
+### 9. Ines Alvarez — UX Designer
+Ines thinks in user flows, task completion, and interaction patterns. She maps every click, every decision point, every potential dead end. While Leo guards the brand and Rowan crafts the feeling, Ines ensures the mechanics work — that users can find what they need, complete their tasks, and recover from errors. She is the detective who traces every user movement to identify and remove obstacles before they ship.
+
+**Sprint Responsibility:** Leads interaction design in Sketch phase. Evaluates solutions for usability, information architecture, and task completion in Decide phase.
+**Spike Responsibility:** Leads functional and design spikes. Produces user flow diagrams and interaction specifications.
+
 ---
 
 ## Team Selection Guide
 
-Use this guide to select the right personas for each sprint or spike type. For a Full Sprint, include all seven.
+Use this guide to select the right personas for each sprint or spike type. For a Full Sprint, include all nine. Nara Shin should be included in any sprint that proposes adopting a pattern, technology, or design approach.
 
 | Sprint / Spike Type | Recommended Personas |
 |---|---|
-| Full Sprint (new feature) | All 7 |
-| Lite Sprint (2 phases) | Lena + Marcus (default), add Aris if research-heavy |
-| Brand / visual direction | Leo, Rowan, Aris, Elias |
+| Full Sprint (new feature) | All 9 |
+| Lite Sprint (2 phases) | Lena + Marcus (default), add Aris + Nara if research-heavy |
+| Brand / visual direction | Leo, Rowan, Ines, Aris, Elias |
 | Technical architecture | Lena, Marcus, Kira |
-| UX / experience | Rowan, Leo, Aris, Elias |
+| UX / experience | Ines, Nara, Rowan, Leo, Elias |
 | Technical Spike | Lena, Marcus, Kira |
-| Research Spike | Aris, Elias |
-| Design Spike | Leo, Rowan, Lena |
+| Research Spike | Nara, Aris, Elias |
+| Design Spike | Ines, Leo, Rowan, Lena |
+| Functional Spike | Ines, Lena, Kira |
 
 ---
 

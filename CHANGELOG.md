@@ -10,6 +10,32 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/). Ver
 
 ---
 
+## [1.1.0] — 2026-03-04
+
+### Added
+
+- **Nara Shin** and **Ines Alvarez** fully wired into all commands and templates — persona selection tables, team guides, and phase responsibilities updated throughout.
+- `create-workshop` — Transition Check before the Decide step: catches reframed questions and incomplete perspectives before they cascade.
+- `create-workshop` — Mandatory Elias Vance note with instruction to reference client personas from `research/PERSONAS.md` by name.
+- `create-workshop` — Nara Shin and Ines Alvarez added to persona selection table (evidence/research and UX/interaction decisions).
+- `create-workshop` — Per-persona word count guide (75–100 words) added to Perspectives step.
+- `create-workshop` — Output path corrected to `research/workshops/workshop-NNN-[topic]/` (was incorrectly `research/sprints/workshop-NNN-[topic]/`).
+- `init-project-squad` — Strict rule: creates exactly six living documents, no additional process guides or methodology files.
+- `init-project-squad` — `create-workshop.md` and `import-personas.md` added to the Portable Toolkit copy list.
+- `init-project-squad` — Nine-persona references throughout; next steps updated to mention workshops and import-personas.
+
+### Changed
+
+- `templates/` synced to match current source files — all commands and `.squad/` files updated to reflect the above.
+
+---
+
+## [1.0.0] — 2026-03-04
+
+Initial npm package release (`@by-sixteen/project-squad`). No framework changes from 0.9.0. Adds `bin/cli.js` with `init`, `sync`, `version`, and `help` commands for installing the framework via `npx`.
+
+---
+
 ## [0.9.0] — 2026-03-04
 
 ### Added

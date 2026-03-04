@@ -2,6 +2,8 @@
 
 **Purpose:** Run a compressed, time-boxed design sprint when a decision is needed quickly and the full sprint format is not appropriate.
 
+> **CRITICAL:** Read `.squad/project-squad.md` before starting. Use the Project Squad personas by name — never substitute generic roles (Designer, Engineer, Challenger, etc.). Elias Vance must participate in the Decide phase of every workshop.
+
 **Time:** 2–3 hours (vs. half-day for a Full Sprint)
 
 **Output:** A `workshop.md` synthesis document and `summary.json` — same machine-readable format as a sprint, compatible with all pre-flight checks.
@@ -85,15 +87,19 @@ Output these three answers as a `## Context` block in the workshop document.
 
 ## Step 3 — Rapid Perspectives (30 minutes)
 
-Assign three to four personas from the core squad. In a workshop, you do not need all seven. Recommended selection:
+**Elias Vance is mandatory in all workshops** (Key Rule 4). Select 2–4 additional personas from the table below. You do not need all nine.
+
+When generating Elias's perspective, reference the client personas in `research/PERSONAS.md` by name. His dissent should be grounded in their specific goals and frustrations, not generic user advocacy.
 
 | Always include | Include if relevant |
 |---|---|
 | Elias Vance (Mandatory Dissent) | Leo Finch (if visual/brand decision) |
 | Dr. Aris Thorne (strategic framing) | Dr. Lena Petrova (if technical decision) |
 | Marcus Thorne (scope/constraints) | Kira Sharma (if implementation detail) |
+| | Nara Shin (if evidence/research needed) |
+| | Ines Alvarez (if UX/interaction decision) |
 
-For each assigned persona, generate a **single paragraph** in their voice. No sketches. No extended exploration. Just their immediate reaction to the decision question and the options on the table.
+For each assigned persona, generate a **single paragraph (75–100 words)** in their voice. No sketches. No extended exploration. Just their immediate reaction to the decision question and the options on the table.
 
 **Format:**
 
@@ -103,6 +109,18 @@ For each assigned persona, generate a **single paragraph** in their voice. No sk
 
 [One paragraph — their position on the decision, in their voice.]
 ```
+
+---
+
+## Transition Check
+
+Before moving to the Decide step, verify:
+- All assigned personas have contributed their perspective.
+- The perspectives actually address the decision question (not adjacent concerns).
+- No persona has raised an issue that fundamentally reframes the decision question.
+
+If the decision question has been reframed by the perspectives, pause:
+> "The perspectives suggest the real question might be [reframed question]. Should we proceed with the original question, or adjust?"
 
 ---
 
@@ -122,7 +140,7 @@ Record the decision. If Elias's perspective was overruled, log it in `research/d
 
 ## Step 5 — Synthesise
 
-**Output:** Create `research/sprints/workshop-NNN-[topic]/workshop.md` using the following template:
+**Output:** Create `research/workshops/workshop-NNN-[topic]/workshop.md` using the following template:
 
 ```yaml
 ---
@@ -135,6 +153,7 @@ decision: "[The chosen option — one sentence, past tense]"
 options_considered: ["[Option A]", "[Option B]"]
 trigger: "[Workshop trigger condition(s)]"
 personas: [aris, marcus, elias]
+adr: ""
 feeds-into: []
 depends-on: []
 tags: []
@@ -182,6 +201,14 @@ tags: []
 ## Next Action
 
 [What happens next as a result of this decision.]
+
+## Ideas & Opportunities
+
+[Ideas that surfaced during the workshop but weren't the focus of the decision. Keep brief — each one that gets pursued becomes its own sprint or spike.]
+
+| # | Idea | Suggested By |
+|---|------|-------------|
+| 1 | | |
 ```
 
 **`summary.json` template:**
@@ -210,6 +237,46 @@ tags: []
 
 ---
 
+## Step 6 — Update Living Documents
+
+After writing the workshop output, update the following living documents:
+
+1. **`research/DECISIONS.md`** — Add the decision with a reference to the workshop folder.
+2. **`research/sprint-status.md`** — Add a row for this workshop (type: workshop).
+3. **`research/dissent-register.md`** — If Elias's dissent was overruled, log it with a review trigger condition.
+4. **`research/PERSONAS.md`** — If the workshop revealed new information about a client persona, update their entry.
+
+If a significant technical decision was made, create an ADR in `docs/decisions/` and set the `adr:` field in the workshop frontmatter.
+
+---
+
+## Step 7 — Generate Site
+
+**Generate workshop HTML page:** Create `site/workshops/workshop-NNN/index.html` — a browsable HTML page rendering the workshop decision, rationale, Elias's position, and next action. Use the shared design system:
+- Link to `../../styles.css` for shared tokens and components
+- Link to `../../layout.js` for header and sidebar injection
+- Set `<body data-layout="workshop" data-root="../.." data-workshop="NNN">`
+- Page-specific styles go in a `<style>` block in `<head>`
+- Structure: workshop hero (number + decision topic + date), decision block (prominent pull-quote), rationale, Elias's position, next action, artifacts list
+- Create the `site/workshops/workshop-NNN/` directory if it doesn't exist
+
+**Update sprint manifest:** Append an entry to `site/sprints.json`. If the file doesn't exist, create it as a JSON array. Each entry has:
+```json
+{
+  "type": "workshop",
+  "id": "workshop-NNN",
+  "number": "NNN",
+  "topic": "[Decision topic]",
+  "date": "YYYY-MM-DD",
+  "status": "complete",
+  "decision": "[One-sentence decision from workshop.md]",
+  "personas": ["[Participating personas]"],
+  "href": "workshops/workshop-NNN/index.html"
+}
+```
+
+---
+
 ## Output Synthesis Rules
 
 Workshop outputs follow the same 10 rules as sprint and spike outputs. Key rules:
@@ -231,6 +298,21 @@ After completing the workshop, verify:
 - [ ] Elias Vance's perspective is included.
 - [ ] Dissent (if any) is logged in `research/dissent-register.md` with a review trigger.
 - [ ] `summary.json` has been created and is valid JSON.
+- [ ] `site/workshops/workshop-NNN/index.html` has been created with shared design system (`styles.css` + `layout.js`).
+- [ ] `site/sprints.json` has been updated with the new workshop entry.
 - [ ] `research/DECISIONS.md` has been updated.
 - [ ] `research/sprint-status.md` has been updated.
 - [ ] ADR created in `docs/decisions/` if a significant technical decision was made.
+
+---
+
+**After completing all checklist items, print this to the user:**
+
+```
+✓ Workshop NNN complete.
+
+Site updated: site/workshops/workshop-NNN/index.html
+Open in browser → file:///[project-root]/site/workshops/workshop-NNN/index.html
+```
+
+Substitute the actual workshop number for `NNN` and the absolute path to the project root directory for `[project-root]`.
