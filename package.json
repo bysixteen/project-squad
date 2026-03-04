@@ -1,0 +1,29 @@
+{
+  "name": "@bysixteen/project-squad",
+  "version": "1.0.0",
+  "description": "A portable framework for running structured design sprints, workshops, and technical spikes with Claude",
+  "keywords": [
+    "design-sprint",
+    "claude",
+    "ai",
+    "framework",
+    "workshop"
+  ],
+  "author": "By Sixteen",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bysixteen/project-squad.git"
+  },
+  "bin": {
+    "project-squad": "./bin/cli.js"
+  },
+  "files": [
+    "bin",
+    "templates",
+    "README.md"
+  ],
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
