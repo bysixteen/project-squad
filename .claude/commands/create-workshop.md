@@ -250,6 +250,33 @@ If a significant technical decision was made, create an ADR in `docs/decisions/`
 
 ---
 
+## Step 7 — Generate Site
+
+**Generate workshop HTML page:** Create `site/workshops/workshop-NNN/index.html` — a browsable HTML page rendering the workshop decision, rationale, Elias's position, and next action. Use the shared design system:
+- Link to `../../styles.css` for shared tokens and components
+- Link to `../../layout.js` for header and sidebar injection
+- Set `<body data-layout="workshop" data-root="../.." data-workshop="NNN">`
+- Page-specific styles go in a `<style>` block in `<head>`
+- Structure: workshop hero (number + decision topic + date), decision block (prominent pull-quote), rationale, Elias's position, next action, artifacts list
+- Create the `site/workshops/workshop-NNN/` directory if it doesn't exist
+
+**Update sprint manifest:** Append an entry to `site/sprints.json`. If the file doesn't exist, create it as a JSON array. Each entry has:
+```json
+{
+  "type": "workshop",
+  "id": "workshop-NNN",
+  "number": "NNN",
+  "topic": "[Decision topic]",
+  "date": "YYYY-MM-DD",
+  "status": "complete",
+  "decision": "[One-sentence decision from workshop.md]",
+  "personas": ["[Participating personas]"],
+  "href": "workshops/workshop-NNN/index.html"
+}
+```
+
+---
+
 ## Output Synthesis Rules
 
 Workshop outputs follow the same 10 rules as sprint and spike outputs. Key rules:
@@ -271,6 +298,21 @@ After completing the workshop, verify:
 - [ ] Elias Vance's perspective is included.
 - [ ] Dissent (if any) is logged in `research/dissent-register.md` with a review trigger.
 - [ ] `summary.json` has been created and is valid JSON.
+- [ ] `site/workshops/workshop-NNN/index.html` has been created with shared design system (`styles.css` + `layout.js`).
+- [ ] `site/sprints.json` has been updated with the new workshop entry.
 - [ ] `research/DECISIONS.md` has been updated.
 - [ ] `research/sprint-status.md` has been updated.
 - [ ] ADR created in `docs/decisions/` if a significant technical decision was made.
+
+---
+
+**After completing all checklist items, print this to the user:**
+
+```
+✓ Workshop NNN complete.
+
+Site updated: site/workshops/workshop-NNN/index.html
+Open in browser → file:///[project-root]/site/workshops/workshop-NNN/index.html
+```
+
+Substitute the actual workshop number for `NNN` and the absolute path to the project root directory for `[project-root]`.
