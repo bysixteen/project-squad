@@ -357,3 +357,16 @@ After completing the spike, verify:
 - [ ] `research/DECISIONS.md` has been updated if a decision was made.
 - [ ] ADR has been created in `docs/decisions/` if a significant technical decision was made.
 - [ ] The spike branch (if used) has NOT been merged to `main` or `dev`.
+
+---
+
+**After completing all checklist items, print this to the user:**
+
+```
+✓ Spike NNN complete.
+
+Site updated: site/spikes/spike-NNN/index.html
+Open in browser → file:///[project-root]/site/spikes/spike-NNN/index.html
+```
+
+Substitute the actual spike number for `NNN` and the absolute path to the project root directory for `[project-root]`.

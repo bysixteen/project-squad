@@ -591,3 +591,16 @@ After completing the sprint, verify:
 - [ ] `research/DECISIONS.md` has been updated.
 - [ ] `research/sprint-status.md` has been updated with participating personas.
 - [ ] `research/dissent-register.md` has been updated if dissent was significant.
+
+---
+
+**After completing all checklist items, print this to the user:**
+
+```
+✓ Sprint NNN complete.
+
+Site updated: site/sprints/sprint-NNN/index.html
+Open in browser → file:///[project-root]/site/sprints/sprint-NNN/index.html
+```
+
+Substitute the actual sprint number for `NNN` and the absolute path to the project root directory for `[project-root]`.
