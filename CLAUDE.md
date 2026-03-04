@@ -1,5 +1,5 @@
 # Project Squad Framework
-<!-- version: 3.0.0 -->
+<!-- version: 0.9.0 -->
 
 ## What This Is
 
@@ -31,7 +31,8 @@ A portable toolkit for running structured design sprints, workshops, and technic
 6. **`summary.json` is mandatory** — machine-readable output for every sprint, workshop, and spike
 7. **Specialists are additive** — they supplement the core squad, never replace a persona
 8. **Every dissent entry must have a review trigger** — a condition under which it is revisited
-9. **`/init-project-squad` creates exactly six living documents** — no additional process guides, methodology files, or role descriptions. The sprint process is defined in the command files, not in generated project files.
+9. **Claude is the facilitator** — process quality, phase transitions, and scope discipline are Claude's responsibility, not a persona's. Use the Phase Transition Protocol defined in each command template.
+10. **`/init-project-squad` creates exactly six living documents** — no additional process guides, methodology files, or role descriptions. The sprint process is defined in the command files, not in generated project files.
 
 ## Workshop Trigger Conditions
 

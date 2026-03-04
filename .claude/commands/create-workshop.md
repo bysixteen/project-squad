@@ -110,6 +110,18 @@ For each assigned persona, generate a **single paragraph (75–100 words)** in t
 
 ---
 
+## Transition Check
+
+Before moving to the Decide step, verify:
+- All assigned personas have contributed their perspective.
+- The perspectives actually address the decision question (not adjacent concerns).
+- No persona has raised an issue that fundamentally reframes the decision question.
+
+If the decision question has been reframed by the perspectives, pause:
+> "The perspectives suggest the real question might be [reframed question]. Should we proceed with the original question, or adjust?"
+
+---
+
 ## Step 4 — Decide (15 minutes)
 
 Present the options with the persona perspectives alongside them. Ask the user:
