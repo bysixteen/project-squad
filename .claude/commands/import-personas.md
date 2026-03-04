@@ -159,7 +159,7 @@ The command normalises all of these into the standard format above.
 
 ## Important Notes
 
-- **Imported personas do not replace the squad.** The seven Project Squad personas (Leo, Lena, etc.) are still the voices that *think about* the product. Imported client personas are the *users* those voices think about.
+- **Imported personas do not replace the squad.** The nine Project Squad personas (Leo, Lena, Marcus, Kira, Aris, Rowan, Elias, Nara, Ines) are still the voices that *think about* the product. Imported client personas are the *users* those voices think about.
 - **Elias Vance speaks for the client personas.** His mandatory dissent is always framed from the perspective of the imported personas. If you have imported a persona, Elias's signature question becomes: "Does this solve a real problem for [Persona Name]?"
 - **Personas can be updated.** If a sprint reveals new information about a persona, update `PERSONAS.md` directly. Log the change in `research/DECISIONS.md` with the sprint reference.
 - **Multiple persona sets are supported.** If you have personas from multiple sources (e.g., BNY research + new user interviews), each set is appended with its own source header.

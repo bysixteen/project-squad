@@ -6,6 +6,22 @@ Run a structured design sprint using the Project Squad framework. Guides the use
 
 ---
 
+## CRITICAL — Read Before Anything Else
+
+**Read `.squad/project-squad.md` in full before taking any action.** This file defines the nine Project Squad personas. You must use them verbatim — their exact names, roles, and signature questions. Never substitute generic role names (Designer, Engineer, Challenger, Scribe, etc.) for the Project Squad personas. The nine personas are fixed and non-negotiable:
+
+- **Leo Finch** — Visual Designer ("Does this feel like us?")
+- **Dr. Lena Petrova** — Design Engineer ("How will we build, test, and maintain this?")
+- **Marcus Thorne** — Senior Developer ("What are we NOT building here?")
+- **Kira Sharma** — Developer ("What does the implementation actually look like?")
+- **Dr. Aris Thorne** — Strategist ("What is the real problem we are trying to solve?")
+- **Rowan Vale** — Craftsman ("What is the feeling we want to create?")
+- **Elias Vance** — Client ("Does this solve a real problem for my users?") — **mandatory in every Decide phase**
+- **Nara Shin** — UX Researcher ("What does the evidence say?")
+- **Ines Alvarez** — UX Designer ("Where will users get stuck?")
+
+---
+
 ## Pre-Flight Checks
 
 Before starting, read the following living documents to establish project context:
@@ -89,6 +105,11 @@ Walk the user through these questions in order. Do not rush. Each question build
 **Question 6 — Known Data and Assumptions**
 > "What do we already know? What existing research, analytics, or prior decisions are relevant? What assumptions are we making that we haven't validated yet?"
 
+**Question 7 — Research Checkpoint (Led by Dr. Aris Thorne)**
+> "Do we have evidence that the proposed approach is correct for this context? Are we adopting a pattern, technology, or solution because it's familiar, or because it's validated? What should we research before committing?"
+
+*Why this matters:* This checkpoint prevents the team from adopting patterns without evidence — a gap identified in Sprint 002 when a UI pattern was built and removed in one sprint cycle. If the user identifies research gaps, suggest running `/create-spike` first or conducting inline research (web search, pattern analysis) before proceeding to the next phase.
+
 ---
 
 ### Mode B — Paste Content
@@ -168,6 +189,8 @@ tags: []
 | Strategist | Dr. Aris Thorne | Map lead + Synthesise |
 | Craftsman | Rowan Vale | Sketch |
 | Client | Elias Vance | Decide (mandatory) |
+| UX Researcher | Nara Shin | Map + Sketch |
+| UX Designer | Ines Alvarez | Sketch + Decide |
 
 ## How Might We Questions
 
@@ -247,6 +270,20 @@ sprint: NNN
 > "Does this solve a real problem for my users?"
 
 [Reality check. What assumption is this solution making? What is the strongest argument against proceeding? Steelman the alternative.]
+
+---
+
+## Nara Shin — UX Researcher
+> "What does the evidence say?"
+
+[Evidence and validation. What do competitor products do? What does the research show? What patterns have been tested and validated in similar contexts? What are we assuming without evidence?]
+
+---
+
+## Ines Alvarez — UX Designer
+> "Where will users get stuck?"
+
+[Interaction design. What is the user flow? Where are the decision points, dead ends, and error states? Is the information architecture intuitive? Can users complete their task efficiently?]
 ```
 
 ---
@@ -363,6 +400,29 @@ Auto-update the following living documents:
 - `ideas.md` — ideas and opportunities captured during the sprint
 - `synthesis.md` — retrospective synthesis
 - `summary.json` — machine-readable output
+
+**Generate sprint HTML page:** Create `site/sprints/sprint-NNN/index.html` — a browsable HTML page rendering the sprint decision, rationale, dissent, and next action. Use the shared design system:
+- Link to `../../styles.css` for shared tokens and components
+- Link to `../../layout.js` for header and sidebar injection
+- Set `<body data-layout="sprint" data-root="../.." data-sprint="NNN">`
+- Page-specific styles go in a `<style>` block in `<head>`
+- Structure: sprint hero (number + topic + date), decision block (prominent pull-quote), rationale, dissent block, "what we are NOT doing" list, next action, artifacts list
+- Create the `site/sprints/sprint-NNN/` directory if it doesn't exist
+
+**Update sprint manifest:** Append an entry to `site/sprints.json`. If the file doesn't exist, create it as a JSON array. Each entry has:
+```json
+{
+  "type": "sprint",
+  "id": "sprint-NNN",
+  "number": "NNN",
+  "topic": "[Topic]",
+  "date": "YYYY-MM-DD",
+  "status": "complete",
+  "decision": "[One-sentence decision from decision.md]",
+  "personas": ["[Participating personas]"],
+  "href": "sprints/sprint-NNN/index.html"
+}
+```
 
 **Generating `ideas.md`:** Review `sketches.md` and discussion from all phases. Extract ideas, feature suggestions, and opportunities that were mentioned but not pursued. Record them in `ideas.md`. These are not open questions (unknowns) or rejected alternatives (non-decisions) — they are things worth exploring in future sprints. If no ideas surfaced beyond the sprint scope, record that explicitly.
 
@@ -500,6 +560,8 @@ After completing the sprint, verify:
 - [ ] If creative brief was requested: `creative-brief.md` has YAML frontmatter + TL;DR within first 20 lines.
 - [ ] `synthesis.md` has been created.
 - [ ] `summary.json` has been created, is valid JSON, and `creative_brief` + `ideas_count` fields are populated.
+- [ ] `site/sprints/sprint-NNN/index.html` has been created with shared design system (`styles.css` + `layout.js`).
+- [ ] `site/sprints.json` has been updated with the new sprint entry.
 - [ ] `research/DECISIONS.md` has been updated.
 - [ ] `research/sprint-status.md` has been updated with participating personas.
 - [ ] `research/dissent-register.md` has been updated if dissent was significant.

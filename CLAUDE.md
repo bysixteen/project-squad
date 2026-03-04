@@ -1,9 +1,9 @@
 # Project Squad Framework
-<!-- version: 1.2.0 -->
+<!-- version: 3.0.0 -->
 
 ## What This Is
 
-A portable toolkit for running structured design sprints, workshops, and technical spikes with Claude. Seven named personas provide diverse perspectives; five commands drive the workflow.
+A portable toolkit for running structured design sprints, workshops, and technical spikes with Claude. Nine named personas provide diverse perspectives; five commands drive the workflow.
 
 ## Commands
 
@@ -24,12 +24,14 @@ A portable toolkit for running structured design sprints, workshops, and technic
 ## Key Rules
 
 1. **Do not modify** `.squad/project-squad.md` — it is the portable constant
-2. **First 20 Lines** — every output must have YAML frontmatter + TL;DR within 20 lines
-3. **Elias Vance always dissents** — his challenge must be recorded even if overruled
-4. **One question per spike** — multiple questions = multiple spikes
-5. **`summary.json` is mandatory** — machine-readable output for every sprint, workshop, and spike
-6. **Specialists are additive** — they supplement the core squad, never replace a persona
-7. **Every dissent entry must have a review trigger** — a condition under which it is revisited
+2. **Read `.squad/project-squad.md` before running any command** — the nine persona names, roles, and signature questions are defined there and must be used verbatim. Never substitute generic roles (Designer, Engineer, Challenger, Scribe, etc.) for the named personas.
+3. **First 20 Lines** — every output must have YAML frontmatter + TL;DR within 20 lines
+4. **Elias Vance always dissents** — his challenge must be recorded even if overruled
+5. **One question per spike** — multiple questions = multiple spikes
+6. **`summary.json` is mandatory** — machine-readable output for every sprint, workshop, and spike
+7. **Specialists are additive** — they supplement the core squad, never replace a persona
+8. **Every dissent entry must have a review trigger** — a condition under which it is revisited
+9. **`/init-project-squad` creates exactly six living documents** — no additional process guides, methodology files, or role descriptions. The sprint process is defined in the command files, not in generated project files.
 
 ## Workshop Trigger Conditions
 
