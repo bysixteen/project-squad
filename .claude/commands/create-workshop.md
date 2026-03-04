@@ -87,7 +87,9 @@ Output these three answers as a `## Context` block in the workshop document.
 
 ## Step 3 — Rapid Perspectives (30 minutes)
 
-**Elias Vance is mandatory in all workshops** (Key Rule 3). Select 2–4 additional personas from the table below. You do not need all nine.
+**Elias Vance is mandatory in all workshops** (Key Rule 4). Select 2–4 additional personas from the table below. You do not need all nine.
+
+When generating Elias's perspective, reference the client personas in `research/PERSONAS.md` by name. His dissent should be grounded in their specific goals and frustrations, not generic user advocacy.
 
 | Always include | Include if relevant |
 |---|---|

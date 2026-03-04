@@ -285,7 +285,7 @@ feeds-from: "brief.md"
 ## Elias Vance — Client (Mandatory Dissent)
 > "Does this solve a real problem for my users?"
 
-[Reality check. What assumption is this solution making? What is the strongest argument against proceeding? Steelman the alternative.]
+[Reality check. Reference specific client personas from research/PERSONAS.md by name — speak on behalf of their stated goals, frustrations, and context. What assumption is this solution making about them? What is the strongest argument against proceeding? Steelman the alternative.]
 
 ---
 

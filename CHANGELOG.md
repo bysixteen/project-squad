@@ -10,18 +10,37 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/). Ver
 
 ---
 
-## [3.0.0] — 2026-03-04
+## [0.9.0] — 2026-03-04
 
 ### Added
 
-- **Nara Shin — UX Researcher** (persona #8). The Evidence Hunter. Signature question: "What does the evidence say?" Leads evidence gathering in Map phase, validates solutions against external research. Inspired by Jakob Nielsen's empirical usability methodology.
-- **Ines Alvarez — UX Designer** (persona #9). The Interaction Architect. Signature question: "Where will users get stuck?" Leads interaction design in Sketch phase, evaluates usability and task completion. Inspired by Irene Pereyra's detective approach to UX.
+- Phase Transition Protocol in `/create-sprint` and `/create-workshop` — silent quality gates between phases that catch scope drift, incomplete outputs, or reframed questions before they cascade.
+- **Riley Tanaka — Quality Assurance Specialist** in `.squad/specialists.md`. Signature question: "How will we know this actually worked?" Ensures acceptance criteria are measurable before crossing the validation boundary.
+- Acceptance Criteria Quality Check in creative brief phase — applies Riley Tanaka's testability lens even when Riley is not a sprint participant.
+- Validation Recommendation section in spike output for medium/low confidence results — defines what evidence would raise confidence and the cheapest test to run.
+- `feeds-from` frontmatter in sprint output templates (`sketches.md`, `decision.md`, `synthesis.md`) — makes the phase-to-phase data chain self-documenting.
+- Elias Vance now explicitly references client personas from `research/PERSONAS.md` by name during Sketch and Decide phases.
+
+### Changed
+
+- `CLAUDE.md` — Added Key Rule 9: Claude is the facilitator. Added Key Rule 10: init creates exactly six living documents.
+- Workshop persona selection table updated to reference Key Rule 4 (Elias mandatory dissent).
+- Version numbers reset to 0.x.y (semver pre-release) — the framework is still in active development and not yet committed to backwards compatibility.
+
+---
+
+## [0.8.0] — 2026-03-04
+
+### Added
+
+- **Nara Shin — UX Researcher** (persona #8). The Evidence Hunter. Signature question: "What does the evidence say?" Leads evidence gathering in Map phase, validates solutions against external research.
+- **Ines Alvarez — UX Designer** (persona #9). The Interaction Architect. Signature question: "Where will users get stuck?" Leads interaction design in Sketch phase, evaluates usability and task completion.
 - Functional Spike type added to Team Selection Guide (Ines, Lena, Kira).
 - Research Checkpoint (Question 7) added to `/create-sprint` Map phase — Dr. Aris Thorne asks for evidence before committing to a pattern.
 
 ### Changed
 
-- `.squad/project-squad.md` — Expanded from 7 to 9 core personas. Version bumped to 3.0.
+- `.squad/project-squad.md` — Expanded from 7 to 9 core personas.
 - Team Selection Guide updated: Nara included in research-heavy sprints and Research Spikes. Ines included in UX/experience, Brand, and Design Spikes.
 - All framework files updated to reference nine personas (previously seven).
 
@@ -31,7 +50,7 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/). Ver
 
 ---
 
-## [1.1.0] — 2026-03-02
+## [0.7.0] — 2026-03-02
 
 ### Added
 
@@ -55,7 +74,7 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/). Ver
 
 ---
 
-## [1.0.0] — 2026-02-01
+## [0.1.0] — 2026-02-01
 
 ### Added
 
