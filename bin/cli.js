@@ -9,6 +9,7 @@ const TEMPLATES_DIR = path.join(__dirname, '..', 'templates');
 const COMMANDS = {
   init: 'Initialise Project Squad in the current project',
   sync: 'Update Project Squad files from the latest version',
+  site: 'Refresh site assets (layout.js, styles.css)',
   version: 'Show the installed version',
   help: 'Show this help message'
 };
@@ -27,6 +28,12 @@ function warn(msg) {
 
 function error(msg) {
   console.error(`✗ ${msg}`);
+}
+
+function injectVersion(src, dest, version) {
+  const content = fs.readFileSync(src, 'utf8').replace('__PACKAGE_VERSION__', `v${version}`);
+  fs.mkdirSync(path.dirname(dest), { recursive: true });
+  fs.writeFileSync(dest, content);
 }
 
 function copyDir(src, dest, options = {}) {
@@ -115,6 +122,21 @@ function init() {
     warn(`Skipped ${path.relative(cwd, file)} (already exists)`);
   }
 
+  // Copy site assets
+  const siteSrc = path.join(TEMPLATES_DIR, 'site');
+  const siteDest = path.join(cwd, 'site');
+  const siteResult = copyDir(siteSrc, siteDest, { overwrite: false });
+
+  for (const file of siteResult.copied) {
+    if (path.basename(file) === 'layout.js') {
+      injectVersion(path.join(siteSrc, 'layout.js'), file, VERSION);
+    }
+    success(`Created ${path.relative(cwd, file)}`);
+  }
+  for (const file of siteResult.skipped) {
+    warn(`Skipped ${path.relative(cwd, file)} (already exists)`);
+  }
+
   log('\n---');
   log('\nNext steps:');
   log('  1. Run /seed-project-context to create _meta/PROJECT_CONTEXT.md');
@@ -150,7 +172,47 @@ function sync() {
     success(`Updated ${path.relative(cwd, file)}`);
   }
 
+  // Sync site assets (overwrite)
+  const siteSrc = path.join(TEMPLATES_DIR, 'site');
+  const siteDest = path.join(cwd, 'site');
+  const siteResult = copyDir(siteSrc, siteDest, { overwrite: true });
+
+  for (const file of siteResult.copied) {
+    if (path.basename(file) === 'layout.js') {
+      injectVersion(path.join(siteSrc, 'layout.js'), file, VERSION);
+    }
+    success(`Updated ${path.relative(cwd, file)}`);
+  }
+
   log(`\n✓ Synced to v${VERSION}\n`);
+}
+
+function site() {
+  const cwd = process.cwd();
+  log(`\nRefreshing site assets v${VERSION}\n`);
+
+  if (!fs.existsSync(path.join(cwd, '.squad'))) {
+    error('No .squad directory found. Run "project-squad init" first.');
+    process.exit(1);
+  }
+
+  const siteSrc = path.join(TEMPLATES_DIR, 'site');
+  const siteDest = path.join(cwd, 'site');
+  const siteResult = copyDir(siteSrc, siteDest, { overwrite: true });
+
+  for (const file of siteResult.copied) {
+    if (path.basename(file) === 'layout.js') {
+      injectVersion(path.join(siteSrc, 'layout.js'), file, VERSION);
+    }
+    success(`Updated ${path.relative(cwd, file)}`);
+  }
+
+  const indexPath = path.join(cwd, 'site', 'index.html');
+  if (fs.existsSync(indexPath)) {
+    log(`\nOpen in browser → file://${indexPath}\n`);
+  } else {
+    log(`\nSite assets written to site/\n`);
+  }
 }
 
 function showVersion() {
@@ -174,6 +236,7 @@ Commands:`);
 Examples:
   npx @by-sixteen/project-squad init    # Set up in current project
   npx @by-sixteen/project-squad sync    # Pull latest updates
+  npx @by-sixteen/project-squad site    # Refresh site assets
   npx @by-sixteen/project-squad version # Check installed version
 `);
 }
@@ -188,6 +251,9 @@ switch (command) {
     break;
   case 'sync':
     sync();
+    break;
+  case 'site':
+    site();
     break;
   case 'version':
   case '-v':
