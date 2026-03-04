@@ -87,7 +87,9 @@ Output these three answers as a `## Context` block in the workshop document.
 
 ## Step 3 — Rapid Perspectives (30 minutes)
 
-**Elias Vance is mandatory in all workshops** (Key Rule 3). Select 2–4 additional personas from the table below. You do not need all nine.
+**Elias Vance is mandatory in all workshops** (Key Rule 4). Select 2–4 additional personas from the table below. You do not need all nine.
+
+When generating Elias's perspective, reference the client personas in `research/PERSONAS.md` by name. His dissent should be grounded in their specific goals and frustrations, not generic user advocacy.
 
 | Always include | Include if relevant |
 |---|---|
@@ -107,6 +109,18 @@ For each assigned persona, generate a **single paragraph (75–100 words)** in t
 
 [One paragraph — their position on the decision, in their voice.]
 ```
+
+---
+
+## Transition Check
+
+Before moving to the Decide step, verify:
+- All assigned personas have contributed their perspective.
+- The perspectives actually address the decision question (not adjacent concerns).
+- No persona has raised an issue that fundamentally reframes the decision question.
+
+If the decision question has been reframed by the perspectives, pause:
+> "The perspectives suggest the real question might be [reframed question]. Should we proceed with the original question, or adjust?"
 
 ---
 

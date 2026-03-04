@@ -273,6 +273,10 @@ tags: []
 
 [The chosen option, stated in past tense. Link to ADR if produced.]
 
+## Validation Recommendation *(include only if confidence is "medium" or "low")*
+
+[What specific evidence would raise confidence to "high"? What is the cheapest test to run? What is the timeline for that test? This section is the handoff to whoever picks up the work after the spike.]
+
 ---
 
 _Appendix: Raw Research_

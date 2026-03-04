@@ -209,6 +209,21 @@ tags: []
 
 ---
 
+## Phase Transition Protocol
+
+Between each phase, perform a silent self-check before proceeding. Do not output this to the user unless a check fails.
+
+1. **Completeness check:** Did the previous phase produce all required outputs?
+2. **Coherence check:** Does the output from the previous phase provide sufficient input for the next phase to produce quality results?
+3. **Scope check:** Has the scope drifted from the original challenge statement in `brief.md`?
+
+If any check fails, pause and inform the user:
+> "Before we move to [next phase], I want to flag: [the issue]. Should we address this before continuing, or proceed as-is?"
+
+This protocol applies at every phase boundary. Claude performs facilitation as part of the command execution, not as a named character.
+
+---
+
 ## Phase 2 — Sketch (Lightning Docs)
 
 Each selected persona writes a ~150-word perspective **in their own voice**, using their signature question as the lens. Generate all perspectives. Present them to the user and ask if they want to adjust any before proceeding to the Decide phase.
@@ -222,6 +237,7 @@ type: sprint-sketches
 status: complete
 date: YYYY-MM-DD
 sprint: NNN
+feeds-from: "brief.md"
 ---
 
 ## Leo Finch — Visual Designer
@@ -269,7 +285,7 @@ sprint: NNN
 ## Elias Vance — Client (Mandatory Dissent)
 > "Does this solve a real problem for my users?"
 
-[Reality check. What assumption is this solution making? What is the strongest argument against proceeding? Steelman the alternative.]
+[Reality check. Reference specific client personas from research/PERSONAS.md by name — speak on behalf of their stated goals, frustrations, and context. What assumption is this solution making about them? What is the strongest argument against proceeding? Steelman the alternative.]
 
 ---
 
@@ -304,6 +320,7 @@ status: complete
 date: YYYY-MM-DD
 sprint: NNN
 decision: "[One sentence — the chosen direction, past tense.]"
+feeds-from: "sketches.md"
 ---
 
 ## Decision
@@ -334,6 +351,13 @@ decision: "[One sentence — the chosen direction, past tense.]"
 > This phase applies to user-facing feature sprints only. Skip for technical/architectural decisions.
 
 Led by **Leo Finch** and **Dr. Aris Thorne**. The creative brief translates the decision into actionable direction for building. It is forward-looking and prescriptive — unlike `synthesis.md`, which is retrospective.
+
+**Acceptance Criteria Quality Check:** Before writing the creative brief, review each Success Criterion from the decision. For each one, apply Riley Tanaka's lens even if Riley is not a sprint participant:
+- Is this criterion observable or measurable? (Bad: "Users like it." Good: "80% of users complete the flow without support.")
+- Can this criterion be tested within one sprint cycle?
+- Is it specific to *this* decision, or is it a generic quality bar?
+
+If any criterion fails the check, rewrite it in the creative brief. Note the original wording and the revised version.
 
 **Output:** Create `research/sprints/sprint-NNN-[topic]/creative-brief.md`:
 
@@ -465,6 +489,7 @@ type: sprint-synthesis
 status: complete
 date: YYYY-MM-DD
 sprint: NNN
+feeds-from: "decision.md"
 ---
 
 **TL;DR:** [One sentence: what did this sprint decide and what happens next?]
@@ -558,6 +583,7 @@ After completing the sprint, verify:
 - [ ] `decision.md` has Elias Vance's dissent recorded.
 - [ ] `ideas.md` has been created (even if "No ideas surfaced beyond the sprint scope").
 - [ ] If creative brief was requested: `creative-brief.md` has YAML frontmatter + TL;DR within first 20 lines.
+- [ ] If creative brief was requested: Success criteria are measurable or observable — not aspirational.
 - [ ] `synthesis.md` has been created.
 - [ ] `summary.json` has been created, is valid JSON, and `creative_brief` + `ideas_count` fields are populated.
 - [ ] `site/sprints/sprint-NNN/index.html` has been created with shared design system (`styles.css` + `layout.js`).
