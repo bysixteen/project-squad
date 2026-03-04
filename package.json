@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "A portable framework for running structured design sprints, workshops, and technical spikes with Claude",
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
+    "registry": "https://registry.npmjs.org",
+    "access": "public"
   },
   "keywords": [
     "design-sprint",

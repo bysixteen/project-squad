@@ -2,3 +2,4 @@
 *.swp
 *~
 .claude/worktrees/
+.npmrc
