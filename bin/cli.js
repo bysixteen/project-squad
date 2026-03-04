@@ -172,9 +172,9 @@ Commands:`);
 
   log(`
 Examples:
-  npx @bysixteen/project-squad init    # Set up in current project
-  npx @bysixteen/project-squad sync    # Pull latest updates
-  npx @bysixteen/project-squad version # Check installed version
+  npx @by-sixteen/project-squad init    # Set up in current project
+  npx @by-sixteen/project-squad sync    # Pull latest updates
+  npx @by-sixteen/project-squad version # Check installed version
 `);
 }
 
