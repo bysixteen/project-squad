@@ -147,7 +147,7 @@ Based on the spike type, suggest the appropriate Project Squad personas from `.s
 | Design | Ines Alvarez, Leo Finch, Rowan Vale, Dr. Lena Petrova |
 | Research | Nara Shin, Dr. Aris Thorne, Elias Vance |
 
-Ask the user to confirm or adjust the selection.
+Ask the user to confirm or adjust the selection. Are any specialists needed? Check `.squad/specialists.md` for available specialist roles. Specialists are additive — they supplement the core squad and do not replace a persona.
 
 ---
 
@@ -223,6 +223,19 @@ Once answered, we will be able to: [NEXT ACTION]
 
 [Their investigation angle.]
 ```
+
+---
+
+## Transition Check
+
+Before synthesising findings, verify:
+1. **Question addressed:** The original spike question has been directly addressed by the investigation.
+2. **Evidence supports confidence:** The confidence level is supported by the evidence gathered.
+3. **Scope held:** The investigation has not expanded beyond the original question.
+
+If any check fails, pause and inform the user before proceeding.
+
+**Dissent Handling:** If Elias Vance's perspective is overruled or deprioritised, record the dissent in `research/dissent-register.md` with a review trigger, consistent with the sprint and workshop commands.
 
 ---
 
@@ -321,6 +334,8 @@ All spike output files must follow the same 10 rules as sprint outputs (see `cre
 - **ADR reference is mandatory** if a significant technical decision was made.
 - **`summary.json` is mandatory.** This is the machine-readable summary for future context.
 
+**Site Asset Pre-Flight:** Before generating any HTML page, verify that `site/styles.css` and `site/layout.js` exist. If either is missing, do not generate the HTML page. Instead, tell the user: "The shared design system files are missing. Run `project-squad site` (or `npx @by-sixteen/project-squad site`) to restore them, then re-run this command."
+
 **Generate spike HTML page:** Create `site/spikes/spike-NNN/index.html` — a browsable HTML page rendering the spike question, answer, evidence, and constraints. Use the shared design system:
 - Link to `../../styles.css` for shared tokens and components
 - Link to `../../layout.js` for header and sidebar injection
@@ -347,13 +362,21 @@ All spike output files must follow the same 10 rules as sprint outputs (see `cre
 
 ## Verification Checklist
 
-After completing the spike, verify:
+After completing the spike, update the following living documents:
+- **`research/sprint-status.md`** — Add a row for this spike (type: spike, status: complete).
+- **`research/sprint-backlog.md`** — If this spike originated from the backlog, mark the entry as Done.
+- **`research/DECISIONS.md`** — Add the decision if one was made.
+- **`research/dissent-register.md`** — If Elias's perspective was overruled, log with a review trigger.
+
+Then verify:
 - [ ] `brief.md` has YAML frontmatter + TL;DR within first 20 lines.
 - [ ] `output.md` has the Answer as the first body section.
 - [ ] `output.md` has raw research below a `---` horizontal rule.
+- [ ] Elias Vance's perspective is included (mandatory for all spike types).
 - [ ] `summary.json` has been created and is valid JSON.
 - [ ] `site/spikes/spike-NNN/index.html` has been created with shared design system (`styles.css` + `layout.js`).
 - [ ] `site/sprints.json` has been updated with the new spike entry.
+- [ ] `research/sprint-status.md` has been updated with the spike row.
 - [ ] `research/DECISIONS.md` has been updated if a decision was made.
 - [ ] ADR has been created in `docs/decisions/` if a significant technical decision was made.
 - [ ] The spike branch (if used) has NOT been merged to `main` or `dev`.

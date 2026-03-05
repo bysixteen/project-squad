@@ -75,6 +75,24 @@ function copyDir(src, dest, options = {}) {
   return { copied, skipped };
 }
 
+function syncClaudeMdVersion(cwd, version) {
+  const claudeMdPath = path.join(cwd, 'CLAUDE.md');
+  if (!fs.existsSync(claudeMdPath)) return;
+
+  const content = fs.readFileSync(claudeMdPath, 'utf8');
+  if (!content.includes('Project Squad Framework')) return;
+
+  const updated = content.replace(
+    /<!-- version: \d+\.\d+\.\d+ -->/,
+    `<!-- version: ${version} -->`
+  );
+
+  if (updated !== content) {
+    fs.writeFileSync(claudeMdPath, updated);
+    success(`Updated CLAUDE.md version to ${version}`);
+  }
+}
+
 function init() {
   const cwd = process.cwd();
   log(`\nInitialising Project Squad v${VERSION} in ${cwd}\n`);
@@ -86,6 +104,7 @@ function init() {
     'research',
     'research/sprints',
     'research/spikes',
+    'research/workshops',
     'docs/decisions',
     '_meta'
   ];
@@ -137,6 +156,9 @@ function init() {
     warn(`Skipped ${path.relative(cwd, file)} (already exists)`);
   }
 
+  // Sync CLAUDE.md version if present
+  syncClaudeMdVersion(cwd, VERSION);
+
   log('\n---');
   log('\nNext steps:');
   log('  1. Run /seed-project-context to create _meta/PROJECT_CONTEXT.md');
@@ -183,6 +205,9 @@ function sync() {
     }
     success(`Updated ${path.relative(cwd, file)}`);
   }
+
+  // Sync CLAUDE.md version if present
+  syncClaudeMdVersion(cwd, VERSION);
 
   log(`\n✓ Synced to v${VERSION}\n`);
 }

@@ -36,6 +36,8 @@ Determine the next sprint number from `sprint-status.md`. If the file is empty o
 
 **Sprint Backlog Check:** If `research/sprint-backlog.md` exists and has candidates with `Status: Candidate`, present the top candidate(s) to the user and ask: "Your sprint backlog has a candidate ready: [topic]. Would you like to run this sprint, or define a new one?"
 
+**Backlog Divergence:** If the user declines the backlog candidate and defines a new sprint topic, ask: "Do you want to keep '[backlog topic]' as a Candidate for a future sprint, or remove it from the backlog?" Update `research/sprint-backlog.md` accordingly before proceeding to Step 0.
+
 **Dissent Register Scan:** If `research/dissent-register.md` exists, scan the `Review Trigger` column for any entries whose trigger is relevant to the upcoming sprint's topic. If any are found, surface them before Step 0: "Before we start — the dissent register has a flagged concern that may be relevant to this sprint: [dissenting view] (raised in [sprint/spike], Review Trigger: [trigger]). Do you want to factor this in?"
 
 ---
@@ -55,6 +57,7 @@ Before we begin, I need to understand the challenge.
    (A) Guided Wizard — I'll ask you structured questions step by step.
    (B) Paste Content — Share a doc, brief, notes, or Slack thread and I'll extract the key inputs.
    (C) Link — Provide a URL and I'll read it and extract the key inputs.
+   (D) Revisit — Re-run a sprint on a topic with prior context. I'll read the previous sprint and pre-populate.
 
 3. Sprint format?
    (Full) Four phases: Map → Sketch → Decide → Synthesise
@@ -63,6 +66,7 @@ Before we begin, I need to understand the challenge.
 
 4. Which Project Squad personas are joining this sprint?
    [Display the team selection guide from .squad/project-squad.md and recommend personas based on the challenge type.]
+   Are any specialists needed? Check `.squad/specialists.md` for available specialist roles. Specialists are additive — they supplement the core squad and do not replace a persona.
 
 5. Will this sprint produce a creative brief?
    (Yes) — For user-facing features where the next step is "build this thing"
@@ -76,6 +80,8 @@ Before we begin, I need to understand the challenge.
 ### Mode A — Guided Wizard (Knapp's Monday Questions)
 
 Walk the user through these questions in order. Do not rush. Each question builds on the last.
+
+**Context Detection:** Before asking Question 1, check `_meta/PROJECT_CONTEXT.md` and `research/sprint-status.md`. If a Long-Term Goal is already recorded, present it: "Your recorded Long-Term Goal is: [goal]. Is this still the North Star for this sprint, or has it shifted?" Apply the same pattern to Questions 4 (Target User) and 5 (Constraints). Only ask from scratch if no prior context exists.
 
 **Question 1 — The Long-Term Goal (Optimistic)**
 > "Fast forward 6 to 12 months. If this project is a wild success, what will be different? Describe it in the present tense, as if it has already happened."
@@ -128,6 +134,19 @@ Present a structured summary: "Here's what I found:" with each field listed. Ask
 ### Mode C — Link
 
 Fetch the URL provided. Apply the same extraction logic as Mode B. Fall back to Mode A if the URL is inaccessible or returns insufficient content.
+
+---
+
+### Mode D — Revisit
+
+When the user selects Mode D, read the most recent sprint folder for the stated topic (or the sprint the user specifies). Surface what was decided in the prior sprint.
+
+Pre-populate the following fields from the existing `brief.md`:
+- **Long-Term Goal** — present it and ask: "Is this still the North Star, or has it shifted?"
+- **Target User** — present and confirm
+- **Constraints** — present and ask what has changed
+
+Set `depends-on` in the new brief's frontmatter to reference the prior sprint automatically. Ask the user only to confirm or adjust the pre-populated values, and to state **what has changed** since the last sprint. This replaces the Mode A context detection for Questions 1, 4, and 5 — do not double-prompt.
 
 ---
 
@@ -209,6 +228,10 @@ tags: []
 
 ---
 
+**`feeds-into` Backfill:** After creating this sprint's `brief.md`, check its `depends-on` field. For each sprint listed in `depends-on`, open that sprint's `brief.md` and add this sprint's number to its `feeds-into` field. This keeps the bidirectional link chain current without requiring a separate command.
+
+---
+
 ## Phase Transition Protocol
 
 Between each phase, perform a silent self-check before proceeding. Do not output this to the user unless a check fails.
@@ -226,7 +249,7 @@ This protocol applies at every phase boundary. Claude performs facilitation as p
 
 ## Phase 2 — Sketch (Lightning Docs)
 
-Each selected persona writes a ~150-word perspective **in their own voice**, using their signature question as the lens. Generate all perspectives. Present them to the user and ask if they want to adjust any before proceeding to the Decide phase.
+Each selected persona writes a perspective **in their own voice**, using their signature question as the lens. Target ~150 words for new topics; up to ~250 words for revisit sprints (Mode D) or when a persona needs to reference specific prior evidence or decisions. Quality over brevity — a sketch that references concrete prior context is more valuable than one that fits a word count. Generate all perspectives. Present them to the user and ask if they want to adjust any before proceeding to the Decide phase.
 
 **Output:** Create `research/sprints/sprint-NNN-[topic]/sketches.md` using the following template:
 
@@ -420,10 +443,14 @@ Auto-update the following living documents:
 - `research/PERSONAS.md` — Update if the sprint revealed new insights about user personas.
 - `research/PRINCIPLES.md` — Update if the sprint established new design or technical principles.
 
+**Living Document Update Convention:** Always append to existing tables — do not add new section headers per sprint. `DECISIONS.md` has a decisions table; add a new row. `sprint-status.md` has a status table; add a new row. `PERSONAS.md` has persona entries; update the relevant entry in place. Only create a new section when a new *type* of content is being introduced (e.g., a new persona who has never appeared before).
+
 **Output:** Create the following files in `research/sprints/sprint-NNN-[topic]/`:
 - `ideas.md` — ideas and opportunities captured during the sprint
 - `synthesis.md` — retrospective synthesis
 - `summary.json` — machine-readable output
+
+**Site Asset Pre-Flight:** Before generating any HTML page, verify that `site/styles.css` and `site/layout.js` exist. If either is missing, do not generate the HTML page. Instead, tell the user: "The shared design system files are missing. Run `project-squad site` (or `npx @by-sixteen/project-squad site`) to restore them, then re-run this command."
 
 **Generate sprint HTML page:** Create `site/sprints/sprint-NNN/index.html` — a browsable HTML page rendering the sprint decision, rationale, dissent, and next action. Use the shared design system:
 - Link to `../../styles.css` for shared tokens and components

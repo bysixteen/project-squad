@@ -10,6 +10,44 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/). Ver
 
 ---
 
+## [1.2.0] — 2026-03-05
+
+### Added
+
+- **Mode D — Revisit** input mode for `/create-sprint`: re-run a sprint on a topic with prior context, pre-populating Long-Term Goal, Target User, and Constraints from the existing brief. Sets `depends-on` automatically.
+- **Context Detection** in Mode A Guided Wizard: checks `_meta/PROJECT_CONTEXT.md` and `research/sprint-status.md` before asking Questions 1, 4, and 5. Presents pre-filled values if prior context exists.
+- **Specialist surfacing** at team selection in all three commands (`/create-sprint`, `/create-workshop`, `/create-spike`). Prompts users to check `.squad/specialists.md` for available specialist roles.
+- **Backlog Divergence handling** in `/create-sprint` pre-flight: when the user declines a backlog candidate, asks whether to keep or remove it from the backlog.
+- **Living Document Update Convention** in `/create-sprint` Phase 4 and `/create-workshop` Step 6: always append to existing tables, never add new section headers per sprint.
+- **Flexible sketch word limit** in `/create-sprint` Phase 2: ~150 words for new topics, up to ~250 words for revisit sprints or when referencing prior evidence.
+- **`feeds-into` Backfill** in `/create-sprint` Phase 1: after creating a brief with `depends-on`, automatically updates the referenced sprint's `feeds-into` field.
+- **Site Asset Pre-Flight** in all three commands: verifies `site/styles.css` and `site/layout.js` exist before generating HTML. Prevents Claude from improvising a design system.
+- **Quinn Adler — Sprint Facilitator** specialist in `.squad/specialists.md`. Signature question: "Are we following the process, or are we rationalising a shortcut?"
+- **Backfilling Pre-Framework Sprints** guidance in `DEPLOY.md`.
+- **Transition Check** in `/create-spike`: verifies question addressed, evidence supports confidence, and scope held before synthesising.
+- **Dissent handling** in `/create-spike`: explicit instruction to record Elias Vance's dissent in `research/dissent-register.md` if overruled.
+- **Living document updates** in `/create-spike` verification: now updates `research/sprint-status.md` and `research/sprint-backlog.md` on completion.
+- **Elias Vance verification check** in `/create-spike` checklist: mandatory for all spike types.
+- Backstory format explanation and Nara Shin's strategic importance documented in `README.md`.
+
+### Changed
+
+- `CLAUDE.md` version comment updated from `0.9.0` to `1.2.0`.
+- `DEPLOY.md` version references updated to `1.2.0`.
+- `init-project-squad.md` version string updated to `1.2.0`; persona list now includes all nine (was missing Nara Shin and Ines Alvarez).
+- `README.md` Sprint Input Modes table expanded from three to four modes.
+- `layout.js` header comment updated to include `"workshop"` in `data-layout` values and `data-workshop` attribute.
+- `project-context-template.md` persona count corrected from "seven" to "nine"; Nara Shin and Ines Alvarez added to mapping table.
+- `examples/sprints/sprint-000-foundation/brief.md` persona list and table updated to include all nine personas.
+- `/create-workshop` Step 6 now includes `research/PRINCIPLES.md` in the living document update list.
+
+### Fixed
+
+- `bin/cli.js` `init()` now creates `research/workshops/` directory (was missing — workshops were non-functional via CLI).
+- `bin/cli.js` `sync()` and `init()` now sync the `<!-- version: X.X.X -->` comment in the project's `CLAUDE.md` to match the current package version.
+
+---
+
 ## [1.1.0] — 2026-03-04
 
 ### Added

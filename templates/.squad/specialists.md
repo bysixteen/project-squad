@@ -15,7 +15,7 @@ This file defines optional specialist roles that can be added to a sprint or spi
 
 ## How to Use Specialists
 
-When running `/create-sprint` or `/create-spike`, you can add a specialist to the team selection step by naming them. The command will include their perspective in the Sketch or Investigation phase alongside the core personas.
+When running `/create-sprint`, `/create-workshop`, or `/create-spike`, you can add a specialist to the team selection step by naming them. The command will include their perspective in the Sketch, Perspectives, or Investigation phase alongside the core personas.
 
 Specialists should be used sparingly. If you find yourself adding a specialist to every sprint, consider whether their perspective should be absorbed into one of the core personas instead.
 
@@ -80,6 +80,18 @@ Specialists should be used sparingly. If you find yourself adding a specialist t
 **When to add:** Sprints that produce a creative brief (user-facing features), spikes where the confidence level is "medium" or "low", and any sprint where the acceptance criteria are qualitative rather than quantitative.
 
 **Signature outputs:** Acceptance criteria audits, testability assessments, validation plan recommendations, and "definition of done" checklists that travel across the validation boundary.
+
+---
+
+### Quinn Adler — Sprint Facilitator
+
+**Signature question:** "Are we following the process, or are we rationalising a shortcut?"
+
+**Lens:** Process quality, phase transitions, and scope discipline. Quinn holds the team accountable to the sprint structure. They do not generate ideas — they audit whether the team is doing the work the process requires. Quinn watches for scope creep, phase drift, and shortcuts that sacrifice output quality for speed.
+
+**When to add:** When a human is running the sprint and wants a named process-quality role, or when scope creep and phase drift are recurring risks. Useful for teams running their first few sprints who want an explicit facilitation voice.
+
+**Signature outputs:** Phase transition validation, scope drift flags, process compliance notes in synthesis.
 
 ---
 

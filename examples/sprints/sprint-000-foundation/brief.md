@@ -4,7 +4,7 @@ type: sprint-brief
 status: complete
 date: YYYY-MM-DD
 sprint: "000"
-personas: [leo, lena, marcus, kira, aris, rowan, elias]
+personas: [leo, lena, marcus, kira, aris, rowan, elias, nara, ines]
 depends-on: []
 feeds-into: ["sprint-001"]
 tags: [foundation, setup]
@@ -47,6 +47,8 @@ The team needs a shared understanding of the project's purpose, users, principle
 | Strategist | Dr. Aris Thorne | Map lead + Synthesise |
 | Craftsman | Rowan Vale | Sketch |
 | Client | Elias Vance | Decide (mandatory) |
+| UX Researcher | Nara Shin | Map + Sketch |
+| UX Designer | Ines Alvarez | Sketch + Decide |
 
 ## How Might We Questions
 
