@@ -99,6 +99,8 @@ When generating Elias's perspective, reference the client personas in `research/
 | | Nara Shin (if evidence/research needed) |
 | | Ines Alvarez (if UX/interaction decision) |
 
+Are any specialists needed? Check `.squad/specialists.md` for available specialist roles. Specialists are additive — they supplement the core squad and do not replace a persona.
+
 For each assigned persona, generate a **single paragraph (75–100 words)** in their voice. No sketches. No extended exploration. Just their immediate reaction to the decision question and the options on the table.
 
 **Format:**
@@ -245,12 +247,17 @@ After writing the workshop output, update the following living documents:
 2. **`research/sprint-status.md`** — Add a row for this workshop (type: workshop).
 3. **`research/dissent-register.md`** — If Elias's dissent was overruled, log it with a review trigger condition.
 4. **`research/PERSONAS.md`** — If the workshop revealed new information about a client persona, update their entry.
+5. **`research/PRINCIPLES.md`** — If the workshop surfaced new design or technical principles, update.
+
+**Living Document Update Convention:** Always append to existing tables — do not add new section headers per workshop. `DECISIONS.md` has a decisions table; add a new row. `sprint-status.md` has a status table; add a new row. `PERSONAS.md` has persona entries; update the relevant entry in place. Only create a new section when a new *type* of content is being introduced (e.g., a new persona who has never appeared before).
 
 If a significant technical decision was made, create an ADR in `docs/decisions/` and set the `adr:` field in the workshop frontmatter.
 
 ---
 
 ## Step 7 — Generate Site
+
+**Site Asset Pre-Flight:** Before generating any HTML page, verify that `site/styles.css` and `site/layout.js` exist. If either is missing, do not generate the HTML page. Instead, tell the user: "The shared design system files are missing. Run `project-squad site` (or `npx @by-sixteen/project-squad site`) to restore them, then re-run this command."
 
 **Generate workshop HTML page:** Create `site/workshops/workshop-NNN/index.html` — a browsable HTML page rendering the workshop decision, rationale, Elias's position, and next action. Use the shared design system:
 - Link to `../../styles.css` for shared tokens and components

@@ -1,6 +1,6 @@
 # Deploying Project Squad to a New Project
 
-**Current framework version:** 1.1.0 — See [CHANGELOG.md](./CHANGELOG.md) for what changed.
+**Current framework version:** 1.2.0 — See [CHANGELOG.md](./CHANGELOG.md) for what changed.
 
 ---
 
@@ -109,7 +109,7 @@ Add entries here when an AI agent makes a mistake that should not be repeated.]
 
 ### Framework Version
 
-Version: 1.1.0 — [CHANGELOG](https://github.com/bysixteen/project-squad/blob/main/CHANGELOG.md)
+Version: 1.2.0 — [CHANGELOG](https://github.com/bysixteen/project-squad/blob/main/CHANGELOG.md)
 ```
 
 A good project-specific section will include the tech stack, key commands (e.g., which package manager to use), and any non-obvious conventions the team has adopted. The `project-squad` `CLAUDE.md` in this repository provides the rules section verbatim — copy it as-is.
@@ -160,3 +160,14 @@ After deploying, verify:
 ## Creating a Project Context File
 
 When deploying to a new project, create a `_meta/PROJECT_CONTEXT.md` file with project-specific information that Claude can use to populate the living documents. Use `examples/project-context-template.md` as a starting point. The `/init-project-squad` command reads this file automatically.
+
+---
+
+## Backfilling Pre-Framework Sprints
+
+If your project has sprints that predate the framework, you have two options:
+
+- **Option 1 (recommended):** Start `site/sprints.json` from the first framework sprint. Treat earlier sprints as context-only — referenced in living documents but not in the site.
+- **Option 2:** Backfill earlier sprints by creating minimal `summary.json` entries and stub HTML pages. Use `examples/sprints/sprint-000-foundation/` as a model.
+
+Do not backfill if prior sprint outputs are incomplete or inconsistent — the site is a forward-looking artefact, not a historical archive.
