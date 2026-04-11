@@ -129,6 +129,10 @@ Nine portable archetypes. They travel unchanged between projects.
 | 8 | Nara Shin | UX Researcher | "What does the evidence say?" |
 | 9 | Ines Alvarez | UX Designer | "Where will users get stuck?" |
 
+The backstory format — role + signature question + motivations, fears, and protective instincts — is what produces consistent, distinctive voice across phases. Most multi-agent frameworks define agents by role and goal only. The added backstory creates a concentrated character model that fits within a single context window pass, giving each persona a stable perspective from Map through Synthesise without drift.
+
+Nara Shin (UX Researcher) addresses the user-blindness gap identified in comparable multi-agent frameworks — the tendency to produce technically coherent outputs that no real user would want. Her signature question ("What does the evidence say?") is a structural check on the squad's assumptions at every phase. She is not optional.
+
 **The Mandatory Dissent Rule:** Elias Vance must always be included in the Decide phase. His dissent — even if overruled — must be recorded in `research/dissent-register.md` with a review trigger condition.
 
 ---
@@ -160,13 +164,14 @@ Use `/create-workshop` (not `/create-sprint`) when at least two of the following
 
 ## Sprint Input Modes
 
-The `/create-sprint` command supports three input modes:
+The `/create-sprint` command supports four input modes:
 
 | Mode | When to Use |
 |------|------------|
 | **(A) Guided Wizard** | You want structured questions based on Jake Knapp's Monday Questions |
 | **(B) Paste Content** | You have a brief, notes, Slack thread, or document to share |
 | **(C) Link** | You have a URL to a document — Claude fetches and extracts the key inputs |
+| **(D) Revisit** | Re-run a sprint on a topic with prior context; pre-populates fields from the existing brief |
 
 ---
 

@@ -70,7 +70,7 @@ date: YYYY-MM-DD
 
 ## 3. The Project Squad — Real Team Mapping
 
-> The seven personas in `.squad/project-squad.md` are the portable constant — they never change.
+> The nine personas in `.squad/project-squad.md` are the portable constant — they never change.
 > This table maps them to real people on your team for reference. It does not change the personas.
 > If a persona has no real-world counterpart, leave it as "N/A" — they still participate in every sprint.
 
@@ -83,6 +83,8 @@ date: YYYY-MM-DD
 | 5 | Dr. Aris Thorne | Strategist | [Real person or "N/A"] |
 | 6 | Rowan Vale | Craftsman | [Real person or "N/A"] |
 | 7 | Elias Vance | Client / External Voice | [Real person or "N/A"] |
+| 8 | Nara Shin | UX Researcher | [Real person or "N/A"] |
+| 9 | Ines Alvarez | UX Designer | [Real person or "N/A"] |
 
 ---
 

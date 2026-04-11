@@ -10,11 +10,12 @@
    with persistent sidebar groups.
 
    Attributes:
-     data-layout      "docs" | "sprint" | "spike"
+     data-layout      "docs" | "sprint" | "spike" | "workshop"
      data-active-nav  ID of the active nav item
      data-root        Relative path to site root (e.g. "." or "../..")
      data-sprint      Sprint number (for sprint layout)
      data-spike       Spike number (for spike layout)
+     data-workshop    Workshop number (for workshop layout)
    ══════════════════════════════════════════════════ */
 
 (function () {

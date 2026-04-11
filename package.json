@@ -1,6 +1,6 @@
 {
   "name": "@by-sixteen/project-squad",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "A portable framework for running structured design sprints, workshops, and technical spikes with Claude",
   "publishConfig": {
     "registry": "https://registry.npmjs.org",

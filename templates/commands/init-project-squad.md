@@ -15,7 +15,7 @@ This command creates **exactly these files and no others**:
 
 Do NOT create any additional files — no `SPRINT_PROCESS.md`, no `METHODOLOGY.md`, no process guides, no role descriptions. The sprint process is defined in `.claude/commands/create-sprint.md`. Do not summarise or re-describe it here.
 
-Do NOT use generic role names (Designer, Engineer, Challenger, Scribe, etc.) anywhere in the generated files. The Project Squad personas are fixed: Leo Finch, Dr. Lena Petrova, Marcus Thorne, Kira Sharma, Dr. Aris Thorne, Rowan Vale, and Elias Vance. Their definitions live in `.squad/project-squad.md` — refer to them only by these names.
+Do NOT use generic role names (Designer, Engineer, Challenger, Scribe, etc.) anywhere in the generated files. The Project Squad personas are fixed: Leo Finch, Dr. Lena Petrova, Marcus Thorne, Kira Sharma, Dr. Aris Thorne, Rowan Vale, Elias Vance, Nara Shin, and Ines Alvarez. Their definitions live in `.squad/project-squad.md` — refer to them only by these names.
 
 ---
 
@@ -83,7 +83,7 @@ If `_meta/PROJECT_CONTEXT.md` was found in the pre-flight check, use its content
 Print the following success message:
 
 ```
-✓ Project Squad framework v1.1.0 initialized for: [PROJECT NAME]
+✓ Project Squad framework v1.2.0 initialized for: [PROJECT NAME]
 
 Files created:
   .squad/project-squad.md
