@@ -1,3 +1,11 @@
+---
+name: seed-project-context
+description: Transform source documents into a Project Squad PROJECT_CONTEXT.md file. Use when the user runs /seed-project-context or wants to prepare project context from a brief, RFP, or research doc before running /init-project-squad.
+argument-hint: "[paste content, file path, or link]"
+disable-model-invocation: true
+allowed-tools: Read, Write, Edit, Glob
+---
+
 # Command: /seed-project-context
 
 ## Purpose

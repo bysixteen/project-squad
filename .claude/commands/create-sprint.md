@@ -1,3 +1,11 @@
+---
+name: create-sprint
+description: Run a Full or Lite Design Sprint using the Project Squad framework. Use when the user runs /create-sprint or wants to run a design sprint, sprint session, or structured product exploration with the squad.
+argument-hint: "[sprint topic or user moment]"
+disable-model-invocation: true
+allowed-tools: Read, Write, Edit, Glob
+---
+
 # Command: /create-sprint
 
 ## Purpose

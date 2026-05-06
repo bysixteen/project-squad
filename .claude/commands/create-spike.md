@@ -1,3 +1,11 @@
+---
+name: create-spike
+description: Run a time-boxed Project Squad spike to answer a specific unknown. Use when the user runs /create-spike or wants to investigate a single well-defined question before committing to a direction.
+argument-hint: "[specific question to answer]"
+disable-model-invocation: true
+allowed-tools: Read, Write, Edit, Glob
+---
+
 # Command: /create-spike
 
 ## Purpose

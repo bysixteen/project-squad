@@ -1,3 +1,11 @@
+---
+name: create-workshop
+description: Run a compressed 2-3 hour Project Squad workshop to stress-test a decision under time pressure. Use when the user runs /create-workshop or needs a fast decision and the full sprint format is not practical.
+argument-hint: "[decision or question to stress-test]"
+disable-model-invocation: true
+allowed-tools: Read, Write, Edit, Glob
+---
+
 # /create-workshop
 
 **Purpose:** Run a compressed, time-boxed design sprint when a decision is needed quickly and the full sprint format is not appropriate.
