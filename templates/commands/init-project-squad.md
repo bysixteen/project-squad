@@ -1,3 +1,10 @@
+---
+name: init-project-squad
+description: Bootstrap the Project Squad framework in a project. Use when the user runs /init-project-squad or wants to set up the Project Squad framework in a new project for the first time.
+disable-model-invocation: true
+allowed-tools: Read, Write, Edit, Glob, Bash
+---
+
 # Command: /init-project-squad
 
 ## Purpose

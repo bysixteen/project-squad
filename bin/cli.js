@@ -101,6 +101,7 @@ function init() {
   const dirs = [
     '.squad',
     '.claude/commands',
+    '.claude/skills',
     'research',
     'research/sprints',
     'research/spikes',
@@ -138,6 +139,18 @@ function init() {
     success(`Created ${path.relative(cwd, file)}`);
   }
   for (const file of cmdResult.skipped) {
+    warn(`Skipped ${path.relative(cwd, file)} (already exists)`);
+  }
+
+  // Copy skills
+  const skillsSrc = path.join(TEMPLATES_DIR, 'skills');
+  const skillsDest = path.join(cwd, '.claude', 'skills');
+  const skillsResult = copyDir(skillsSrc, skillsDest, { overwrite: false });
+
+  for (const file of skillsResult.copied) {
+    success(`Created ${path.relative(cwd, file)}`);
+  }
+  for (const file of skillsResult.skipped) {
     warn(`Skipped ${path.relative(cwd, file)} (already exists)`);
   }
 
@@ -191,6 +204,15 @@ function sync() {
   const cmdResult = copyDir(cmdSrc, cmdDest, { overwrite: true });
 
   for (const file of cmdResult.copied) {
+    success(`Updated ${path.relative(cwd, file)}`);
+  }
+
+  // Sync skills (overwrite)
+  const skillsSrc = path.join(TEMPLATES_DIR, 'skills');
+  const skillsDest = path.join(cwd, '.claude', 'skills');
+  const skillsResult = copyDir(skillsSrc, skillsDest, { overwrite: true });
+
+  for (const file of skillsResult.copied) {
     success(`Updated ${path.relative(cwd, file)}`);
   }
 

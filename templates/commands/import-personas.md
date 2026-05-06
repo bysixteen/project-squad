@@ -1,3 +1,11 @@
+---
+name: import-personas
+description: Import externally-created client personas into the Project Squad framework. Use when the user runs /import-personas or has existing research-backed personas from a previous project, UX research report, or client workshop.
+argument-hint: "[paste content, file path, or link]"
+disable-model-invocation: true
+allowed-tools: Read, Write, Edit, Glob
+---
+
 # /import-personas
 
 **Purpose:** Import externally-created client personas into the Project Squad framework so they can be used by the squad during sprints and spikes.
